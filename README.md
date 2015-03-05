@@ -1,34 +1,54 @@
-# cabbie
+# Taxi
 
-A webdriver client
+This is a Cabbie-fork.
 
-[![Build Status](https://img.shields.io/travis/ForbesLindesay/cabbie/master.svg)](https://travis-ci.org/ForbesLindesay/cabbie)
-[![Selenium Test Status](https://saucelabs.com/buildstatus/cabbie)](https://saucelabs.com/u/cabbie)
-[![Dependency Status](https://img.shields.io/gemnasium/ForbesLindesay/cabbie.svg)](https://gemnasium.com/ForbesLindesay/cabbie)
-[![NPM version](https://img.shields.io/npm/v/cabbie.svg)](http://badge.fury.io/js/cabbie)
+Am Object-oriented Selenium WebDriver Client for Node.
+
+[![npm version](https://badge.fury.io/js/taxi.svg)](http://badge.fury.io/js/taxi)
+
+[![NPM](https://nodei.co/npm/taxi.png?downloads=true)](https://nodei.co/npm/taxi/)
+[![NPM](https://nodei.co/npm-dl/taxi.png?months=3&height=2)](https://nodei.co/npm/taxi/)
+
+[API Documentation](http://preceptorjs.github.io/taxi/docs)
+
+[Coverage Report](http://preceptorjs.github.io/taxi/coverage/lcov-report/)
 
 ## Installation
 
-    npm install cabbie
+```shell
+npm install taxi
+```
 
 ## Usage
 
 ```js
 var assert = require('assert');
-var getBrowser = require('cabbie');
-var chromedriver = require('chromedriver');
+var taxi = require('taxi');
 
-chromedriver.start();
+var driver = taxi('http://localhost:4444/wd/hub', { browserName:'firefox' }, { mode: taxi.Driver.MODE_SYNC });
+var browser = driver.browser();
+var activeWindow = browser.activeWindow();
 
-var browser = getBrowser('http://localhost:9515/', {}, {mode: 'sync', debug: true});
+// Set url and assert a header-text
+activeWindow.navigator().setUrl('http://www.example.com');
+assert.equal(activeWindow.getElement('h1').getText(), 'Example Domain');
 
-browser.navigateTo('http://www.example.com');
-assert(browser.getElement('h1').text() === 'Example Domain');
+// Click on element
+activeWindow.getElement('h1').mouse().click();
 
-browser.dispose();
+// Click on a specific coordinate
+activeWindow.mouse().clickAt(500, 200);
 
-chromedriver.stop();
+// Close active window
+activeWindow.close();
+
+driver.dispose();
 ```
+
+## Object Reference
+
+![Object Reference](objectReference.png)
+
 
 ## License
 

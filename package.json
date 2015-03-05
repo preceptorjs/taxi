@@ -1,11 +1,34 @@
 {
-  "name": "cabbie",
-  "version": "0.0.9",
-  "description": "A webdriver client",
-  "keywords": [],
+  "name": "taxi",
+  "version": "1.0.2",
+  "description": "Object-oriented Selenium WebDriver Client",
+  "license": "MIT",
+  "main": "index.js",
+  "homepage": "https://github.com/preceptorjs/taxi",
+  "bugs": "https://github.com/preceptorjs/taxi/issues",
+  "author": {
+    "name": "Marcel Erz",
+    "email": "erz@yahoo-inc.com",
+    "url": "http://www.marcelerz.com"
+  },
+  "contributors": ["ForbesLindesay"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/preceptorjs/taxi.git"
+  },
+  "keywords": [
+    "webdriver", "selenium", "client", "wd", "sync", "async", "synchonous"
+  ],
+  "scripts": {
+    "test": "istanbul cover test",
+    "test-sauce": "node test sauce",
+    "test-local": "node test local",
+    "docs": "yuidoc ."
+  },
   "dependencies": {
     "request": "~2.33.0",
-    "request-sync": "0.0.5",
+    "request-sync": "git://github.com/marcelerz/request-sync.git#master",
+    "mkdirp": "0.5.0",
     "promise": "~3.2.0",
     "ms": "~0.6.2"
   },
@@ -14,16 +37,5 @@
     "istanbul": "~0.2.4",
     "testit": "~1.2.0",
     "st": "~0.3.1"
-  },
-  "scripts": {
-    "test": "istanbul cover test",
-    "test-sauce": "node test sauce",
-    "test-local": "node test local"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ForbesLindesay/cabbie.git"
-  },
-  "author": "ForbesLindesay",
-  "license": "MIT"
+  }
 }
