@@ -11,7 +11,7 @@
     "email": "erz@yahoo-inc.com",
     "url": "http://www.marcelerz.com"
   },
-  "contributors": ["ForbesLindesay"],
+  "contributors": ["ForbesLindesay", "maxnachlinger"],
   "repository": {
     "type": "git",
     "url": "https://github.com/preceptorjs/taxi.git"
