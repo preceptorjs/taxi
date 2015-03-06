@@ -4,14 +4,20 @@ This is a Cabbie-fork.
 
 Am Object-oriented Selenium WebDriver Client for Node.
 
-[![npm version](https://badge.fury.io/js/taxi.svg)](http://badge.fury.io/js/taxi)
+[![Build Status](https://img.shields.io/travis/preceptorjs/taxi.svg)](http://travis-ci.org/preceptorjs/taxi)
+[![Coveralls Coverage](https://img.shields.io/coveralls/preceptorjs/taxi.svg)](https://coveralls.io/r/preceptorjs/taxi)
+[![Code Climate Grade](https://img.shields.io/codeclimate/github/preceptorjs/taxi.svg)](https://codeclimate.com/github/preceptorjs/taxi)
 
-[![NPM](https://nodei.co/npm/taxi.png?downloads=true)](https://nodei.co/npm/taxi/)
-[![NPM](https://nodei.co/npm-dl/taxi.png?months=3&height=2)](https://nodei.co/npm/taxi/)
+[![NPM version](https://badge.fury.io/js/taxi.svg)](https://www.npmjs.com/package/taxi)
+[![NPM License](https://img.shields.io/npm/l/taxi.svg)](https://www.npmjs.com/package/taxi)
 
-[API Documentation](http://preceptorjs.github.io/taxi/docs)
+[![NPM](https://nodei.co/npm/taxi.png?downloads=true&stars=true)](https://www.npmjs.com/package/taxi)
+[![NPM](https://nodei.co/npm-dl/taxi.png?months=3&height=2)](https://www.npmjs.com/package/taxi)
 
-[Coverage Report](http://preceptorjs.github.io/taxi/coverage/lcov-report/)
+[![Coverage Report](https://img.shields.io/badge/Coverage_Report-Available-blue.svg)](http://preceptorjs.github.io/taxi/coverage/lcov-report/)
+[![API Documentation](https://img.shields.io/badge/API_Documentation-Available-blue.svg)](http://preceptorjs.github.io/taxi/docs/)
+
+[![Gitter Support](https://img.shields.io/badge/Support-Gitter_IM-yellow.svg)](https://gitter.im/preceptorjs/support)
 
 ## Installation
 
