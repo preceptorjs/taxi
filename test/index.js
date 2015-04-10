@@ -916,7 +916,7 @@ function testBrowser(driver, promise) {
 
 
   test("get a server status", function () {
-    return promise(taxi.Driver.getStatus(driver._options.remote, driver._options.mode)).then(function (status) {
+    return promise(taxi.Driver.getStatus(driver._options.remote, driver._options)).then(function (status) {
       assert(status instanceof taxi.Status);
 
       // Not required, but still execute and see if fails
