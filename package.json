@@ -34,7 +34,7 @@
   "dependencies": {
     "mkdirp": "0.5.0",
     "ms": "~0.6.2",
-    "promise": "~3.2.0",
+    "promise": "6.0.0",
     "sync-request": "^2.0.1",
     "then-request": "^2.1.1"
   },
