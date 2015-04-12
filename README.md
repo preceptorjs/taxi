@@ -1,8 +1,6 @@
 # Taxi
 
-This is a Cabbie-fork.
-
-Am Object-oriented Selenium WebDriver Client for Node.
+An Object-oriented Selenium WebDriver Client for Node.
 
 [![Build Status](https://img.shields.io/travis/preceptorjs/taxi.svg)](http://travis-ci.org/preceptorjs/taxi)
 [![Coveralls Coverage](https://img.shields.io/coveralls/preceptorjs/taxi.svg)](https://coveralls.io/r/preceptorjs/taxi)
