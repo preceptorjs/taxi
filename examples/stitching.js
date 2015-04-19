@@ -1,9 +1,10 @@
 var taxi = require('..');
 var chromedriver = require('chromedriver');
 
-chromedriver.start();
+//chromedriver.start();
 
-var driver = taxi('http://localhost:9515/', { browserName:'chrome' }, { mode: taxi.Driver.MODE_SYNC, debug: true, httpDebug: true });
+//var driver = taxi('http://localhost:9515/', { browserName:'chrome' }, { mode: taxi.Driver.MODE_SYNC, debug: true, httpDebug: true });
+var driver = taxi('http://localhost:4444/wd/hub', { browserName:'firefox', takesElementScreenshot:true }, { mode: taxi.Driver.MODE_SYNC, debug: true, httpDebug: true });
 var browser = driver.browser();
 var activeWindow = browser.activeWindow();
 
@@ -14,4 +15,4 @@ activeWindow.saveScreenshot(__dirname + '/stitch.png');
 
 driver.dispose();
 
-chromedriver.stop();
+//chromedriver.stop();
