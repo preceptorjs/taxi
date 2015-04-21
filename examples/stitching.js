@@ -1,5 +1,6 @@
 var taxi = require('..');
 var chromedriver = require('chromedriver');
+var fs = require('fs');
 
 var user = process.env.SAUCE_USERNAME;
 var accessKey = process.env.SAUCE_ACCESS_KEY;
@@ -7,7 +8,7 @@ var accessKey = process.env.SAUCE_ACCESS_KEY;
 var sauceLabsUrl = "http://" + user + ":" + accessKey + "@ondemand.saucelabs.com/wd/hub";
 
 var tests = [
-    //{ url:'http://localhost:9515/', capabilities: { browserName:'chrome' }, beforeFn: function () { chromedriver.start(); }, afterFn: function () { chromedriver.stop() } },
+    { url:'http://localhost:9515/', capabilities: { browserName:'chrome' }, beforeFn: function () { chromedriver.start(); }, afterFn: function () { chromedriver.stop() } },
     //
     //{ url:'http://localhost:9517/', capabilities: { browserName:'phantomjs', browserVersion:'1.9.8' } },
     //{ url:'http://localhost:4444/wd/hub', capabilities: { browserName:'firefox' } },
@@ -27,7 +28,7 @@ var tests = [
     //
     //{ url:sauceLabsUrl, capabilities: { browserName:'iphone', version:'8.2', platform: 'OS X 10.10', deviceName:'iPad Simulator', "device-orientation":'portrait' } },
     //{ url:sauceLabsUrl, capabilities: { browserName:'iphone', version:'8.2', platform: 'OS X 10.10', deviceName:'iPad Simulator', "device-orientation":'landscape' } },
-    { url:sauceLabsUrl, capabilities: { browserName:'iphone', version:'8.2', platform: 'OS X 10.10', deviceName:'iPhone Simulator', "device-orientation":'portrait' } },
+    //{ url:sauceLabsUrl, capabilities: { browserName:'iphone', version:'8.2', platform: 'OS X 10.10', deviceName:'iPhone Simulator', "device-orientation":'portrait' } },
     //{ url:sauceLabsUrl, capabilities: { browserName:'iphone', version:'8.2', platform: 'OS X 10.10', deviceName:'iPhone Simulator', "device-orientation":'landscape' } }
 ];
 
@@ -47,7 +48,7 @@ tests.forEach(function (test) {
         activeWindow.navigator().setUrl('http://www.yahoo.com');
 
         var browserId = (driver.deviceName() != '' ? driver.deviceName() : driver.browserName()) + " " + driver.deviceOrientation() + " " + driver.browserVersion() + " " + driver.platform();
-        activeWindow.saveScreenshot(__dirname + '/' + browserId.trim() + '.png', {
+        fs.writeFileSync(__dirname + '/' + browserId.trim() + '.png', activeWindow.documentScreenshot({
             eachFn: function () {
                 if (arguments[0] >= 1 && document.getElementById('masthead')) {
                     document.getElementById('masthead').style.display = 'none';
@@ -56,8 +57,9 @@ tests.forEach(function (test) {
                 if (document.getElementById('masthead')) {
                     document.getElementById('masthead').style.display = '';
                 }
-            }
-        });
+            },
+			blockOuts: ['input', {x:60, y: 50, width: 200, height: 200}, activeWindow.getElement('.footer-section')]
+        }));
     } catch (err) {
         console.error(err.stack);
 
