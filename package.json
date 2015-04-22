@@ -11,13 +11,22 @@
     "email": "erz@yahoo-inc.com",
     "url": "http://www.marcelerz.com"
   },
-  "contributors": ["ForbesLindesay", "maxnachlinger"],
+  "contributors": [
+    "ForbesLindesay",
+    "maxnachlinger"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/preceptorjs/taxi.git"
   },
   "keywords": [
-    "webdriver", "selenium", "client", "wd", "sync", "async", "synchonous"
+    "webdriver",
+    "selenium",
+    "client",
+    "wd",
+    "sync",
+    "async",
+    "synchonous"
   ],
   "scripts": {
     "test": "istanbul cover test",
@@ -27,15 +36,19 @@
   },
   "dependencies": {
     "mkdirp": "0.5.0",
-    "promise": "~3.2.0",
     "ms": "~0.6.2",
-    "sync-request": "^2.0.1",
-    "then-request": "^2.1.1"
+    "pngjs-image": "~0.11.1",
+    "promise": "~3.2.0",
+    "sleep.js": "0.1.0",
+    "sync-request": "~2.0.1",
+    "then-request": "~2.1.1"
   },
   "devDependencies": {
     "chromedriver": "~2.8.0",
     "istanbul": "~0.2.4",
     "testit": "~1.2.0",
-    "st": "~0.3.1"
+    "st": "~0.3.1",
+    "coveralls": "2.11.2",
+    "codeclimate-test-reporter": "0.0.4"
   }
 }
