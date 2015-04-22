@@ -35,9 +35,11 @@
     "docs": "yuidoc ."
   },
   "dependencies": {
+    "blink-diff": "~1.0.10",
     "mkdirp": "0.5.0",
     "ms": "~0.6.2",
-    "pngjs-image": "~0.11.1",
+    "pngjs-image": "~0.11.2",
+    "preceptor-core": "~0.10.0",
     "promise": "~3.2.0",
     "sleep.js": "0.1.0",
     "sync-request": "~2.0.1",
