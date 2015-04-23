@@ -5,7 +5,6 @@ v0.2.0
 * Add examples
 * Add chain-mode
 * Add compatibility-mode
-  * Add Nightwatch.js interface
 * Add screenshot stitching
   * Add device-pixel-ratio determination
   * Add stitching determination
@@ -14,6 +13,12 @@ v0.2.0
   * Add area screenshot
   * Add element screenshot
   * Add block-out (custom and element)
+* Add comparison methods
+  * Add Blink-Diff
+  * Add document comparison
+  * Add view-port comparison
+  * Add area comparison
+  * Add element comparison
 
 v0.1.0 - 04/10/15
 * Update http-client for synchronous and asynchronous requests
