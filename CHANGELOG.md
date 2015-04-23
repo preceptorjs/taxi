@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-v0.2.0
+v0.2.0 - 04/23/15
 * Add examples
 * Add chain-mode
 * Add compatibility-mode
