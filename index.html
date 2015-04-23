@@ -1,108 +1,30 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Cabbie : WebDriver for the masses">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Cabbie</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/marcelerz/cabbie">View on GitHub</a>
-
-          <h1 id="project_title">Cabbie</h1>
-          <h2 id="project_tagline">WebDriver for the masses</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/marcelerz/cabbie/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/marcelerz/cabbie/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p><img src="logo.png" alt="Cabbie"></p>
-
-<h1>
-<a id="cabbie" class="anchor" href="#cabbie" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cabbie</h1>
-
-<p>A node web-driver client</p>
-
-<p><a href="https://travis-ci.org/ForbesLindesay/cabbie"><img src="https://img.shields.io/travis/ForbesLindesay/cabbie/master.svg" alt="Build Status"></a>
-<a href="https://saucelabs.com/u/cabbie"><img src="https://saucelabs.com/buildstatus/cabbie" alt="Selenium Test Status"></a>
-<a href="https://gemnasium.com/ForbesLindesay/cabbie"><img src="https://img.shields.io/gemnasium/ForbesLindesay/cabbie.svg" alt="Dependency Status"></a>
-<a href="http://badge.fury.io/js/cabbie"><img src="https://img.shields.io/npm/v/cabbie.svg" alt="NPM version"></a></p>
-
-<p><a href="http://marcelerz.github.io/cabbie">API Documentation</a></p>
-
-<h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
-
-<pre><code>npm install cabbie
-</code></pre>
-
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> assert <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>assert<span class="pl-pds">'</span></span>);
-<span class="pl-s">var</span> cabbie <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>cabbie<span class="pl-pds">'</span></span>);
-
-<span class="pl-s">var</span> driver <span class="pl-ko">=</span> cabbie(<span class="pl-s1"><span class="pl-pds">'</span>http://localhost:4444/wd/hub<span class="pl-pds">'</span></span>, { browserName<span class="pl-ko">:</span><span class="pl-s1"><span class="pl-pds">'</span>firefox<span class="pl-pds">'</span></span> }, { mode<span class="pl-ko">:</span> cabbie.Browser.MODE_SYNC });
-<span class="pl-s">var</span> browser <span class="pl-ko">=</span> driver.browser();
-<span class="pl-s">var</span> activeWindow <span class="pl-ko">=</span> browser.activeWindow();
-
-<span class="pl-c"><span class="pl-pdc">//</span> Set url and assert a header-text</span>
-activeWindow.<span class="pl-sc">navigator</span>().setUrl(<span class="pl-s1"><span class="pl-pds">'</span>http://www.example.com<span class="pl-pds">'</span></span>);
-assert.equal(activeWindow.getElement(<span class="pl-s1"><span class="pl-pds">'</span>h1<span class="pl-pds">'</span></span>).getText(), <span class="pl-s1"><span class="pl-pds">'</span>Example Domain<span class="pl-pds">'</span></span>);
-
-<span class="pl-c"><span class="pl-pdc">//</span> Click on element</span>
-activeWindow.getElement(<span class="pl-s1"><span class="pl-pds">'</span>h1<span class="pl-pds">'</span></span>).mouse().<span class="pl-sf">click</span>();
-
-<span class="pl-c"><span class="pl-pdc">//</span> Click on a specific coordinate</span>
-activeWindow.mouse().clickAt(<span class="pl-cn">500</span>, <span class="pl-cn">200</span>);
-
-<span class="pl-c"><span class="pl-pdc">//</span> Close active window</span>
-activeWindow.<span class="pl-sf">close</span>();
-
-driver.dispose();</pre></div>
-
-<h2>
-<a id="object-reference" class="anchor" href="#object-reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object Reference</h2>
-
-<p><img src="objectReference.png" alt="Object Reference"></p>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>MIT</p>
-
-<h2>
-<a id="attribution" class="anchor" href="#attribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Attribution</h2>
-
-<div>Icon made by <a href="http://www.icons8.com" title="Icons8">Icons8</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
-</div>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Cabbie maintained by <a href="https://github.com/marcelerz">marcelerz</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TaxiWeb</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     
+<meta name="taxi-web/config/environment" content="%7B%22modulePrefix%22%3A%22taxi-web%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22hash%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22name%22%3A%22taxi-web%22%2C%22version%22%3A%220.0.0.e58361dd%22%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
 
+    <link rel="stylesheet" href="assets/vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+    <link rel="stylesheet" href="assets/taxi-web-c790a8f3f86db7a9ce1d49cf0f7be343.css">
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    
+  </head>
+  <body>
+    
+
+    <script src="assets/vendor-23b179e97d0ece2e3446260c4c051c61.js"></script>
+    <script src="assets/taxi-web-f7b36e1c8cf087e15a2d7f190f382a6c.js"></script>
+
+    
   </body>
 </html>
