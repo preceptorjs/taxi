@@ -3,9 +3,9 @@
 var Alert = require('./lib/alert');
 var ActiveWindow = require('./lib/activeWindow');
 var Browser = require('./lib/browser');
+var Chain = require('./lib/chain');
 var Cookie = require('./lib/cookie');
 var CookieStorage = require('./lib/cookieStorage');
-var Driver = require('./lib/driver');
 var Element = require('./lib/element');
 var Frame = require('./lib/frame');
 var GlobalMouse = require('./lib/globalMouse');
@@ -23,7 +23,9 @@ var TimeOut = require('./lib/timeOut');
 var Touch = require('./lib/touch');
 var WindowHandler = require('./lib/window');
 
-module.exports = Taxi;
+var Driver = require('./lib/driver');
+
+module.exports = taxi;
 
 /**
  * Create a new browser session
@@ -33,8 +35,8 @@ module.exports = Taxi;
  * Note: Remember to call `.dispose()` at the end to terminate the session.
  *
  * @constructor
- * @class Taxi
- * @module Taxi
+ * @class taxi
+ * @module taxi
  * @param {String|Object} remote Request object or URL to selenium-server
  * @param {Object} capabilities See capabilities in {{#crossLink "Session"}}{{/crossLink}}
  * @param {Object} options
@@ -43,8 +45,9 @@ module.exports = Taxi;
  * @param {String} [options.sessionID]
  * @param {Boolean} [options.debug=false]
  * @param {Boolean} [options.httpDebug=false]
+ * @return {Driver}
  */
-function Taxi(remote, capabilities, options) {
+function taxi(remote, capabilities, options) {
   return new Driver(remote, capabilities, options);
 }
 
@@ -53,130 +56,136 @@ function Taxi(remote, capabilities, options) {
  * @property ActiveWindow
  * @type {ActiveWindow}
  */
-Taxi.ActiveWindow = ActiveWindow;
+taxi.ActiveWindow = ActiveWindow;
 
 /**
  * @property Alert
  * @type {Alert}
  */
-Taxi.Alert = Alert;
+taxi.Alert = Alert;
 
 /**
  * @property Browser
  * @type Browser
  */
-Taxi.Browser = Browser;
+taxi.Browser = Browser;
+
+/**
+ * @property Chain
+ * @type Chain
+ */
+taxi.Chain = Chain;
 
 /**
  * @property Cookie
  * @type Cookie
  */
-Taxi.Cookie = Cookie;
+taxi.Cookie = Cookie;
 
 /**
  * @property CookieStorage
  * @type CookieStorage
  */
-Taxi.CookieStorage = CookieStorage;
+taxi.CookieStorage = CookieStorage;
 
 /**
  * @property Driver
  * @type Driver
  */
-Taxi.Driver = Driver;
+taxi.Driver = Driver;
 
 /**
  * @property Element
  * @type Element
  */
-Taxi.Element = Element;
+taxi.Element = Element;
 
 /**
  * @property Frame
  * @type Frame
  */
-Taxi.Frame = Frame;
+taxi.Frame = Frame;
 
 /**
  * @property GlobalMouse
  * @type GlobalMouse
  */
-Taxi.GlobalMouse = GlobalMouse;
+taxi.GlobalMouse = GlobalMouse;
 
 /**
  * @property GlobalTouch
  * @type GlobalTouch
  */
-Taxi.GlobalTouch = GlobalTouch;
+taxi.GlobalTouch = GlobalTouch;
 
 /**
  * @property IME
  * @type IME
  */
-Taxi.IME = IME;
+taxi.IME = IME;
 
 /**
  * @property Keys
  * @type Keys
  */
-Taxi.Keys = Keys;
+taxi.Keys = Keys;
 
 /**
  * @property LocalStorage
  * @type LocalStorage
  */
-Taxi.LocalStorage = LocalStorage;
+taxi.LocalStorage = LocalStorage;
 
 /**
  * @property LogEntry
  * @type LogEntry
  */
-Taxi.LogEntry = LogEntry;
+taxi.LogEntry = LogEntry;
 
 /**
  * @property Mouse
  * @type Mouse
  */
-Taxi.Mouse = Mouse;
+taxi.Mouse = Mouse;
 
 /**
  * @property Navigator
  * @type Navigator
  */
-Taxi.Navigator = Navigator;
+taxi.Navigator = Navigator;
 
 /**
  * @property Session
  * @type Session
  */
-Taxi.Session = Session;
+taxi.Session = Session;
 
 /**
  * @property SessionStorage
  * @type SessionStorage
  */
-Taxi.SessionStorage = SessionStorage;
+taxi.SessionStorage = SessionStorage;
 
 /**
  * @property Status
  * @type Status
  */
-Taxi.Status = Status;
+taxi.Status = Status;
 
 /**
  * @property TimeOut
  * @type TimeOut
  */
-Taxi.TimeOut = TimeOut;
+taxi.TimeOut = TimeOut;
 
 /**
  * @property Touch
  * @type Touch
  */
-Taxi.Touch = Touch;
+taxi.Touch = Touch;
 
 /**
  * @property WindowHandler
  * @type WindowHandler
  */
-Taxi.WindowHandler = WindowHandler;
+taxi.WindowHandler = WindowHandler;
