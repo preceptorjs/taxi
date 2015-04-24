@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+v0.2.2 - 04/24/15
+* Bugfixes
+
 v0.2.1 - 04/24/15
 * Add window location and sizing methods to chain interface
 
