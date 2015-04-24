@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Cabbie - Cabbie</title>
+    <title>lib/scripts/stitching.js - taxi</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -15,11 +15,11 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="../../logo.png" title="Cabbie"></h1>
+                <h1><img src="../assets/css/logo.png" title="taxi"></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.10</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,15 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
             
-                <li><a href="../classes/Cabbie.html">Cabbie</a></li>
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -77,15 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
+            
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
-                <li><a href="../modules/Cabbie.html">Cabbie</a></li>
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
+            
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -142,52 +170,67 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Cabbie Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: lib/scripts/stitching.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+module.exports = {
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/index.js.html#l28"><code>index.js:28</code></a>
-        </div>
-    
+    /**
+     * Initializes the stitching determination.
+     * It gathers the current document state,
+     * and it will modify the document as needed.
+     *
+     * @method init
+     */
+    init: function () {
+        var de = document.documentElement,
+            body = document.body,
+            el, initData;
 
-    
-</div>
+        // Create a div to figure out the size of the view-port across browsers
+        el = document.createElement(&#x27;div&#x27;);
+        el.style.position = &quot;fixed&quot;;
+        el.style.top = 0;
+        el.style.left = 0;
+        el.style.bottom = 0;
+        el.style.right = 0;
+        de.insertBefore(el, de.firstChild);
 
+        initData = {
+            bodyOverflow: body.style.overflow,
+            bodyWidth: body.style.width,
+            bodyHeight: body.style.height,
+            viewPortWidth: el.offsetWidth
+        };
 
+        de.removeChild(el);
 
-<div class="box intro">
-    <p>Create a new browser session</p>
-<p><img src="../../objectReference.png" /></p>
-<p>Note: Remember to call <code>.dispose()</code> at the end to terminate the session.</p>
+        // Remove scrollbars
+        body.style.overflow = &#x27;hidden&#x27;;
 
-</div>
+        // Make document only one pixel height and twice wide as the view-port
+        body.style.width = (initData.viewPortWidth * 2) + &#x27;px&#x27;;
+        body.style.height = &#x27;1px&#x27;;
 
+        return JSON.stringify(initData);
+    },
 
+    /**
+     * Revert changes done to the document during the init-phase
+     *
+     * @method revert
+     * @param {object} initData Data gathered during init-phase
+     */
+    revert: function (initData) {
+        var body = document.body;
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/Cabbie.html">
-                        Cabbie
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+        body.style.overflow = initData.bodyOverflow;
+        body.style.width = initData.bodyWidth;
+        body.style.height = initData.bodyHeight;
+    }
+};
+    </pre>
 </div>
 
                     </div>

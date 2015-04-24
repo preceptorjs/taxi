@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -161,6 +189,11 @@ var Alert = require(&#x27;./alert&#x27;);
 var Navigator = require(&#x27;./navigator&#x27;);
 var Frame = require(&#x27;./frame&#x27;);
 var WindowHandler = require(&#x27;./window&#x27;);
+
+var Screenshot = require(&#x27;./helpers/screenshot&#x27;);
+
+var fs = require(&#x27;fs&#x27;);
+var path = require(&#x27;path&#x27;);
 
 module.exports = ActiveWindow;
 
@@ -271,11 +304,224 @@ ActiveWindow.prototype.sendKeys = function (str) {
  * @method takeScreenshot
  * @param {Object} [options]
  * @return {Buffer} Binary image buffer
+ * @deprecated
  */
 ActiveWindow.prototype.takeScreenshot = function (options) {
-  return when(this._driver._requestJSON(&#x27;GET&#x27;, &#x27;/screenshot&#x27;, undefined, options), function (base64Data) {
-    return new Buffer(base64Data, &#x27;base64&#x27;);
-  });
+	return this.documentScreenshot(options);
+};
+
+/**
+ * Captures the complete document
+ *
+ * @method captureDocument
+ * @param {Object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer} Binary image buffer
+ */
+ActiveWindow.prototype.captureDocument = function (options) {
+	options = options || {};
+	var screenshot = new Screenshot(this.getDriver());
+	options.context = this;
+	return screenshot.documentScreenshot(options);
+};
+
+/**
+ * Captures the complete document
+ *
+ * @method documentScreenshot
+ * @param {Object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer} Binary image buffer
+ * @deprecated Use captureDocument.
+ */
+ActiveWindow.prototype.documentScreenshot = ActiveWindow.prototype.captureDocument;
+
+/**
+ * Captures the currently visible view-port
+ *
+ * @method captureViewPort
+ * @param {Object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer} Binary image buffer
+ */
+ActiveWindow.prototype.captureViewPort = function (options) {
+	options = options || {};
+	var screenshot = new Screenshot(this.getDriver());
+	options.context = this;
+	return screenshot.viewPortScreenshot(options);
+};
+
+/**
+ * Captures the currently visible view-port
+ *
+ * @method viewPortScreenshot
+ * @param {Object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer} Binary image buffer
+ * @deprecated Use captureViewPort.
+ */
+ActiveWindow.prototype.viewPortScreenshot = ActiveWindow.prototype.captureViewPort;
+
+/**
+ * Captures a specific area of the document
+ *
+ * @method captureArea
+ * @param {int} [x=0] X-coordinate for area
+ * @param {int} [y=0] Y-coordinate for area
+ * @param {int} [width=document.width-x] Width of area to be captured
+ * @param {int} [height=document.height-y] Height of area to be captured
+ * @param {Object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer} Binary image buffer
+ */
+ActiveWindow.prototype.captureArea = function (x, y, width, height, options) {
+	options = options || {};
+	var screenshot = new Screenshot(this.getDriver());
+	options.context = this;
+	return screenshot.areaScreenshot(x, y, width, height, options);
+};
+
+/**
+ * Captures a specific area of the document
+ *
+ * @method areaScreenshot
+ * @param {int} [x=0] X-coordinate for area
+ * @param {int} [y=0] Y-coordinate for area
+ * @param {int} [width=document.width-x] Width of area to be captured
+ * @param {int} [height=document.height-y] Height of area to be captured
+ * @param {Object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer} Binary image buffer
+ * @deprecated Use captureArea.
+ */
+ActiveWindow.prototype.areaScreenshot = ActiveWindow.prototype.captureArea;
+
+/**
+ * Take a screenshot of the current page and save to a file
+ *
+ * @method saveScreenshot
+ * @param {string} path Path where the file should be saved to
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {Object} [options]
+ */
+ActiveWindow.prototype.saveScreenshot = function (path, options) {
+  return when(this.captureDocument(options), function (buffer) {
+    if (this._driver.isSync()) {
+      fs.writeFileSync(path, buffer);
+    } else {
+      return new Promise(function (resolve, reject) {
+        fs.writeFile(path, buffer, function (err) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        });
+      });
+    }
+  }.bind(this));
+};
+
+
+/**
+ * Compares the document with a previous screenshot, showing differences between them
+ *
+ * @method compareDocument
+ * @param {string} title Unique title for comparison
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {object} [options.compare] Options for the comparison. See Blink-Diff documentation.
+ * @param {object} [options.compare.id=1] Additional identifier to differentiate comparisons even more.
+ * @return {boolean|null} Are the screenshots the same? (NULL if there is nothing to compare to)
+ */
+ActiveWindow.prototype.compareDocument = function (title, options) {
+	options = options || {};
+
+	return when(this.captureDocument(options), function (buffer) {
+		return this.getDriver()._comparison.compare(title, buffer, options.compare);
+	}.bind(this));
+};
+
+/**
+ * Compares the view-port with a previous screenshot, showing differences between them
+ *
+ * @method compareViewPort
+ * @param {string} title Unique title for comparison
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {object} [options.compare] Options for the comparison. See Blink-Diff documentation.
+ * @param {object} [options.compare.id=1] Additional identifier to differentiate comparisons even more.
+ * @return {boolean|null} Are the screenshots the same? (NULL if there is nothing to compare to)
+ */
+ActiveWindow.prototype.compareViewPort = function (title, options) {
+	options = options || {};
+
+	return when(this.captureViewPort(options), function (buffer) {
+		return this.getDriver()._comparison.compare(title, buffer, options.compare);
+	}.bind(this));
+};
+
+/**
+ * Compares an area of the document with a previous screenshot, showing differences between them
+ *
+ * @method compareArea
+ * @param {string} title Unique title for comparison
+ * @param {int} [x=0] X-coordinate for area
+ * @param {int} [y=0] Y-coordinate for area
+ * @param {int} [width=document.width-x] Width of area to be captured
+ * @param {int} [height=document.height-y] Height of area to be captured
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {object} [options.compare] Options for the comparison. See Blink-Diff documentation.
+ * @param {object} [options.compare.id=1] Additional identifier to differentiate comparisons even more.
+ * @return {boolean|null} Are the screenshots the same? (NULL if there is nothing to compare to)
+ */
+ActiveWindow.prototype.compareArea = function (title, x, y, width, height, options) {
+	options = options || {};
+
+	return when(this.captureArea(x, y, width, height, options), function (buffer) {
+		return this.getDriver()._comparison.compare(title, buffer, options.compare);
+	}.bind(this));
 };
 
 
@@ -459,8 +705,8 @@ ActiveWindow.prototype.getScrollPosition = function () {
  * @param {Number} [y=0]
  */
 ActiveWindow.prototype.scrollTo = function (x, y) {
-  return this.execute(function () {
-    window.scrollTo(arguments[0] || 0, arguments[1] || 0);
+  return this.execute(function (x, y) {
+    window.scrollTo(x || 0, y || 0);
   }, [x, y]);
 };
 
@@ -472,8 +718,8 @@ ActiveWindow.prototype.scrollTo = function (x, y) {
  * @param {Number} [y=0]
  */
 ActiveWindow.prototype.scrollBy = function (x, y) {
-  return this.execute(function () {
-    window.scrollBy(arguments[0] || 0, arguments[1] || 0);
+  return this.execute(function (x, y) {
+    window.scrollBy(x || 0, y || 0);
   }, [x, y]);
 };
 

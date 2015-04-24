@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -157,7 +185,6 @@ var WindowHandler = require(&#x27;./window&#x27;);
 var IME = require(&#x27;./ime&#x27;);
 var LocalStorage = require(&#x27;./localStorage&#x27;);
 var CookieStorage = require(&#x27;./cookieStorage&#x27;);
-
 
 module.exports = Browser;
 
@@ -249,12 +276,20 @@ Browser.prototype.getDriver = function () {
  * Change focus to another window
  *
  * @method activateWindow
- * @param {WindowHandler} handle
+ * @param {WindowHandler|String} handle
  */
 Browser.prototype.activateWindow = function (handle) {
-  type(&#x27;handle&#x27;, handle, &#x27;Object&#x27;);
+  type(&#x27;handle&#x27;, handle, &#x27;Object|String&#x27;);
 
-  return when(handle.id(), function (windowHandle) {
+  var handleId;
+
+  if (typeof handle === &#x27;object&#x27;) {
+    handleId = handle.id();
+  } else {
+    handleId = handle;
+  }
+
+  return when(handleId, function (windowHandle) {
     this._requestJSON(&#x27;POST&#x27;, &#x27;/window&#x27;, {
       name: windowHandle
     });

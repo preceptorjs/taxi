@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for taxi/lib/compatibility/nightwatch.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">taxi/lib/compatibility/nightwatch.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">30.38% <small>(48 / 158)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 105)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">30.38% <small>(48 / 158)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">taxi/lib/compatibility/</a> &#187; nightwatch.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var logMethods = require('../log');
+var type = require('../type');
+var when = require('../when');
+&nbsp;
+var Cookie = require('../cookie');
+&nbsp;
+module.exports = Nightwatch;
+&nbsp;
+/**
+ * Nightwatch execution for taxi
+ *
+ * @constructor
+ * @class Nightwatch
+ * @module WebDriver
+ * @submodule Sequence
+ * @param {Driver} driver
+ */
+<span class="fstat-no" title="function not covered" >function Nightwatch (driver) {</span>
+<span class="cstat-no" title="statement not covered" >    this._driver = driver;</span>
+}
+&nbsp;
+/////////////////////
+// Private Methods //
+/////////////////////
+&nbsp;
+/**
+ * Logs a method call by an event
+ *
+ * @param {object} event
+ * @method _logMethodCall
+ * @private
+ */
+Nightwatch.prototype._logMethodCall = <span class="fstat-no" title="function not covered" >function (event) {</span>
+<span class="cstat-no" title="statement not covered" >    event.target = 'Nightwatch';</span>
+<span class="cstat-no" title="statement not covered" >    this._driver._logMethodCall(event);</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Performs a context dependent JSON request for the current session.
+ * The result is parsed for errors.
+ *
+ * @method _requestJSON
+ * @private
+ * @param {String} method
+ * @param {String} path
+ * @param {*} [body]
+ * @return {*}
+ */
+Nightwatch.prototype._requestJSON = <span class="fstat-no" title="function not covered" >function (method, path, body) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._driver._requestJSON(method, path, body);</span>
+};
+&nbsp;
+&nbsp;
+////////////////////
+// Public Methods //
+////////////////////
+&nbsp;
+/**
+ * Gets the driver object.
+ * Direct-access. No need to wait.
+ *
+ * @return {Driver}
+ */
+Nightwatch.prototype.getDriver = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    return this._driver;</span>
+};
+&nbsp;
+&nbsp;
+Nightwatch.prototype._elementAction = <span class="fstat-no" title="function not covered" >function (selector, fn) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().activeWindow().getElements(selector), <span class="fstat-no" title="function not covered" >function (elements) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(this._driver.utils().map(elements, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return when(fn(element));</span>
+        }), <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype._driverAction = <span class="fstat-no" title="function not covered" >function (value, fn) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(value, <span class="fstat-no" title="function not covered" >function (result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(fn(result), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype._scopeCallBack = <span class="fstat-no" title="function not covered" >function (cb, args) {</span>
+<span class="cstat-no" title="statement not covered" >    return cb.apply(this, args);</span>
+};
+&nbsp;
+&nbsp;
+Nightwatch.prototype.clearValue = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.clear(), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.click = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.mouse().click(), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.closeWindow = <span class="fstat-no" title="function not covered" >function (cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._driverAction(this._driver.browser().activeWindow().close(), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.deleteCookie = <span class="fstat-no" title="function not covered" >function (name, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._driverAction(this._driver.browser().cookieStorage().removeCookie(name), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.deleteCookies = <span class="fstat-no" title="function not covered" >function (cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._driverAction(this._driver.browser().cookieStorage().clear(), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getAttribute = <span class="fstat-no" title="function not covered" >function (selector, attribute, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getAttribute(attribute), <span class="fstat-no" title="function not covered" >function (value) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [value, attribute, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getCookie = <span class="fstat-no" title="function not covered" >function (name, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().cookieStorage().getCookie(name), <span class="fstat-no" title="function not covered" >function (cookie) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, [cookie, name]);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getCookies = <span class="fstat-no" title="function not covered" >function (cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().cookieStorage().getCookies(), <span class="fstat-no" title="function not covered" >function (cookies) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, [cookies]);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getCssProperty = <span class="fstat-no" title="function not covered" >function (selector, property, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getCssValue(property), <span class="fstat-no" title="function not covered" >function (value) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [value, property, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getElementSize = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getSize(), <span class="fstat-no" title="function not covered" >function (size) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [size, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getLocation = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getPosition(), <span class="fstat-no" title="function not covered" >function (position) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [position, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getLocationInView = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getPositionInView(), <span class="fstat-no" title="function not covered" >function (position) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [position, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getLog = <span class="fstat-no" title="function not covered" >function (type, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.getLogs(type), <span class="fstat-no" title="function not covered" >function (logs) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, [logs]);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getLogTypes = <span class="fstat-no" title="function not covered" >function (cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.getLogTypes(), <span class="fstat-no" title="function not covered" >function (types) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, [types]);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getTagName = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getTagName(), <span class="fstat-no" title="function not covered" >function (name) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [name, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getText = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getText(), <span class="fstat-no" title="function not covered" >function (text) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [text, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getTitle = <span class="fstat-no" title="function not covered" >function (cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().activeWindow().getTitle(), <span class="fstat-no" title="function not covered" >function (title) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, [title]);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.getValue = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.getValue(), <span class="fstat-no" title="function not covered" >function (value) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [value, element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.init = <span class="fstat-no" title="function not covered" >function (url) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._driver.browser().activeWindow().navigator().setUrl(url);</span>
+};
+&nbsp;
+Nightwatch.prototype.injectScript = <span class="fstat-no" title="function not covered" >function (scriptUrl, id, cb) {</span>
+    //TODO: Need to be implemented
+<span class="cstat-no" title="statement not covered" >    return this._scopeCallBack(cb, []);</span>
+};
+&nbsp;
+Nightwatch.prototype.isLogAvailable = <span class="fstat-no" title="function not covered" >function (type, cb) {</span>
+    //TODO: Need to be implemented
+<span class="cstat-no" title="statement not covered" >    return this._scopeCallBack(cb, [false]);</span>
+};
+&nbsp;
+Nightwatch.prototype.maximizeWindow = <span class="fstat-no" title="function not covered" >function (cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().activeWindow().maximize(), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.moveToElement = <span class="fstat-no" title="function not covered" >function (selector, xoffset, yoffset, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.mouse().moveTo(xoffset, yoffset), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.pause = <span class="fstat-no" title="function not covered" >function (ms, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.utils().sleep(ms), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+    //TODO: Wait indefinitely?
+};
+&nbsp;
+Nightwatch.prototype.resizeWindow = <span class="fstat-no" title="function not covered" >function (width, height, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().activeWindow().resize(width, height), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.saveScreenshot = <span class="fstat-no" title="function not covered" >function (path, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().activeWindow().saveScreenshot(path), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.setCookie = <span class="fstat-no" title="function not covered" >function (cookie, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().cookieStorage().setCookie(new Cookie(cookie)), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.setValue = <span class="fstat-no" title="function not covered" >function (selector, value, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.sendKeys(value), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.submitForm = <span class="fstat-no" title="function not covered" >function (selector, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._elementAction(selector, <span class="fstat-no" title="function not covered" >function (element) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(element.submit(), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._scopeCallBack(cb, [element]);</span>
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.switchWindow = <span class="fstat-no" title="function not covered" >function (handleOrName, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().activateWindow(handleOrName), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.urlHash = <span class="fstat-no" title="function not covered" >function (hash) {</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.browser().activeWindow().navigator().setUrl(hash));</span>
+    //TODO: Not really what suppose to happen, but will fix it later
+};
+&nbsp;
+Nightwatch.prototype.waitForElementNotPresent = <span class="fstat-no" title="function not covered" >function (selector, time, abortOnFailure, cb, message) {</span>
+<span class="cstat-no" title="statement not covered" >    var msg = (message || "Element " + selector + " was in the page for " + time + " ms").replace('%s', selector).replace('%d', time);</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.utils().waitUntil(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(this._driver.browser().activeWindow().getElements(selector), <span class="fstat-no" title="function not covered" >function (elements) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return (elements.length == 0);</span>
+        });
+    }.bind(this), time, 500, msg, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return (abortOnFailure === undefined) || abortOnFailure;</span>
+    }), <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.waitForElementNotVisible = <span class="fstat-no" title="function not covered" >function (selector, time, abortOnFailure, cb, message) {</span>
+<span class="cstat-no" title="statement not covered" >    var msg = (message || "Element " + selector + " was visible in the page for " + time + " ms").replace('%s', selector).replace('%d', time);</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.utils().waitUntil(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(this._driver.browser().activeWindow().getElements(selector), <span class="fstat-no" title="function not covered" >function (elements) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (elements.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                return when(elements[0].isDisabled(), <span class="fstat-no" title="function not covered" >function () {</span>});</span>
+            }
+        });
+    }.bind(this), time, 500, msg, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return (abortOnFailure === undefined) || abortOnFailure;</span>
+    }), <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.waitForElementPresent = <span class="fstat-no" title="function not covered" >function (selector, time, abortOnFailure, cb, message) {</span>
+<span class="cstat-no" title="statement not covered" >    var msg = (message || "Element " + selector + " was not in the page for " + time + " ms").replace('%s', selector).replace('%d', time);</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.utils().waitUntil(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(this._driver.browser().activeWindow().getElements(selector), <span class="fstat-no" title="function not covered" >function (elements) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return (elements.length != 0);</span>
+        });
+    }.bind(this), time, 500, msg, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return (abortOnFailure === undefined) || abortOnFailure;</span>
+    }), <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+Nightwatch.prototype.waitForElementVisible = <span class="fstat-no" title="function not covered" >function (selector, time, abortOnFailure, cb, message) {</span>
+<span class="cstat-no" title="statement not covered" >    var msg = (message || "Element " + selector + " was not visible in the page for " + time + " ms").replace('%s', selector).replace('%d', time);</span>
+<span class="cstat-no" title="statement not covered" >    return when(this._driver.utils().waitUntil(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(this._driver.browser().activeWindow().getElements(selector), <span class="fstat-no" title="function not covered" >function (elements) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (elements.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                return when(elements[0].isDisabled(), <span class="fstat-no" title="function not covered" >function () {</span>});</span>
+            }
+        });
+    }.bind(this), time, 500, msg, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return (abortOnFailure === undefined) || abortOnFailure;</span>
+    }), <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this._scopeCallBack(cb, []);</span>
+    }.bind(this));
+};
+&nbsp;
+&nbsp;
+&nbsp;
+logMethods(Nightwatch.prototype);
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 24 2015 00:04:49 GMT-0700 (PDT)</div>
+</div>
+
+<script src="../../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

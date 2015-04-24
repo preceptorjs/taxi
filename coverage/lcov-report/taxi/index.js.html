@@ -199,7 +199,7 @@
     <h1>Code coverage report for <span class="entity">taxi/index.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">100% <small>(47 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(49 / 49)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -208,7 +208,7 @@
         Functions: <span class="metric">100% <small>(1 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">100% <small>(47 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(49 / 49)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -398,7 +398,16 @@
 180
 181
 182
-183</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -425,6 +434,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -445,9 +457,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -585,9 +603,9 @@
 var Alert = require('./lib/alert');
 var ActiveWindow = require('./lib/activeWindow');
 var Browser = require('./lib/browser');
+var Chain = require('./lib/chain');
 var Cookie = require('./lib/cookie');
 var CookieStorage = require('./lib/cookieStorage');
-var Driver = require('./lib/driver');
 var Element = require('./lib/element');
 var Frame = require('./lib/frame');
 var GlobalMouse = require('./lib/globalMouse');
@@ -605,7 +623,9 @@ var TimeOut = require('./lib/timeOut');
 var Touch = require('./lib/touch');
 var WindowHandler = require('./lib/window');
 &nbsp;
-module.exports = Taxi;
+var Driver = require('./lib/driver');
+&nbsp;
+module.exports = taxi;
 &nbsp;
 /**
  * Create a new browser session
@@ -615,8 +635,8 @@ module.exports = Taxi;
  * Note: Remember to call `.dispose()` at the end to terminate the session.
  *
  * @constructor
- * @class Taxi
- * @module Taxi
+ * @class taxi
+ * @module taxi
  * @param {String|Object} remote Request object or URL to selenium-server
  * @param {Object} capabilities See capabilities in {{#crossLink "Session"}}{{/crossLink}}
  * @param {Object} options
@@ -625,8 +645,9 @@ module.exports = Taxi;
  * @param {String} [options.sessionID]
  * @param {Boolean} [options.debug=false]
  * @param {Boolean} [options.httpDebug=false]
+ * @return {Driver}
  */
-function Taxi(remote, capabilities, options) {
+function taxi(remote, capabilities, options) {
   return new Driver(remote, capabilities, options);
 }
 &nbsp;
@@ -635,139 +656,145 @@ function Taxi(remote, capabilities, options) {
  * @property ActiveWindow
  * @type {ActiveWindow}
  */
-Taxi.ActiveWindow = ActiveWindow;
+taxi.ActiveWindow = ActiveWindow;
 &nbsp;
 /**
  * @property Alert
  * @type {Alert}
  */
-Taxi.Alert = Alert;
+taxi.Alert = Alert;
 &nbsp;
 /**
  * @property Browser
  * @type Browser
  */
-Taxi.Browser = Browser;
+taxi.Browser = Browser;
+&nbsp;
+/**
+ * @property Chain
+ * @type Chain
+ */
+taxi.Chain = Chain;
 &nbsp;
 /**
  * @property Cookie
  * @type Cookie
  */
-Taxi.Cookie = Cookie;
+taxi.Cookie = Cookie;
 &nbsp;
 /**
  * @property CookieStorage
  * @type CookieStorage
  */
-Taxi.CookieStorage = CookieStorage;
+taxi.CookieStorage = CookieStorage;
 &nbsp;
 /**
  * @property Driver
  * @type Driver
  */
-Taxi.Driver = Driver;
+taxi.Driver = Driver;
 &nbsp;
 /**
  * @property Element
  * @type Element
  */
-Taxi.Element = Element;
+taxi.Element = Element;
 &nbsp;
 /**
  * @property Frame
  * @type Frame
  */
-Taxi.Frame = Frame;
+taxi.Frame = Frame;
 &nbsp;
 /**
  * @property GlobalMouse
  * @type GlobalMouse
  */
-Taxi.GlobalMouse = GlobalMouse;
+taxi.GlobalMouse = GlobalMouse;
 &nbsp;
 /**
  * @property GlobalTouch
  * @type GlobalTouch
  */
-Taxi.GlobalTouch = GlobalTouch;
+taxi.GlobalTouch = GlobalTouch;
 &nbsp;
 /**
  * @property IME
  * @type IME
  */
-Taxi.IME = IME;
+taxi.IME = IME;
 &nbsp;
 /**
  * @property Keys
  * @type Keys
  */
-Taxi.Keys = Keys;
+taxi.Keys = Keys;
 &nbsp;
 /**
  * @property LocalStorage
  * @type LocalStorage
  */
-Taxi.LocalStorage = LocalStorage;
+taxi.LocalStorage = LocalStorage;
 &nbsp;
 /**
  * @property LogEntry
  * @type LogEntry
  */
-Taxi.LogEntry = LogEntry;
+taxi.LogEntry = LogEntry;
 &nbsp;
 /**
  * @property Mouse
  * @type Mouse
  */
-Taxi.Mouse = Mouse;
+taxi.Mouse = Mouse;
 &nbsp;
 /**
  * @property Navigator
  * @type Navigator
  */
-Taxi.Navigator = Navigator;
+taxi.Navigator = Navigator;
 &nbsp;
 /**
  * @property Session
  * @type Session
  */
-Taxi.Session = Session;
+taxi.Session = Session;
 &nbsp;
 /**
  * @property SessionStorage
  * @type SessionStorage
  */
-Taxi.SessionStorage = SessionStorage;
+taxi.SessionStorage = SessionStorage;
 &nbsp;
 /**
  * @property Status
  * @type Status
  */
-Taxi.Status = Status;
+taxi.Status = Status;
 &nbsp;
 /**
  * @property TimeOut
  * @type TimeOut
  */
-Taxi.TimeOut = TimeOut;
+taxi.TimeOut = TimeOut;
 &nbsp;
 /**
  * @property Touch
  * @type Touch
  */
-Taxi.Touch = Touch;
+taxi.Touch = Touch;
 &nbsp;
 /**
  * @property WindowHandler
  * @type WindowHandler
  */
-Taxi.WindowHandler = WindowHandler;
+taxi.WindowHandler = WindowHandler;
 &nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 05 2015 00:20:24 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 24 2015 00:04:49 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../prettify.js"></script>

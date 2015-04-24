@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/helpers/stitching.js - taxi</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="taxi"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.2.1</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/ActiveWindow.html">ActiveWindow</a></li>
+            
+                <li><a href="../classes/Alert.html">Alert</a></li>
+            
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
+                <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
+            
+                <li><a href="../classes/Connection.html">Connection</a></li>
+            
+                <li><a href="../classes/Cookie.html">Cookie</a></li>
+            
+                <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
+            
+                <li><a href="../classes/Driver.html">Driver</a></li>
+            
+                <li><a href="../classes/Element.html">Element</a></li>
+            
+                <li><a href="../classes/Frame.html">Frame</a></li>
+            
+                <li><a href="../classes/GlobalMouse.html">GlobalMouse</a></li>
+            
+                <li><a href="../classes/GlobalTouch.html">GlobalTouch</a></li>
+            
+                <li><a href="../classes/IME.html">IME</a></li>
+            
+                <li><a href="../classes/Keys.html">Keys</a></li>
+            
+                <li><a href="../classes/LocalStorage.html">LocalStorage</a></li>
+            
+                <li><a href="../classes/LogEntry.html">LogEntry</a></li>
+            
+                <li><a href="../classes/Mouse.html">Mouse</a></li>
+            
+                <li><a href="../classes/Navigator.html">Navigator</a></li>
+            
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
+                <li><a href="../classes/Session.html">Session</a></li>
+            
+                <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
+            
+                <li><a href="../classes/Status.html">Status</a></li>
+            
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
+            
+                <li><a href="../classes/TimeOut.html">TimeOut</a></li>
+            
+                <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
+            
+                <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
+                <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
+            
+                <li><a href="../modules/Interaction.html">Interaction</a></li>
+            
+                <li><a href="../modules/Navigation.html">Navigation</a></li>
+            
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
+                <li><a href="../modules/Storage.html">Storage</a></li>
+            
+                <li><a href="../modules/System.html">System</a></li>
+            
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
+            
+                <li><a href="../modules/WebDriver.html">WebDriver</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: lib/helpers/stitching.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+var logMethods = require(&#x27;../log&#x27;);
+var type = require(&#x27;../type&#x27;);
+var when = require(&#x27;../when&#x27;);
+
+var stitchingScripts = require(&#x27;../scripts/stitching&#x27;);
+
+var PNGImage = require(&#x27;pngjs-image&#x27;);
+
+module.exports = Stitching;
+
+/**
+ * Stitching object
+ *
+ * @constructor
+ * @class Stitching
+ * @module WebDriver
+ * @submodule Helpers
+ * @param {Driver} driver
+ */
+function Stitching (driver) {
+    this._driver = driver;
+}
+
+
+/////////////////////
+// Private Methods //
+/////////////////////
+
+/**
+ * Logs a method call by an event
+ *
+ * @param {object} event
+ * @method _logMethodCall
+ * @private
+ */
+Stitching.prototype._logMethodCall = function (event) {
+    event.target = &#x27;Stitching&#x27;;
+    this._driver._logMethodCall(event);
+};
+
+
+/**
+ * Performs a context dependent JSON request for the current session.
+ * The result is parsed for errors.
+ *
+ * @method _requestJSON
+ * @private
+ * @param {String} method
+ * @param {String} path
+ * @param {*} [body]
+ * @return {*}
+ */
+Stitching.prototype._requestJSON = function (method, path, body) {
+    return this._driver._requestJSON(method, path, body);
+};
+
+
+////////////////////
+// Public Methods //
+////////////////////
+
+/**
+ * Gets the driver object.
+ * Direct-access. No need to wait.
+ *
+ * @return {Driver}
+ */
+Stitching.prototype.getDriver = function () {
+    return this._driver;
+};
+
+
+/**
+ * Is stitching needed for browser?
+ *
+ * Some browsers (i.e. Chrome) do only take a screenshot of the view-port instead of the whole document as per standard.
+ * This information will then be cached for each driver instance, determining this only once per instance.
+ *
+ * @method doesNeedStitching
+ * @return {number}
+ */
+Stitching.prototype.doesNeedStitching = function () {
+    var needsStitching = this.getDriver().getValue(&#x27;needsStitching&#x27;);
+
+    if (needsStitching === null) {
+        return when(this._determineNeedsStitching(), function (value) {
+            this.getDriver().setValue(&#x27;needsStitching&#x27;, value); // Cache value
+            return value;
+        }.bind(this));
+    } else {
+        return this.getDriver().utils().resolve(needsStitching);
+    }
+};
+
+/**
+ * Determines if the browser needs stitching due to the fact of taking only view-port screenshots instead of
+ * whole document ones.
+ *
+ * @method _determineNeedsStitching
+ * @return {boolean}
+ * @private
+ */
+Stitching.prototype._determineNeedsStitching = function () {
+
+	var Screenshot = require(&#x27;./screenshot&#x27;),
+		screenshot = new Screenshot(this.getDriver()),
+
+		DevicePixelRatio = require(&#x27;./devicePixelRatio&#x27;),
+		devicePixelRatio = new DevicePixelRatio(this.getDriver());
+
+	// Determine device-pixel-ratio
+    return when(devicePixelRatio.getDevicePixelRatio(), function (devicePixelRatio) {
+
+        // Reduce size of document to get a small screenshot for stitching determination
+        return when(this._execute(stitchingScripts.init), function (initData) {
+            initData = JSON.parse(initData);
+
+            // Take screenshot (hopefully very small, but big enough to get the stitching info)
+            return when(screenshot.takeProcessedScreenshot(), function (image) {
+
+                // Revert document size
+                return when(this._execute(stitchingScripts.revert, [initData]), function () {
+
+                    return this._needsStitchingExceptions(image, initData, devicePixelRatio);
+
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+    }.bind(this));
+};
+
+/**
+ * Processes the exception handling of stitching determination
+ *
+ * Note:
+ *   Overwrite this method if you want to change the stitching behavior of browsers.
+ *
+ * @param {PNGImage} image
+ * @param {object} initData
+ * @param {number} devicePixelRatio
+ * @returns {boolean}
+ * @private
+ */
+Stitching.prototype._needsStitchingExceptions = function (image, initData, devicePixelRatio) {
+
+    // If the screenshot width and the actual view-port width are pretty much the same (here 10px),
+    // even though the document is twice the view-port size, then we need stitching.
+    var expectedViewPortWidth = initData.viewPortWidth * 2 * devicePixelRatio,
+        actualViewPortWidth = image.getWidth(),
+        difference = actualViewPortWidth - expectedViewPortWidth,
+        delta = Math.abs(difference),
+        needsStitching,
+
+        browserName = this.getDriver().browserName().toLowerCase(),
+        browserVersion = this.getDriver().browserVersion();
+
+    // When actual is smaller than expected, then needs stitching
+    // When actual is bigger than expected and delta is not off for more than 2% (border issues), then no stitching needed
+    needsStitching = (difference &lt;= 0) &amp;&amp; (delta &gt;= expectedViewPortWidth * 0.2);
+
+    if (!needsStitching) { // Exceptions
+        if ((browserName === &#x27;internet explorer&#x27;) &amp;&amp; (browserVersion &gt;= 10)) {
+            needsStitching = true;
+        }
+    }
+
+    return needsStitching
+};
+
+
+/**
+ * Executes a script in the browser and returns the result.
+ *
+ * This is a convenience method for accessing the execute method.
+ *
+ * @method _execute
+ * @param {String|Function} script
+ * @param {Array} [args]
+ * @return {*}
+ * @private
+ */
+Stitching.prototype._execute = function (script, args) {
+    if (script) {
+        return this.getDriver().browser().activeWindow().execute(script, args);
+
+    } else { // Ignore script if there is nothing - might happen with screenshot requests
+        return this.getDriver().utils().resolve(undefined);
+    }
+};
+
+logMethods(Stitching.prototype);
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

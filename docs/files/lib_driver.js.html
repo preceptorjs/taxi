@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -153,7 +181,6 @@ var util = require(&#x27;util&#x27;);
 var url = require(&#x27;url&#x27;);
 
 var logMethods = require(&#x27;./log&#x27;);
-var JSON = require(&#x27;./json&#x27;);
 var when = require(&#x27;./when&#x27;);
 var errors = require(&#x27;./errors&#x27;);
 var type = require(&#x27;./type&#x27;);
@@ -162,12 +189,17 @@ var Connection = require(&#x27;./connection&#x27;);
 
 var Browser = require(&#x27;./browser&#x27;);
 var TimeOut = require(&#x27;./timeOut&#x27;);
+var Utils = require(&#x27;./utils&#x27;);
+var Chain = require(&#x27;./chain&#x27;);
+var Compatibility = require(&#x27;./compatibility&#x27;);
 
 var Session = require(&#x27;./session&#x27;);
 var Status = require(&#x27;./status&#x27;);
 var LogEntry = require(&#x27;./logEntry&#x27;);
 
 var SessionStorage = require(&#x27;./sessionStorage&#x27;);
+
+var Comparison = require(&#x27;./helpers/comparison&#x27;);
 
 
 module.exports = Driver;
@@ -188,6 +220,7 @@ module.exports = Driver;
  * @param {String} [options.sessionID]
  * @param {String} [options.logDir]
  * @param {Boolean} [options.logScreen=true]
+ * @param {string|string[]} [options.compare=&#x27;blinkDiff&#x27;]
  */
 function Driver (remote, capabilities, options) {
   EventEmitter.call(this);
@@ -198,6 +231,12 @@ function Driver (remote, capabilities, options) {
   type(&#x27;options.mode&#x27;, options.mode, &#x27;String&#x27;);
 
   setupDebug(this, options);
+
+  this._browserName = capabilities.browserName || capabilities.browser;
+  this._browserVersion = capabilities.browserVersion || capabilities.version;
+  this._platform = capabilities.platform;
+  this._deviceName = capabilities.deviceName || capabilities[&#x27;device-name&#x27;];
+  this._deviceOrientation = capabilities.deviceOrientation || capabilities[&#x27;device-orientation&#x27;];
 
   options.remote = remote;
   options.capabilities = capabilities;
@@ -210,11 +249,19 @@ function Driver (remote, capabilities, options) {
     this.emit(&#x27;response&#x27;, res);
   }.bind(this));
 
+  this._valueRegistry = {
+    needsStitching: null,
+    maxImageResolution: Number.MAX_VALUE,
+    devicePixelRatio: null
+  };
+
   if (options.sessionID) {
     this._sessionObj = new Session({ sessionId: options.sessionID, capabilities: capabilities });
   } else {
     this._sessionObj = this._createSession(capabilities);
   }
+
+	this._comparison = new Comparison(this, options.compare || [&#x27;blinkDiff&#x27;]);
 }
 util.inherits(Driver, EventEmitter);
 
@@ -266,9 +313,7 @@ util.inherits(Driver, EventEmitter);
 Driver.getStatus = function (remote, mode) {
   var request = new Connection(remote, mode);
 
-  return when(when(request.request(&#x27;GET&#x27;, undefined, &#x27;/status&#x27;, undefined, {
-    &#x27;Content-Type&#x27;: &#x27;application/json;charset=UTF-8&#x27;
-  }), Connection.prototype._parseResponse), function (response) {
+  return when(when(request.request(&#x27;GET&#x27;, &#x27;/status&#x27;), Connection.prototype._parseResponse), function (response) {
     return new Status(response);
   });
 };
@@ -286,13 +331,11 @@ Driver.getStatus = function (remote, mode) {
 Driver.getSessions = function (remote, mode) {
   var request = new Connection(remote, mode);
 
-  return when(when(request.request(&#x27;GET&#x27;, undefined, &#x27;/sessions&#x27;, undefined, {
-    &#x27;Content-Type&#x27;: &#x27;application/json;charset=UTF-8&#x27;
-  }), Connection.prototype._parseResponse), function (sessions) {
+  return when(when(request.request(&#x27;GET&#x27;, &#x27;/sessions&#x27;), Connection.prototype._parseResponse), function (sessions) {
     return sessions.map(function (session) {
       return new Session(session);
-    }.bind(this));
-  }.bind(this));
+    });
+  });
 };
 
 
@@ -313,10 +356,10 @@ Driver.prototype._getValue = function (value) {
   var result;
 
   switch (this._options.mode) {
-    case &#x27;async&#x27;:
+    case Driver.MODE_ASYNC:
       result = require(&#x27;promise&#x27;)(function (resolve) { resolve(value); });
       break;
-    case &#x27;sync&#x27;:
+    case Driver.MODE_SYNC:
       result = value;
       break;
     default:
@@ -325,6 +368,126 @@ Driver.prototype._getValue = function (value) {
 
   return result;
 };
+
+
+/**
+ * Is driver in sync-mode?
+ *
+ * @method isSync
+ * @return {boolean}
+ */
+Driver.prototype.isSync = function () {
+  return (this._options.mode === Driver.MODE_SYNC);
+};
+
+/**
+ * Is driver in async-mode?
+ *
+ * @method isAsync
+ * @return {boolean}
+ */
+Driver.prototype.isAsync = function () {
+  return (this._options.mode === Driver.MODE_ASYNC);
+};
+
+
+/**
+ * Gets the name of the browser
+ *
+ * @method browserName
+ * @return {string}
+ */
+Driver.prototype.browserName = function () {
+  return this._browserName || &#x27;&#x27;;
+};
+
+/**
+ * Gets the version of the browser
+ *
+ * @method browserVersion
+ * @return {string}
+ */
+Driver.prototype.browserVersion = function () {
+  return this._browserVersion || &#x27;&#x27;;
+};
+
+/**
+ * Gets the name of the platform (including platform version)
+ *
+ * @method platform
+ * @return {string}
+ */
+Driver.prototype.platform = function () {
+  return this._platform || &#x27;&#x27;;
+};
+
+/**
+ * Gets the name of the device
+ *
+ * @method deviceName
+ * @return {string}
+ */
+Driver.prototype.deviceName = function () {
+  return this._deviceName || &#x27;&#x27;;
+};
+
+/**
+ * Gets the orientation of the device
+ *
+ * @method deviceOrientation
+ * @return {string}
+ */
+Driver.prototype.deviceOrientation = function () {
+  return this._deviceOrientation || &#x27;&#x27;;
+};
+
+/**
+ * Gets a complete identifier of selected browser (+ version) and platform
+ *
+ * @method browserId
+ * @return {string}
+ */
+Driver.prototype.browserId = function () {
+
+	var deviceOrientation = this.deviceOrientation(),
+		browserName = this.deviceName(),
+		browserVersion = this.browserVersion(),
+		platform = this.platform(),
+		details = [];
+
+	browserName = browserName.length &gt; 0 ? browserName : this.browserName();
+	browserName += browserVersion.length &gt; 0 ? browserVersion : &#x27;&#x27;;
+
+	details.push(platform);
+	details.push(deviceOrientation);
+	details = details.join(&#x27;&#x27;).length &gt; 0 ? &#x27; (&#x27; + details.join(&#x27; - &#x27;) + &#x27;)&#x27; : &#x27;&#x27;;
+
+	return browserName + details;
+};
+
+
+/**
+ * Gets a value of the value registry
+ *
+ * @method getValue
+ * @param {string} name
+ * @return {*}
+ */
+Driver.prototype.getValue = function (name) {
+  return this._valueRegistry[name];
+};
+
+/**
+ * Sets the value of an entry in the registry
+ *
+ * @method setValue
+ * @param {string} name
+ * @param {boolean} value
+ */
+Driver.prototype.setValue = function (name, value) {
+  this._valueRegistry[name] = value;
+};
+
 
 /**
  * Create a selenium session
@@ -337,16 +500,14 @@ Driver.prototype._getValue = function (value) {
  */
 Driver.prototype._createSession = function (desiredCapabilities, requiredCapabilities) {
 
-  var capabilities = {}, capabilitiesStr;
+  var capabilities = {};
 
   capabilities.desiredCapabilities = desiredCapabilities;
   if (requiredCapabilities) {
     capabilities.requiredCapabilities = requiredCapabilities;
   }
 
-  capabilitiesStr = JSON.stringify(capabilities);
-
-  return when(this._connection.request(&#x27;POST&#x27;, undefined, &#x27;/session&#x27;, capabilitiesStr), function (res) {
+  return when(this._connection.request(&#x27;POST&#x27;, &#x27;/session&#x27;, { body: capabilities }), function (res) {
     return new Session(extractSessionData(res));
   });
 };
@@ -382,7 +543,9 @@ Driver.prototype._logMethodCall = function (event) {
  * @return {*}
  */
 Driver.prototype._requestJSON = function (method, path, body, options) {
-  return this._connection.taxiRequest(this._session(), method, path, body, options);
+  options = options || {};
+  options.body = body;
+  return this._connection.parsedRequest(this._session(), method, path, options);
 };
 
 
@@ -515,6 +678,41 @@ Driver.prototype.timeOut = function () {
 
 
 /**
+ * Get the helpers object.
+ * Direct-access. No need to wait.
+ *
+ * @method helpers
+ * @return {Utils}
+ */
+Driver.prototype.utils = function () {
+  return new Utils(this);
+};
+
+
+/**
+ * Get the chain object.
+ * Direct-access. No need to wait.
+ *
+ * @method chain
+ * @return {Chain}
+ */
+Driver.prototype.chain = function () {
+  return new Chain(this);
+};
+
+/**
+ * Get the compatibility object.
+ * Direct-access. No need to wait.
+ *
+ * @method compatibility
+ * @return {Compatibility}
+ */
+Driver.prototype.compatibility = function () {
+  return new Compatibility(this);
+};
+
+
+/**
  * Get the status of the html5 application cache
  *
  * @method getApplicationCacheStatus
@@ -564,16 +762,24 @@ Driver.prototype.getLogTypes = function () {
 Driver.prototype.dispose = function (status) {
   var doDispose = function () {
     return when(this._requestJSON(&#x27;DELETE&#x27;, &#x27;&#x27;), function (res) {
-      this.emit(&#x27;disposed&#x27;);
-      return res;
+
+		this.emit(&#x27;disposed&#x27;);
+
+		// Make sure that dispose won&#x27;t be called again
+		this.dispose = function () {};
+
+		return res;
+
     }.bind(this));
   }.bind(this);
 
-  if (status &amp;&amp; (status.passed === true || status.passed === false)) {
-    return when(this.sauceJobUpdate(status), doDispose);
-  } else {
-    return doDispose();
-  }
+	return when(this._comparison.tearDown(), function () {
+		if (status &amp;&amp; (status.passed === true || status.passed === false)) {
+			return when(this.sauceJobUpdate(status), doDispose);
+		} else {
+			return doDispose();
+		}
+	}.bind(this));
 };
 
 /**
@@ -671,47 +877,48 @@ function extractSessionData (res) {
  * @param {object} options
  */
 function setupDebug (driver, options) {
-    var indentation = 0;
+  var indentation = 0;
 
-    function stringFill (filler, length) {
-        var buffer = new Buffer(length);
-        buffer.fill(filler);
-        return buffer.toString();
-    }
+  function stringFill (filler, length) {
+    var buffer = new Buffer(length);
+    buffer.fill(filler);
+    return buffer.toString();
+  }
 
-    function getIndentation (add) {
-        return stringFill(&#x27; &#x27;, (indentation + add) * 2);
-    }
+  function getIndentation (add) {
+    return stringFill(&#x27; &#x27;, (indentation + add) * 2);
+  }
 
-    if (options.debug) {
-        if (options.httpDebug) {
-            driver.on(&#x27;request&#x27;, function (req) {
-                console.log(getIndentation(1) + &quot;Request:  &quot;, JSON.stringify(req).substr(0, 5000));
-            });
-            driver.on(&#x27;response&#x27;, function (res) {
-                console.log(getIndentation(1) + &quot;Response: &quot;, JSON.stringify(res).substr(0, 5000));
-            });
-        }
-        driver.on(&#x27;method-call&#x27;, function (event) {
-            var msg = event.target;
-            indentation = event.indentation;
-            if (event.selector) {
-                msg += &#x27;(&#x27; + util.inspect(event.selector, {colors: true}) + &#x27;)&#x27;;
-            }
-            msg += &#x27;.&#x27; + event.name;
-            msg += &#x27;(&#x27; + event.args.map(function (a) {
-                return util.inspect(a, {colors: true});
-            }).join(&#x27;, &#x27;) + &#x27;)&#x27;;
-            if (event.result &amp;&amp; typeof event.result !== &#x27;object&#x27;) {
-                msg += &#x27; =&gt; &#x27; + util.inspect(event.result, {colors: true});
-            }
-            console.log(getIndentation(0) + &#x27;[&#x27; + (event.state + stringFill(&#x27; &#x27;, 5)).substr(0, 5) + &#x27;] &#x27; + msg);
-            if (event.state.toLowerCase() !== &#x27;start&#x27;) {
-                console.log(getIndentation(0) + stringFill(&#x27;-&#x27;, 50));
-            }
-        });
+  if (options.debug) {
+    if (options.httpDebug) {
+      driver.on(&#x27;request&#x27;, function (req) {
+        console.log(getIndentation(1) + &quot;Request:  &quot;, JSON.stringify(req).substr(0, 5000));
+      });
+      driver.on(&#x27;response&#x27;, function (res) {
+        console.log(getIndentation(1) + &quot;Response: &quot;, JSON.stringify(res).substr(0, 5000));
+      });
     }
+    driver.on(&#x27;method-call&#x27;, function (event) {
+      var msg = event.target;
+      indentation = event.indentation;
+      if (event.selector) {
+        msg += &#x27;(&#x27; + util.inspect(event.selector, {colors: true}) + &#x27;)&#x27;;
+      }
+      msg += &#x27;.&#x27; + event.name;
+      msg += &#x27;(&#x27; + event.args.map(function (a) {
+        return util.inspect(a, {colors: true});
+      }).join(&#x27;, &#x27;) + &#x27;)&#x27;;
+      if (event.result &amp;&amp; typeof event.result !== &#x27;object&#x27;) {
+        msg += &#x27; =&gt; &#x27; + util.inspect(event.result, {colors: true});
+      }
+      console.log(getIndentation(0) + &#x27;[&#x27; + (event.state + stringFill(&#x27; &#x27;, 5)).substr(0, 5) + &#x27;] &#x27; + msg);
+      if (event.state.toLowerCase() !== &#x27;start&#x27;) {
+        console.log(getIndentation(0) + stringFill(&#x27;-&#x27;, 50));
+      }
+    });
+  }
 }
+
     </pre>
 </div>
 

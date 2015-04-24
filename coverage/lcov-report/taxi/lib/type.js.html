@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header medium">
     <h1>Code coverage report for <span class="entity">taxi/lib/type.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">43.59% <small>(17 / 39)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">69.23% <small>(27 / 39)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">29.41% <small>(10 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">58.82% <small>(20 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">75% <small>(3 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(4 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">53.33% <small>(16 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">76.67% <small>(23 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -284,21 +284,21 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">980</span>
+<span class="cline-any cline-yes">154</span>
+<span class="cline-any cline-yes">154</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">840</span>
+<span class="cline-any cline-yes">840</span>
+<span class="cline-any cline-yes">848</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">848</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">846</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">840</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -308,7 +308,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">850</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -317,21 +317,21 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">844</span>
+<span class="cline-any cline-yes">844</span>
+<span class="cline-any cline-yes">844</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">844</span>
+<span class="cline-any cline-yes">844</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
 &nbsp;
@@ -342,17 +342,17 @@
 module.exports = checkType;
 &nbsp;
 function checkType (name, obj, expected) {
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (expected[expected.length - 1] === '?') {
-<span class="cstat-no" title="statement not covered" >    expected = expected.substring(0, expected.length - 1);</span>
-<span class="cstat-no" title="statement not covered" >    if (obj === null || obj === undefined) <span class="cstat-no" title="statement not covered" >return;</span></span>
+  if (expected[expected.length - 1] === '?') {
+    expected = expected.substring(0, expected.length - 1);
+    if (obj === null || obj === undefined) return;
   }
   var actual = type(obj);
   var matches = expected.split('|').some(function (expected) {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (actual === 'Array' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >obj.length === 0 </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >/^Array/.test(expected))</span> {
 <span class="cstat-no" title="statement not covered" >      return true;</span>
     }
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (expected === 'Array.&lt;Any&gt;' || expected === 'Array') {
-<span class="cstat-no" title="statement not covered" >      return Array.isArray(obj);</span>
+    if (expected === 'Array.&lt;Any&gt;' || expected === 'Array') {
+      return Array.isArray(obj);
     }
     return actual === expected;
   });
@@ -367,20 +367,20 @@ function checkType (name, obj, expected) {
 &nbsp;
 function type (val) {
   switch (Object.prototype.toString.call(val)) {
-    case '[object Date]':
+<span class="branch-0 cbranch-no" title="branch not covered" >    case '[object Date]':</span>
 <span class="cstat-no" title="statement not covered" >      return 'Date';</span>
-    case '[object RegExp]':
+<span class="branch-1 cbranch-no" title="branch not covered" >    case '[object RegExp]':</span>
 <span class="cstat-no" title="statement not covered" >      return 'RegExp';</span>
-    case '[object Arguments]':
+<span class="branch-2 cbranch-no" title="branch not covered" >    case '[object Arguments]':</span>
 <span class="cstat-no" title="statement not covered" >      return 'Arguments';</span>
-    case '[object Error]':
+<span class="branch-3 cbranch-no" title="branch not covered" >    case '[object Error]':</span>
 <span class="cstat-no" title="statement not covered" >      return 'Error';</span>
     case '[object Array]':
-<span class="cstat-no" title="statement not covered" >      if (val.length === 0) <span class="cstat-no" title="statement not covered" >return 'Array';</span></span>
-<span class="cstat-no" title="statement not covered" >      var subType = val.map(type).reduce(<span class="fstat-no" title="function not covered" >function (a, b) {</span></span>
-<span class="cstat-no" title="statement not covered" >        if (a === b) <span class="cstat-no" title="statement not covered" >return a; </span>else <span class="cstat-no" title="statement not covered" >return null;</span></span>
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (val.length === 0) <span class="cstat-no" title="statement not covered" >return 'Array';</span>
+      var subType = val.map(type).reduce(function (a, b) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (a === b) return a; else <span class="cstat-no" title="statement not covered" >return null;</span>
       });
-<span class="cstat-no" title="statement not covered" >      if (subType) <span class="cstat-no" title="statement not covered" >return 'Array.&lt;' + subType + '&gt;';</span></span>
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (subType) return 'Array.&lt;' + subType + '&gt;';
 <span class="cstat-no" title="statement not covered" >      return 'Array.&lt;Any&gt;';</span>
   }
 &nbsp;
@@ -395,7 +395,7 @@ function type (val) {
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 05 2015 00:20:24 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 24 2015 00:04:49 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>

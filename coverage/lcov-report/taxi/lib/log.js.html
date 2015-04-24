@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">taxi/lib/log.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">41.94% <small>(13 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(31 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(8 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">33.33% <small>(2 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(6 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">41.94% <small>(13 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(31 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -306,10 +306,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">17</span>
-<span class="cline-any cline-yes">223</span>
-<span class="cline-any cline-yes">206</span>
-<span class="cline-any cline-yes">166</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">456</span>
+<span class="cline-any cline-yes">439</span>
+<span class="cline-any cline-yes">344</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,36 +328,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">166</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">344</span>
+<span class="cline-any cline-yes">1624</span>
+<span class="cline-any cline-yes">1624</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1624</span>
+<span class="cline-any cline-yes">1624</span>
+<span class="cline-any cline-yes">1624</span>
+<span class="cline-any cline-yes">1624</span>
+<span class="cline-any cline-yes">1624</span>
+<span class="cline-any cline-yes">1624</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1614</span>
+<span class="cline-any cline-yes">1614</span>
+<span class="cline-any cline-yes">1614</span>
+<span class="cline-any cline-yes">1614</span>
+<span class="cline-any cline-yes">1614</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">166</span>
+<span class="cline-any cline-yes">344</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">166</span>
+<span class="cline-any cline-yes">344</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
 var EventEmitter = require('events').EventEmitter;
@@ -399,30 +399,30 @@ function logMethods (obj) {
  * @return {Function}
  */
 function logMethod (name, method) {
-  var result = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >    var args = Array.prototype.slice.call(arguments);</span>
-<span class="cstat-no" title="statement not covered" >    var event = {</span>
+  var result = function () {
+    var args = Array.prototype.slice.call(arguments);
+    var event = {
       name: name,
       args: args
     };
-<span class="cstat-no" title="statement not covered" >    return when.try(<span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >      indentation++;</span>
-<span class="cstat-no" title="statement not covered" >      event.state = 'Start';</span>
-<span class="cstat-no" title="statement not covered" >      event.indentation = indentation;</span>
-<span class="cstat-no" title="statement not covered" >      this._logMethodCall(event);</span>
-<span class="cstat-no" title="statement not covered" >      return method.apply(this, args);</span>
-    }.bind(this), <span class="fstat-no" title="function not covered" >function (res) {</span>
-<span class="cstat-no" title="statement not covered" >      indentation--;</span>
-<span class="cstat-no" title="statement not covered" >      event.state = 'End';</span>
-<span class="cstat-no" title="statement not covered" >      event.result = res;</span>
-<span class="cstat-no" title="statement not covered" >      this._logMethodCall(event);</span>
-<span class="cstat-no" title="statement not covered" >      return res;</span>
-    }.bind(this), <span class="fstat-no" title="function not covered" >function (err) {</span>
-<span class="cstat-no" title="statement not covered" >      indentation--;</span>
-<span class="cstat-no" title="statement not covered" >      event.state = 'Err';</span>
-<span class="cstat-no" title="statement not covered" >      event.error = err;</span>
-<span class="cstat-no" title="statement not covered" >      this._logMethodCall(event);</span>
-<span class="cstat-no" title="statement not covered" >      throw err;</span>
+    return when.try(function () {
+      indentation++;
+      event.state = 'Start';
+      event.indentation = indentation;
+      this._logMethodCall(event);
+      return method.apply(this, args);
+    }.bind(this), function (res) {
+      indentation--;
+      event.state = 'End';
+      event.result = res;
+      this._logMethodCall(event);
+      return res;
+    }.bind(this), function (err) {
+      indentation--;
+      event.state = 'Err';
+      event.error = err;
+      this._logMethodCall(event);
+      throw err;
     }.bind(this));
   };
 &nbsp;
@@ -434,7 +434,7 @@ function logMethod (name, method) {
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 05 2015 00:20:24 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 24 2015 00:04:49 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>

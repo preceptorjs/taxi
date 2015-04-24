@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -150,7 +178,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/lib_driver.js.html#l27"><code>lib&#x2F;driver.js:27</code></a>
+            Defined in: <a href="../files/lib_driver.js.html#l31"><code>lib&#x2F;driver.js:31</code></a>
         </div>
     
 
@@ -229,7 +257,7 @@ at the end to terminate the session.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l27"><code>lib&#x2F;driver.js:27</code></a>
+        <a href="../files/lib_driver.js.html#l31"><code>lib&#x2F;driver.js:31</code></a>
         
         </p>
 
@@ -367,6 +395,20 @@ at the end to terminate the session.</p>
                                 
                             </li>
                             
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[compare=&#x27;blinkDiff&#x27;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
                         </ul>
                     
                 </li>
@@ -452,6 +494,55 @@ at the end to terminate the session.</p>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_browserId">browserId</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_browserName">browserName</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_browserVersion">browserVersion</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_chain">chain</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_compatibility">compatibility</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_deviceName">deviceName</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_deviceOrientation">deviceOrientation</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_dispose">dispose</a>
 
                                 
@@ -494,6 +585,41 @@ at the end to terminate the session.</p>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_getValue">getValue</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_helpers">helpers</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_isAsync">isAsync</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_isSync">isSync</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_platform">platform</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_quit">quit</a>
 
                                 
@@ -516,6 +642,13 @@ at the end to terminate the session.</p>
                         
                             <li class="index-item method">
                                 <a href="#method_sessionStorage">sessionStorage</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setValue">setValue</a>
 
                                 
                                 
@@ -714,7 +847,7 @@ at the end to terminate the session.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l181"><code>lib&#x2F;driver.js:181</code></a>
+        <a href="../files/lib_driver.js.html#l316"><code>lib&#x2F;driver.js:316</code></a>
         
         </p>
 
@@ -836,7 +969,7 @@ at the end to terminate the session.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l155"><code>lib&#x2F;driver.js:155</code></a>
+        <a href="../files/lib_driver.js.html#l170"><code>lib&#x2F;driver.js:170</code></a>
         
         </p>
 
@@ -939,7 +1072,7 @@ at the end to terminate the session.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l206"><code>lib&#x2F;driver.js:206</code></a>
+        <a href="../files/lib_driver.js.html#l339"><code>lib&#x2F;driver.js:339</code></a>
         
         </p>
 
@@ -1051,7 +1184,7 @@ at the end to terminate the session.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l224"><code>lib&#x2F;driver.js:224</code></a>
+        <a href="../files/lib_driver.js.html#l357"><code>lib&#x2F;driver.js:357</code></a>
         
         </p>
 
@@ -1195,7 +1328,7 @@ The result is parsed for errors.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l323"><code>lib&#x2F;driver.js:323</code></a>
+        <a href="../files/lib_driver.js.html#l458"><code>lib&#x2F;driver.js:458</code></a>
         
         </p>
 
@@ -1267,7 +1400,7 @@ The result is parsed for errors.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l345"><code>lib&#x2F;driver.js:345</code></a>
+        <a href="../files/lib_driver.js.html#l480"><code>lib&#x2F;driver.js:480</code></a>
         
         </p>
 
@@ -1293,6 +1426,505 @@ Direct-access. No need to wait.</p>
                 
                     
                         <span class="type"><a href="../classes/Browser.html" class="crosslink">Browser</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_browserId" class="method item">
+    <h3 class="name"><code>browserId</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l268"><code>lib&#x2F;driver.js:268</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets a complete identifier of selected browser (+ version) and platform</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_browserName" class="method item">
+    <h3 class="name"><code>browserName</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l218"><code>lib&#x2F;driver.js:218</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the name of the browser</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_browserVersion" class="method item">
+    <h3 class="name"><code>browserVersion</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l228"><code>lib&#x2F;driver.js:228</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the version of the browser</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_chain" class="method item">
+    <h3 class="name"><code>chain</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Chain.html" class="crosslink">Chain</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l516"><code>lib&#x2F;driver.js:516</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Get the chain object.
+Direct-access. No need to wait.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Chain.html" class="crosslink">Chain</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_compatibility" class="method item">
+    <h3 class="name"><code>compatibility</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Compatibility.html" class="crosslink">Compatibility</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l527"><code>lib&#x2F;driver.js:527</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Get the compatibility object.
+Direct-access. No need to wait.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Compatibility.html" class="crosslink">Compatibility</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_deviceName" class="method item">
+    <h3 class="name"><code>deviceName</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l248"><code>lib&#x2F;driver.js:248</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the name of the device</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_deviceOrientation" class="method item">
+    <h3 class="name"><code>deviceOrientation</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l258"><code>lib&#x2F;driver.js:258</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the orientation of the device</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
                 
             </div>
@@ -1345,7 +1977,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l410"><code>lib&#x2F;driver.js:410</code></a>
+        <a href="../files/lib_driver.js.html#l580"><code>lib&#x2F;driver.js:580</code></a>
         
         </p>
 
@@ -1428,7 +2060,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l369"><code>lib&#x2F;driver.js:369</code></a>
+        <a href="../files/lib_driver.js.html#l539"><code>lib&#x2F;driver.js:539</code></a>
         
         </p>
 
@@ -1509,7 +2141,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l380"><code>lib&#x2F;driver.js:380</code></a>
+        <a href="../files/lib_driver.js.html#l550"><code>lib&#x2F;driver.js:550</code></a>
         
         </p>
 
@@ -1603,7 +2235,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l399"><code>lib&#x2F;driver.js:399</code></a>
+        <a href="../files/lib_driver.js.html#l569"><code>lib&#x2F;driver.js:569</code></a>
         
         </p>
 
@@ -1690,7 +2322,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l128"><code>lib&#x2F;driver.js:128</code></a>
+        <a href="../files/lib_driver.js.html#l145"><code>lib&#x2F;driver.js:145</code></a>
         
         </p>
 
@@ -1816,7 +2448,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l110"><code>lib&#x2F;driver.js:110</code></a>
+        <a href="../files/lib_driver.js.html#l129"><code>lib&#x2F;driver.js:129</code></a>
         
         </p>
 
@@ -1889,6 +2521,395 @@ Direct-access. No need to wait.</p>
 </div>
 
                 
+                    <div id="method_getValue" class="method item">
+    <h3 class="name"><code>getValue</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l293"><code>lib&#x2F;driver.js:293</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets a value of the value registry</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_helpers" class="method item">
+    <h3 class="name"><code>helpers</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Utils.html" class="crosslink">Utils</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l504"><code>lib&#x2F;driver.js:504</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Get the helpers object.
+Direct-access. No need to wait.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Utils.html" class="crosslink">Utils</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_isAsync" class="method item">
+    <h3 class="name"><code>isAsync</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l207"><code>lib&#x2F;driver.js:207</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Is driver in async-mode?</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_isSync" class="method item">
+    <h3 class="name"><code>isSync</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l197"><code>lib&#x2F;driver.js:197</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Is driver in sync-mode?</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_platform" class="method item">
+    <h3 class="name"><code>platform</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l238"><code>lib&#x2F;driver.js:238</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the name of the platform (including platform version)</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_quit" class="method item">
     <h3 class="name"><code>quit</code></h3>
 
@@ -1921,7 +2942,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l431"><code>lib&#x2F;driver.js:431</code></a>
+        <a href="../files/lib_driver.js.html#l609"><code>lib&#x2F;driver.js:609</code></a>
         
         </p>
 
@@ -1991,7 +3012,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l452"><code>lib&#x2F;driver.js:452</code></a>
+        <a href="../files/lib_driver.js.html#l630"><code>lib&#x2F;driver.js:630</code></a>
         
         </p>
 
@@ -2085,7 +3106,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l336"><code>lib&#x2F;driver.js:336</code></a>
+        <a href="../files/lib_driver.js.html#l471"><code>lib&#x2F;driver.js:471</code></a>
         
         </p>
 
@@ -2156,7 +3177,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l440"><code>lib&#x2F;driver.js:440</code></a>
+        <a href="../files/lib_driver.js.html#l618"><code>lib&#x2F;driver.js:618</code></a>
         
         </p>
 
@@ -2186,6 +3207,115 @@ Direct-access. No need to wait.</p>
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setValue" class="method item">
+    <h3 class="name"><code>setValue</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_driver.js.html#l304"><code>lib&#x2F;driver.js:304</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the value of an entry in the registry</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     
@@ -2228,7 +3358,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l357"><code>lib&#x2F;driver.js:357</code></a>
+        <a href="../files/lib_driver.js.html#l492"><code>lib&#x2F;driver.js:492</code></a>
         
         </p>
 
@@ -2297,7 +3427,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l282"><code>lib&#x2F;driver.js:282</code></a>
+        <a href="../files/lib_driver.js.html#l417"><code>lib&#x2F;driver.js:417</code></a>
         
         </p>
 
@@ -2344,7 +3474,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l291"><code>lib&#x2F;driver.js:291</code></a>
+        <a href="../files/lib_driver.js.html#l426"><code>lib&#x2F;driver.js:426</code></a>
         
         </p>
 
@@ -2391,7 +3521,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l273"><code>lib&#x2F;driver.js:273</code></a>
+        <a href="../files/lib_driver.js.html#l408"><code>lib&#x2F;driver.js:408</code></a>
         
         </p>
 
@@ -2438,7 +3568,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l309"><code>lib&#x2F;driver.js:309</code></a>
+        <a href="../files/lib_driver.js.html#l444"><code>lib&#x2F;driver.js:444</code></a>
         
         </p>
 
@@ -2485,7 +3615,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l264"><code>lib&#x2F;driver.js:264</code></a>
+        <a href="../files/lib_driver.js.html#l399"><code>lib&#x2F;driver.js:399</code></a>
         
         </p>
 
@@ -2532,7 +3662,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l300"><code>lib&#x2F;driver.js:300</code></a>
+        <a href="../files/lib_driver.js.html#l435"><code>lib&#x2F;driver.js:435</code></a>
         
         </p>
 
@@ -2579,7 +3709,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l254"><code>lib&#x2F;driver.js:254</code></a>
+        <a href="../files/lib_driver.js.html#l389"><code>lib&#x2F;driver.js:389</code></a>
         
         </p>
 
@@ -2626,7 +3756,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l245"><code>lib&#x2F;driver.js:245</code></a>
+        <a href="../files/lib_driver.js.html#l380"><code>lib&#x2F;driver.js:380</code></a>
         
         </p>
 
@@ -2681,7 +3811,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l99"><code>lib&#x2F;driver.js:99</code></a>
+        <a href="../files/lib_driver.js.html#l118"><code>lib&#x2F;driver.js:118</code></a>
         
         </p>
 
@@ -2725,7 +3855,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l92"><code>lib&#x2F;driver.js:92</code></a>
+        <a href="../files/lib_driver.js.html#l111"><code>lib&#x2F;driver.js:111</code></a>
         
         </p>
 
@@ -2793,7 +3923,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l78"><code>lib&#x2F;driver.js:78</code></a>
+        <a href="../files/lib_driver.js.html#l97"><code>lib&#x2F;driver.js:97</code></a>
         
         </p>
 
@@ -2861,7 +3991,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_driver.js.html#l85"><code>lib&#x2F;driver.js:85</code></a>
+        <a href="../files/lib_driver.js.html#l104"><code>lib&#x2F;driver.js:104</code></a>
         
         </p>
 

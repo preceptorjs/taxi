@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -154,6 +182,8 @@ var when = require(&#x27;./when&#x27;);
 
 var Mouse = require(&#x27;./mouse&#x27;);
 var Touch = require(&#x27;./touch&#x27;);
+
+var Screenshot = require(&#x27;./helpers/screenshot&#x27;);
 
 module.exports = Element;
 
@@ -306,7 +336,7 @@ Element.prototype.getDriver = function () {
 
 
 /**
- * Get the mouse object.
+ * Gets the mouse object.
  * Direct-access. No need to wait.
  *
  * @method mouse
@@ -317,7 +347,7 @@ Element.prototype.mouse = function () {
 };
 
 /**
- * Get the touch object.
+ * Gets the touch object.
  * Direct-access. No need to wait.
  *
  * @method touch
@@ -329,7 +359,7 @@ Element.prototype.touch = function () {
 
 
 /**
- * Get the value of the element id
+ * Gets the value of the element id
  * Direct-access. No need to wait.
  *
  * @method elementId
@@ -340,7 +370,7 @@ Element.prototype.elementId = function () {
 };
 
 /**
- * Get the internal selenium handler object
+ * Gets the internal selenium handler object
  * Direct-access. No need to wait.
  *
  * @method elementHandler
@@ -352,7 +382,7 @@ Element.prototype.elementHandler = function () {
 
 
 /**
- * Get the value of an attribute.
+ * Gets the value of an attribute.
  *
  * @method getAttribute
  * @param {String} attribute
@@ -373,7 +403,7 @@ Element.prototype.getAttribute = function (attribute) {
 Element.prototype.hasClass = function (classStr) {
   type(&#x27;classStr&#x27;, classStr, &#x27;String&#x27;);
   return when(this.getClasses(), function (classes) {
-    return (classes.indexOf(classes) !== -1);
+    return (classes.indexOf(classStr) !== -1);
   });
 };
 
@@ -392,7 +422,7 @@ Element.prototype.getClasses = function () {
 
 
 /**
- * Get the text body of an element.
+ * Gets the text body of an element.
  *
  * @method getText
  * @return {String}
@@ -417,7 +447,7 @@ Element.prototype.hasText = function (text) {
 
 
 /**
- * Get the value of an element.
+ * Gets the value of an element.
  *
  * Note:
  * The element needs to have a &#x27;value&#x27; attribute for this to work.
@@ -431,7 +461,7 @@ Element.prototype.getValue = function () {
 
 
 /**
- * Get the tag-name of an element.
+ * Gets the tag-name of an element.
  *
  * @method getTagName
  * @return {String}
@@ -545,7 +575,7 @@ Element.prototype.submit = function () {
 
 
 /**
- * Get the size of an element
+ * Gets the size of an element
  *
  * @method getSize
  * @return {Object} &#x60;{width: number, height: number}&#x60;
@@ -555,13 +585,23 @@ Element.prototype.getSize = function () {
 };
 
 /**
- * Get the position of an element
+ * Gets the position of an element
  *
  * @method getPosition
  * @return {Object} &#x60;{x: number, y: number}&#x60;
  */
 Element.prototype.getPosition = function () {
   return this._requestJSON(&#x27;GET&#x27;, &#x27;/location&#x27;);
+};
+
+/**
+ * Gets the position of an element in the current view
+ *
+ * @method getPosition
+ * @return {Object} &#x60;{x: number, y: number}&#x60;
+ */
+Element.prototype.getPositionInView = function () {
+  return this._requestJSON(&#x27;GET&#x27;, &#x27;/location_in_view&#x27;);
 };
 
 /**
@@ -584,7 +624,7 @@ Element.prototype.getFrame = function () {
 };
 
 /**
- * Get the absolute center of an element
+ * Gets the absolute center of an element
  *
  * @method getAbsoluteCenter
  * @return {Object} &#x60;{x: number, y: number}&#x60;
@@ -599,7 +639,7 @@ Element.prototype.getAbsoluteCenter = function () {
 };
 
 /**
- * Get the relative center of an element
+ * Gets the relative center of an element
  *
  * @method getRelativeCenter
  * @return {Object} &#x60;{x: number, y: number}&#x60;
@@ -615,7 +655,7 @@ Element.prototype.getRelativeCenter = function () {
 
 
 /**
- * Get an element via a selector.
+ * Gets an element via a selector.
  * Will throw an error if the element does not exist.
  *
  * @method getElement
@@ -636,7 +676,7 @@ Element.prototype.getElement = function (selector, selectorType) {
 };
 
 /**
- * Get elements via a selector.
+ * Gets elements via a selector.
  *
  * @method getElements
  * @param {String} selector
@@ -672,7 +712,66 @@ Element.prototype.hasElement = function (selector, selectorType) {
 };
 
 
+
+/**
+ * Takes a screenshot of the document
+ *
+ * @method capture
+ * @param {Object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer} Binary image buffer
+ */
+Element.prototype.capture = function (options) {
+
+	options = options || {};
+
+	return when(this.getFrame(), function (frame) {
+		var screenshot = new Screenshot(this.getDriver());
+		options.context = this;
+		return screenshot.areaScreenshot(frame.x, frame.y, frame.width, frame.height, options);
+	}.bind(this));
+};
+
+/**
+ * Takes a screenshot of the document
+ *
+ * @method screenshot
+ * @param {Object} [options]
+ * @deprecated Use capture.
+ * @return {Buffer} Binary image buffer
+ */
+Element.prototype.screenshot = Element.prototype.capture;
+
+/**
+ * Compares the screenshot of the element with a previous screenshot, showing differences between them
+ *
+ * @method compare
+ * @param {string} title Unique title for comparison
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {object} [options.compare] Options for the comparison. See Blink-Diff documentation.
+ * @param {object} [options.compare.id=1] Additional identifier to differentiate comparisons even more.
+ * @return {boolean|null} Are the screenshots the same? (NULL if there is nothing to compare to)
+ */
+Element.prototype.compare = function (title, options) {
+	options = options || {};
+
+	return when(this.capture(options), function (buffer) {
+		return this.getDriver()._comparison.compare(title, buffer, options.compare);
+	}.bind(this));
+};
+
+
 logMethods(Element.prototype);
+
     </pre>
 </div>
 

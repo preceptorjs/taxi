@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -150,7 +178,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/lib_element.js.html#l12"><code>lib&#x2F;element.js:12</code></a>
+            Defined in: <a href="../files/lib_element.js.html#l14"><code>lib&#x2F;element.js:14</code></a>
         </div>
     
 
@@ -234,7 +262,7 @@
             
         
         
-        <a href="../files/lib_element.js.html#l12"><code>lib&#x2F;element.js:12</code></a>
+        <a href="../files/lib_element.js.html#l14"><code>lib&#x2F;element.js:14</code></a>
         
         </p>
 
@@ -365,7 +393,21 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_capture">capture</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_clear">clear</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_compare">compare</a>
 
                                 
                                 
@@ -429,6 +471,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_getFrame">getFrame</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getPosition">getPosition</a>
 
                                 
                                 
@@ -536,6 +585,15 @@
                                 <a href="#method_mouse">mouse</a>
 
                                 
+                                
+                            </li>
+                        
+                            <li class="index-item method deprecated">
+                                <a href="#method_screenshot">screenshot</a>
+
+                                
+                                
+                                    <span class="flag deprecated">deprecated</span>
                                 
                             </li>
                         
@@ -700,7 +758,7 @@
             
         
         
-        <a href="../files/lib_element.js.html#l115"><code>lib&#x2F;element.js:115</code></a>
+        <a href="../files/lib_element.js.html#l117"><code>lib&#x2F;element.js:117</code></a>
         
         </p>
 
@@ -806,7 +864,7 @@
             
         
         
-        <a href="../files/lib_element.js.html#l129"><code>lib&#x2F;element.js:129</code></a>
+        <a href="../files/lib_element.js.html#l131"><code>lib&#x2F;element.js:131</code></a>
         
         </p>
 
@@ -896,6 +954,192 @@ The result is parsed for errors.</p>
 </div>
 
                 
+                    <div id="method_capture" class="method item">
+    <h3 class="name"><code>capture</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Buffer</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_element.js.html#l540"><code>lib&#x2F;element.js:540</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Takes a screenshot of the document</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[eachFn]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Will execute method on client before each screenshot is taken. First parameter is index of screenshot.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[completeFn]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Will execute method on client after all screenshots are taken.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[blockOuts]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a> | <a href="../classes/Element.html" class="crosslink">Element[]</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>List of areas/elements that should be blocked-out</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[blockOutColor=black]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Color to be used for blocking-out areas {red, green, blue, alpha}</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[wait=100]</code>
+                                    <span class="type">Int</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Wait in ms before each screenshot</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Buffer</span>:
+                    
+                    <p>Binary image buffer</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_clear" class="method item">
     <h3 class="name"><code>clear</code></h3>
 
@@ -928,7 +1172,7 @@ The result is parsed for errors.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l379"><code>lib&#x2F;element.js:379</code></a>
+        <a href="../files/lib_element.js.html#l381"><code>lib&#x2F;element.js:381</code></a>
         
         </p>
 
@@ -945,6 +1189,245 @@ The result is parsed for errors.</p>
 
     
 
+    
+
+    
+</div>
+
+                
+                    <div id="method_compare" class="method item">
+    <h3 class="name"><code>compare</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>title</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | Null</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_element.js.html#l573"><code>lib&#x2F;element.js:573</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Compares the screenshot of the element with a previous screenshot, showing differences between them</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">title</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Unique title for comparison</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[eachFn]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Will execute method on client before each screenshot is taken. First parameter is index of screenshot.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[completeFn]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Will execute method on client after all screenshots are taken.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[blockOuts]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a> | <a href="../classes/Element.html" class="crosslink">Element[]</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>List of areas/elements that should be blocked-out</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[blockOutColor=black]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Color to be used for blocking-out areas {red, green, blue, alpha}</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[wait=100]</code>
+                                    <span class="type">Int</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Wait in ms before each screenshot</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[compare]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Options for the comparison. See Blink-Diff documentation.</p>
+
+                                </div>
+
+                                
+                                    <ul class="params-list">
+                                        
+                                        <li class="param">
+                                            
+                                                <code class="param-name optional">[id=1]</code>
+                                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                                                <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+
+                                            <div class="param-description">
+                                                Additional identifier to differentiate comparisons even more.
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | Null</span>:
+                    
+                    <p>Are the screenshots the same? (NULL if there is nothing to compare to)</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -987,7 +1470,7 @@ The result is parsed for errors.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l194"><code>lib&#x2F;element.js:194</code></a>
+        <a href="../files/lib_element.js.html#l196"><code>lib&#x2F;element.js:196</code></a>
         
         </p>
 
@@ -998,7 +1481,7 @@ The result is parsed for errors.</p>
     </div>
 
     <div class="description">
-        <p>Get the internal selenium handler object
+        <p>Gets the internal selenium handler object
 Direct-access. No need to wait.</p>
 
     </div>
@@ -1059,7 +1542,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l183"><code>lib&#x2F;element.js:183</code></a>
+        <a href="../files/lib_element.js.html#l185"><code>lib&#x2F;element.js:185</code></a>
         
         </p>
 
@@ -1070,7 +1553,7 @@ Direct-access. No need to wait.</p>
     </div>
 
     <div class="description">
-        <p>Get the value of the element id
+        <p>Gets the value of the element id
 Direct-access. No need to wait.</p>
 
     </div>
@@ -1131,7 +1614,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l438"><code>lib&#x2F;element.js:438</code></a>
+        <a href="../files/lib_element.js.html#l450"><code>lib&#x2F;element.js:450</code></a>
         
         </p>
 
@@ -1142,7 +1625,7 @@ Direct-access. No need to wait.</p>
     </div>
 
     <div class="description">
-        <p>Get the absolute center of an element</p>
+        <p>Gets the absolute center of an element</p>
 
     </div>
 
@@ -1214,7 +1697,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l206"><code>lib&#x2F;element.js:206</code></a>
+        <a href="../files/lib_element.js.html#l208"><code>lib&#x2F;element.js:208</code></a>
         
         </p>
 
@@ -1225,7 +1708,7 @@ Direct-access. No need to wait.</p>
     </div>
 
     <div class="description">
-        <p>Get the value of an attribute.</p>
+        <p>Gets the value of an attribute.</p>
 
     </div>
 
@@ -1308,7 +1791,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l232"><code>lib&#x2F;element.js:232</code></a>
+        <a href="../files/lib_element.js.html#l234"><code>lib&#x2F;element.js:234</code></a>
         
         </p>
 
@@ -1379,7 +1862,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l295"><code>lib&#x2F;element.js:295</code></a>
+        <a href="../files/lib_element.js.html#l297"><code>lib&#x2F;element.js:297</code></a>
         
         </p>
 
@@ -1468,7 +1951,7 @@ should be specified using the CSS property name, not the JavaScript property nam
             
         
         
-        <a href="../files/lib_element.js.html#l469"><code>lib&#x2F;element.js:469</code></a>
+        <a href="../files/lib_element.js.html#l481"><code>lib&#x2F;element.js:481</code></a>
         
         </p>
 
@@ -1479,7 +1962,7 @@ should be specified using the CSS property name, not the JavaScript property nam
     </div>
 
     <div class="description">
-        <p>Get an element via a selector.
+        <p>Gets an element via a selector.
 Will throw an error if the element does not exist.</p>
 
     </div>
@@ -1595,7 +2078,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l490"><code>lib&#x2F;element.js:490</code></a>
+        <a href="../files/lib_element.js.html#l502"><code>lib&#x2F;element.js:502</code></a>
         
         </p>
 
@@ -1606,7 +2089,7 @@ Will throw an error if the element does not exist.</p>
     </div>
 
     <div class="description">
-        <p>Get elements via a selector.</p>
+        <p>Gets elements via a selector.</p>
 
     </div>
 
@@ -1705,7 +2188,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l419"><code>lib&#x2F;element.js:419</code></a>
+        <a href="../files/lib_element.js.html#l431"><code>lib&#x2F;element.js:431</code></a>
         
         </p>
 
@@ -1778,7 +2261,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l409"><code>lib&#x2F;element.js:409</code></a>
+        <a href="../files/lib_element.js.html#l421"><code>lib&#x2F;element.js:421</code></a>
         
         </p>
 
@@ -1789,7 +2272,80 @@ Will throw an error if the element does not exist.</p>
     </div>
 
     <div class="description">
-        <p>Get the position of an element</p>
+        <p>Gets the position of an element in the current view</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p><code>{x: number, y: number}</code></p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getPosition" class="method item">
+    <h3 class="name"><code>getPosition</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_element.js.html#l411"><code>lib&#x2F;element.js:411</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the position of an element</p>
 
     </div>
 
@@ -1851,7 +2407,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l453"><code>lib&#x2F;element.js:453</code></a>
+        <a href="../files/lib_element.js.html#l465"><code>lib&#x2F;element.js:465</code></a>
         
         </p>
 
@@ -1862,7 +2418,7 @@ Will throw an error if the element does not exist.</p>
     </div>
 
     <div class="description">
-        <p>Get the relative center of an element</p>
+        <p>Gets the relative center of an element</p>
 
     </div>
 
@@ -1924,7 +2480,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l399"><code>lib&#x2F;element.js:399</code></a>
+        <a href="../files/lib_element.js.html#l401"><code>lib&#x2F;element.js:401</code></a>
         
         </p>
 
@@ -1935,7 +2491,7 @@ Will throw an error if the element does not exist.</p>
     </div>
 
     <div class="description">
-        <p>Get the size of an element</p>
+        <p>Gets the size of an element</p>
 
     </div>
 
@@ -1997,7 +2553,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l285"><code>lib&#x2F;element.js:285</code></a>
+        <a href="../files/lib_element.js.html#l287"><code>lib&#x2F;element.js:287</code></a>
         
         </p>
 
@@ -2008,7 +2564,7 @@ Will throw an error if the element does not exist.</p>
     </div>
 
     <div class="description">
-        <p>Get the tag-name of an element.</p>
+        <p>Gets the tag-name of an element.</p>
 
     </div>
 
@@ -2068,7 +2624,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l246"><code>lib&#x2F;element.js:246</code></a>
+        <a href="../files/lib_element.js.html#l248"><code>lib&#x2F;element.js:248</code></a>
         
         </p>
 
@@ -2079,7 +2635,7 @@ Will throw an error if the element does not exist.</p>
     </div>
 
     <div class="description">
-        <p>Get the text body of an element.</p>
+        <p>Gets the text body of an element.</p>
 
     </div>
 
@@ -2139,7 +2695,7 @@ Will throw an error if the element does not exist.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l271"><code>lib&#x2F;element.js:271</code></a>
+        <a href="../files/lib_element.js.html#l273"><code>lib&#x2F;element.js:273</code></a>
         
         </p>
 
@@ -2150,7 +2706,7 @@ Will throw an error if the element does not exist.</p>
     </div>
 
     <div class="description">
-        <p>Get the value of an element.</p>
+        <p>Gets the value of an element.</p>
 <p>Note:
 The element needs to have a &#39;value&#39; attribute for this to work.</p>
 
@@ -2222,7 +2778,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l218"><code>lib&#x2F;element.js:218</code></a>
+        <a href="../files/lib_element.js.html#l220"><code>lib&#x2F;element.js:220</code></a>
         
         </p>
 
@@ -2332,7 +2888,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l512"><code>lib&#x2F;element.js:512</code></a>
+        <a href="../files/lib_element.js.html#l524"><code>lib&#x2F;element.js:524</code></a>
         
         </p>
 
@@ -2452,7 +3008,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l256"><code>lib&#x2F;element.js:256</code></a>
+        <a href="../files/lib_element.js.html#l258"><code>lib&#x2F;element.js:258</code></a>
         
         </p>
 
@@ -2546,7 +3102,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l352"><code>lib&#x2F;element.js:352</code></a>
+        <a href="../files/lib_element.js.html#l354"><code>lib&#x2F;element.js:354</code></a>
         
         </p>
 
@@ -2617,7 +3173,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l309"><code>lib&#x2F;element.js:309</code></a>
+        <a href="../files/lib_element.js.html#l311"><code>lib&#x2F;element.js:311</code></a>
         
         </p>
 
@@ -2688,7 +3244,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l342"><code>lib&#x2F;element.js:342</code></a>
+        <a href="../files/lib_element.js.html#l344"><code>lib&#x2F;element.js:344</code></a>
         
         </p>
 
@@ -2769,7 +3325,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l330"><code>lib&#x2F;element.js:330</code></a>
+        <a href="../files/lib_element.js.html#l332"><code>lib&#x2F;element.js:332</code></a>
         
         </p>
 
@@ -2863,7 +3419,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l320"><code>lib&#x2F;element.js:320</code></a>
+        <a href="../files/lib_element.js.html#l322"><code>lib&#x2F;element.js:322</code></a>
         
         </p>
 
@@ -2934,7 +3490,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l160"><code>lib&#x2F;element.js:160</code></a>
+        <a href="../files/lib_element.js.html#l162"><code>lib&#x2F;element.js:162</code></a>
         
         </p>
 
@@ -2945,7 +3501,7 @@ The element needs to have a &#39;value&#39; attribute for this to work.</p>
     </div>
 
     <div class="description">
-        <p>Get the mouse object.
+        <p>Gets the mouse object.
 Direct-access. No need to wait.</p>
 
     </div>
@@ -2961,6 +3517,117 @@ Direct-access. No need to wait.</p>
                     
                         <span class="type"><a href="../classes/Mouse.html" class="crosslink">Mouse</a></span>:
                     
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_screenshot" class="method item deprecated">
+    <h3 class="name"><code>screenshot</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Buffer</span>
+        </span>
+    
+
+    
+        <span class="flag deprecated" title="Use capture.">deprecated</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_element.js.html#l563"><code>lib&#x2F;element.js:563</code></a>
+        
+        </p>
+
+
+        
+            <p>Deprecated: Use capture.</p>
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Takes a screenshot of the document</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Buffer</span>:
+                    
+                    <p>Binary image buffer</p>
+
                 
             </div>
         </div>
@@ -3012,7 +3679,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l367"><code>lib&#x2F;element.js:367</code></a>
+        <a href="../files/lib_element.js.html#l369"><code>lib&#x2F;element.js:369</code></a>
         
         </p>
 
@@ -3090,7 +3757,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l389"><code>lib&#x2F;element.js:389</code></a>
+        <a href="../files/lib_element.js.html#l391"><code>lib&#x2F;element.js:391</code></a>
         
         </p>
 
@@ -3149,7 +3816,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l171"><code>lib&#x2F;element.js:171</code></a>
+        <a href="../files/lib_element.js.html#l173"><code>lib&#x2F;element.js:173</code></a>
         
         </p>
 
@@ -3160,7 +3827,7 @@ Direct-access. No need to wait.</p>
     </div>
 
     <div class="description">
-        <p>Get the touch object.
+        <p>Gets the touch object.
 Direct-access. No need to wait.</p>
 
     </div>
@@ -3218,7 +3885,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l36"><code>lib&#x2F;element.js:36</code></a>
+        <a href="../files/lib_element.js.html#l38"><code>lib&#x2F;element.js:38</code></a>
         
         </p>
 
@@ -3265,7 +3932,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l45"><code>lib&#x2F;element.js:45</code></a>
+        <a href="../files/lib_element.js.html#l47"><code>lib&#x2F;element.js:47</code></a>
         
         </p>
 
@@ -3312,7 +3979,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l54"><code>lib&#x2F;element.js:54</code></a>
+        <a href="../files/lib_element.js.html#l56"><code>lib&#x2F;element.js:56</code></a>
         
         </p>
 
@@ -3359,7 +4026,7 @@ Direct-access. No need to wait.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l72"><code>lib&#x2F;element.js:72</code></a>
+        <a href="../files/lib_element.js.html#l74"><code>lib&#x2F;element.js:74</code></a>
         
         </p>
 
@@ -3407,7 +4074,7 @@ The full link-text needs to match.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l63"><code>lib&#x2F;element.js:63</code></a>
+        <a href="../files/lib_element.js.html#l65"><code>lib&#x2F;element.js:65</code></a>
         
         </p>
 
@@ -3454,7 +4121,7 @@ The full link-text needs to match.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l82"><code>lib&#x2F;element.js:82</code></a>
+        <a href="../files/lib_element.js.html#l84"><code>lib&#x2F;element.js:84</code></a>
         
         </p>
 
@@ -3502,7 +4169,7 @@ Only a part of the link-text needs to match.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l92"><code>lib&#x2F;element.js:92</code></a>
+        <a href="../files/lib_element.js.html#l94"><code>lib&#x2F;element.js:94</code></a>
         
         </p>
 
@@ -3549,7 +4216,7 @@ Only a part of the link-text needs to match.</p>
             
         
         
-        <a href="../files/lib_element.js.html#l101"><code>lib&#x2F;element.js:101</code></a>
+        <a href="../files/lib_element.js.html#l103"><code>lib&#x2F;element.js:103</code></a>
         
         </p>
 

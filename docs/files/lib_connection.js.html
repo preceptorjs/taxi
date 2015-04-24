@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -150,10 +178,10 @@
 
 var EventEmitter = require(&#x27;events&#x27;).EventEmitter;
 var util = require(&#x27;util&#x27;);
-var url = require(&#x27;url&#x27;);
 var path = require(&#x27;path&#x27;);
 var fs = require(&#x27;fs&#x27;);
 var mkdirp = require(&#x27;mkdirp&#x27;);
+var JSON = require(&#x27;./json&#x27;);
 
 var when = require(&#x27;./when&#x27;);
 var errors = require(&#x27;./errors&#x27;);
@@ -172,13 +200,19 @@ module.exports = Connection;
  * @param {String|Object} remote
  * @param {Object} options
  * @param {String} options.mode
+ * @param {int} [options.retry=3]
  * @param {String} [options.logDir]
  * @param {Boolean} [options.logScreen=false]
  */
 function Connection (remote, options) {
   EventEmitter.call(this);
 
+  if (remote[remote.length - 1] === &#x27;/&#x27;) {
+    remote = remote.substr(0, remote.length - 1);
+  }
+
   this._remote = remote;
+  this._retry = options.retry || 3;
   this._options = options || {};
   this._request_internal = createInternalConnection(options.mode);
 }
@@ -211,17 +245,23 @@ util.inherits(Connection, EventEmitter);
 /**
  * Session request with automatic parsing for errors
  *
- * @method taxiRequest
+ * @method parsedRequest
  * @param {Session} session
  * @param {String} method
  * @param {String} path
- * @param {*} [body]
  * @param {Object} [options]
+ * @param {int} [retryCounter=0]
  * @return {*}
  */
-Connection.prototype.taxiRequest = function (session, method, path, body, options) {
-  return when(this.sessionRequest(session, method, path, body), function (res) {
-    return this._parseResponse(res, options);
+Connection.prototype.parsedRequest = function (session, method, path, options, retryCounter) {
+  return when(this.sessionRequest(session, method, path, options), function (res) {
+    return this._parseResponse(res, {
+		session: session,
+		method: method,
+		path: path,
+		options: options,
+		retryCounter: retryCounter || 0
+	}, options);
   }.bind(this));
 };
 
@@ -232,27 +272,15 @@ Connection.prototype.taxiRequest = function (session, method, path, body, option
  * @param {Session} session
  * @param {String} method
  * @param {String} path
- * @param {*} [body]
+ * @param {object} [options]
  * @return {Object}
  */
-Connection.prototype.sessionRequest = function (session, method, path, body) {
-  var self = this;
+Connection.prototype.sessionRequest = function (session, method, path, options) {
 
-  function makeRequest (localSession) {
-
-    var raw = typeof body === &#x27;string&#x27; || Buffer.isBuffer(body),
-        rawBody = (raw || body === undefined ? body : JSON.stringify(body));
-
-    return self.request(
-        method,
-        ((path[0] === &#x27;/&#x27;) || (path === &#x27;&#x27;)) ? undefined : path,
-        ((path[0] === &#x27;/&#x27;) || (path === &#x27;&#x27;)) ? &#x27;/session/&#x27; + localSession.id() + path : undefined,
-        rawBody,
-        {
-            &#x27;Content-Type&#x27;: &#x27;application/json;charset=UTF-8&#x27;
-        }
-    );
-  }
+  var makeRequest = function (localSession) {
+    var uri = &#x27;/session/&#x27; + localSession.id() + path;
+    return this.request(method, uri, options);
+  }.bind(this);
 
   return when(session, makeRequest);
 };
@@ -262,24 +290,27 @@ Connection.prototype.sessionRequest = function (session, method, path, body) {
  *
  * @method request
  * @param {String} method
- * @param {String|undefined} [uri]
- * @param {String} path
- * @param {String} [body]
- * @param {Object} [headers]
+ * @param {String} urn Unified Resource Name
+ * @param {Object} options
  * @return {Buffer}
  */
-Connection.prototype.request = function (method, uri, path, body, headers) {
-  var requestOptions = withRemote(this._remote, {
+Connection.prototype.request = function (method, urn, options) {
+  var uri = this._remote + urn;
+
+  if (options &amp;&amp; typeof options.body == &#x27;object&#x27;) {
+    options.body = JSON.stringify(options.body);
+  }
+
+  this.emit(&#x27;request&#x27;, {
     method: method,
-    uri: uri || undefined,
-    path: path,
-    body: body,
-    headers: headers || {}
+    uri: uri,
+    path: urn,
+    body: (options &amp;&amp; options.body) || &#x27;&#x27;,
+    headers: (options &amp;&amp; options.headers) || []
   });
 
-  this.emit(&#x27;request&#x27;, requestOptions);
-
-  return when(this._request_internal(requestOptions), function (response) {
+  return when(this._request_internal(method, uri, options), function (response) {
+    response.body = response.body.toString(&#x27;utf8&#x27;);
     this.emit(&#x27;response&#x27;, response);
     return response;
   }.bind(this));
@@ -288,15 +319,20 @@ Connection.prototype.request = function (method, uri, path, body, headers) {
 /**
  * Parse a response, throwing errors if the status suggests it
  *
+ * @param {Object} requestData
  * @param {Object} res
  * @param {Object} [options]
  * @param {Boolean} [options.passThrough=false]
  * @return {*}
  */
-Connection.prototype._parseResponse = function (res, options) {
+Connection.prototype._parseResponse = function (res, requestData, options) {
+
   var body,
       data,
-      filePath;
+      filePath,
+      hasLogFolder,
+      hasRequestedScreen,
+      hasScreenshot;
 
   options = options || {};
 
@@ -309,8 +345,12 @@ Connection.prototype._parseResponse = function (res, options) {
   } else if (res.statusCode &gt;= 500 &amp;&amp; res.statusCode &lt; 600) { // 500s
     body = JSON.parse(res.body);
 
+    hasScreenshot = body &amp;&amp; body.value &amp;&amp; body.value.screen;
+    hasLogFolder = this._options &amp;&amp; this._options.logDir;
+    hasRequestedScreen = this._options &amp;&amp; this._options.logScreen;
+
     // Create screenshot for error when available and requested
-    if (this._options &amp;&amp; this._options.logDir &amp;&amp; this._options.logScreen &amp;&amp; body &amp;&amp; body.value &amp;&amp; body.value.screen) {
+    if (hasLogFolder &amp;&amp; hasRequestedScreen &amp;&amp; hasScreenshot) {
 
       // Create folder if not exists
       mkdirp.sync(this._options.logDir);
@@ -323,11 +363,16 @@ Connection.prototype._parseResponse = function (res, options) {
       fs.writeFileSync(filePath, data);
     }
 
-    throw new Error(&quot;Failed command (&quot; + res.statusCode + &quot;):\n&quot; + body.value.message + (body.value.class ? &quot;\nClass: &quot; + body.value.class : &quot;&quot;) + (body.value.stackTrace ? &quot;\nStack-trace:\n &quot; + stringifyStackTrace(body.value.stackTrace) : &quot;&quot;));
+    // Retry if possible
+    if (this._retry &gt; requestData.retryCounter) {
+		return this.parsedRequest(requestData.session, requestData.method, requestData.path, requestData.options, requestData.retryCounter + 1);
+	} else {
+		throw new Error(&quot;Failed command (&quot; + res.statusCode + &quot;):\n&quot; + body.value.message + (body.value.class ? &quot;\nClass: &quot; + body.value.class : &quot;&quot;) + (body.value.stackTrace ? &quot;\nStack-trace:\n &quot; + stringifyStackTrace(body.value.stackTrace) : &quot;&quot;));
+	}
 
   } else if (res.statusCode &gt;= 200 &amp;&amp; res.statusCode &lt; 300) {
 
-    if (res.statusCode === 204) {
+    if (res.statusCode === 204) { // No Content - meaning: everything is ok
       return null;
 
     } else {
@@ -341,7 +386,12 @@ Connection.prototype._parseResponse = function (res, options) {
     }
 
   } else {
-    throw new Error(&#x27;Unknown status code (&#x27; + res.statusCode + &#x27;):\n&#x27; + res.body);
+	  // Retry if possible
+		if (this._retry &gt; requestData.retryCounter) {
+			return this.parsedRequest(requestData.session, requestData.method, requestData.path, requestData.options, requestData.retryCounter + 1);
+		} else {
+			throw new Error(&#x27;Unknown status code (&#x27; + res.statusCode + &#x27;):\n&#x27; + res.body);
+		}
   }
 };
 
@@ -384,71 +434,11 @@ function stringifyStackTrace (stackTrace) {
   return result.join(&quot;\n&quot;);
 }
 
-
-/**
- * Processes connection redirects over HTTP
- *
- * @param {Function} fn
- * @return {*}
- */
-function withRedirects (fn) {
-
-  return function recurse (options) {
-
-    type(&#x27;options&#x27;, options, &#x27;Object&#x27;);
-    type(&#x27;options.uri&#x27;, options.uri, &#x27;String&#x27;);
-
-    return when(fn.call(this, options), function (res) {
-
-      if ((res.statusCode === 301 || res.statusCode === 302 || res.statusCode === 303) &amp;&amp; res.headers.location) {
-        return recurse({ uri: url.resolve(options.uri, res.headers.location) });
-      }
-
-      return res;
-    });
-  }
-}
-
-/**
- * Structures remote options for request
- *
- * @param {String|Object} remote
- * @param {Object} options
- * @return {Object}
- */
-function withRemote (remote, options) {
-
-  var key, request = {};
-
-  if (typeof remote === &#x27;string&#x27;) {
-    remote = { base: remote };
-  }
-
-  for (key in options) {
-    if (options.hasOwnProperty(key) &amp;&amp; (key !== &#x27;path&#x27;)) {
-      request[key] = options[key];
-    }
-  }
-
-  for (key in remote) {
-    if (remote.hasOwnProperty(key) &amp;&amp; (key !== &#x27;base&#x27; &amp;&amp; request[key] === undefined)) {
-      request[key] = remote[key];
-    }
-  }
-
-  if (request.uri === undefined &amp;&amp; request.url === undefined) {
-    request.uri = remote.base.replace(/\/$/, &#x27;&#x27;) + options.path;
-  }
-
-  return request;
-}
-
-
 /**
  * Create connection object according to mode-type
  *
- * @param {String} mode
- * @return {*}
+ * @param {String} mode (async|sync)
+ * @return {function}
  */
 function createInternalConnection (mode) {
 
@@ -456,10 +446,10 @@ function createInternalConnection (mode) {
 
   switch (mode) {
     case &#x27;async&#x27;:
-      result = withRedirects(require(&#x27;promise&#x27;).denodeify(require(&#x27;request&#x27;)));
+      result = require(&#x27;then-request&#x27;);
       break;
     case &#x27;sync&#x27;:
-      result = withRedirects(require(&#x27;request-sync&#x27;));
+      result = require(&#x27;sync-request&#x27;);
       break;
     default:
       throw new Error(&#x27;Expected options.mode to be &quot;async&quot; or &quot;sync&quot; but got &#x27; + JSON.stringify(mode));

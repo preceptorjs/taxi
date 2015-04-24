@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -151,9 +179,9 @@
 var Alert = require(&#x27;./lib/alert&#x27;);
 var ActiveWindow = require(&#x27;./lib/activeWindow&#x27;);
 var Browser = require(&#x27;./lib/browser&#x27;);
+var Chain = require(&#x27;./lib/chain&#x27;);
 var Cookie = require(&#x27;./lib/cookie&#x27;);
 var CookieStorage = require(&#x27;./lib/cookieStorage&#x27;);
-var Driver = require(&#x27;./lib/driver&#x27;);
 var Element = require(&#x27;./lib/element&#x27;);
 var Frame = require(&#x27;./lib/frame&#x27;);
 var GlobalMouse = require(&#x27;./lib/globalMouse&#x27;);
@@ -171,7 +199,9 @@ var TimeOut = require(&#x27;./lib/timeOut&#x27;);
 var Touch = require(&#x27;./lib/touch&#x27;);
 var WindowHandler = require(&#x27;./lib/window&#x27;);
 
-module.exports = Taxi;
+var Driver = require(&#x27;./lib/driver&#x27;);
+
+module.exports = taxi;
 
 /**
  * Create a new browser session
@@ -181,8 +211,8 @@ module.exports = Taxi;
  * Note: Remember to call &#x60;.dispose()&#x60; at the end to terminate the session.
  *
  * @constructor
- * @class Taxi
- * @module Taxi
+ * @class taxi
+ * @module taxi
  * @param {String|Object} remote Request object or URL to selenium-server
  * @param {Object} capabilities See capabilities in {{#crossLink &quot;Session&quot;}}{{/crossLink}}
  * @param {Object} options
@@ -191,8 +221,9 @@ module.exports = Taxi;
  * @param {String} [options.sessionID]
  * @param {Boolean} [options.debug=false]
  * @param {Boolean} [options.httpDebug=false]
+ * @return {Driver}
  */
-function Taxi(remote, capabilities, options) {
+function taxi(remote, capabilities, options) {
   return new Driver(remote, capabilities, options);
 }
 
@@ -201,133 +232,139 @@ function Taxi(remote, capabilities, options) {
  * @property ActiveWindow
  * @type {ActiveWindow}
  */
-Taxi.ActiveWindow = ActiveWindow;
+taxi.ActiveWindow = ActiveWindow;
 
 /**
  * @property Alert
  * @type {Alert}
  */
-Taxi.Alert = Alert;
+taxi.Alert = Alert;
 
 /**
  * @property Browser
  * @type Browser
  */
-Taxi.Browser = Browser;
+taxi.Browser = Browser;
+
+/**
+ * @property Chain
+ * @type Chain
+ */
+taxi.Chain = Chain;
 
 /**
  * @property Cookie
  * @type Cookie
  */
-Taxi.Cookie = Cookie;
+taxi.Cookie = Cookie;
 
 /**
  * @property CookieStorage
  * @type CookieStorage
  */
-Taxi.CookieStorage = CookieStorage;
+taxi.CookieStorage = CookieStorage;
 
 /**
  * @property Driver
  * @type Driver
  */
-Taxi.Driver = Driver;
+taxi.Driver = Driver;
 
 /**
  * @property Element
  * @type Element
  */
-Taxi.Element = Element;
+taxi.Element = Element;
 
 /**
  * @property Frame
  * @type Frame
  */
-Taxi.Frame = Frame;
+taxi.Frame = Frame;
 
 /**
  * @property GlobalMouse
  * @type GlobalMouse
  */
-Taxi.GlobalMouse = GlobalMouse;
+taxi.GlobalMouse = GlobalMouse;
 
 /**
  * @property GlobalTouch
  * @type GlobalTouch
  */
-Taxi.GlobalTouch = GlobalTouch;
+taxi.GlobalTouch = GlobalTouch;
 
 /**
  * @property IME
  * @type IME
  */
-Taxi.IME = IME;
+taxi.IME = IME;
 
 /**
  * @property Keys
  * @type Keys
  */
-Taxi.Keys = Keys;
+taxi.Keys = Keys;
 
 /**
  * @property LocalStorage
  * @type LocalStorage
  */
-Taxi.LocalStorage = LocalStorage;
+taxi.LocalStorage = LocalStorage;
 
 /**
  * @property LogEntry
  * @type LogEntry
  */
-Taxi.LogEntry = LogEntry;
+taxi.LogEntry = LogEntry;
 
 /**
  * @property Mouse
  * @type Mouse
  */
-Taxi.Mouse = Mouse;
+taxi.Mouse = Mouse;
 
 /**
  * @property Navigator
  * @type Navigator
  */
-Taxi.Navigator = Navigator;
+taxi.Navigator = Navigator;
 
 /**
  * @property Session
  * @type Session
  */
-Taxi.Session = Session;
+taxi.Session = Session;
 
 /**
  * @property SessionStorage
  * @type SessionStorage
  */
-Taxi.SessionStorage = SessionStorage;
+taxi.SessionStorage = SessionStorage;
 
 /**
  * @property Status
  * @type Status
  */
-Taxi.Status = Status;
+taxi.Status = Status;
 
 /**
  * @property TimeOut
  * @type TimeOut
  */
-Taxi.TimeOut = TimeOut;
+taxi.TimeOut = TimeOut;
 
 /**
  * @property Touch
  * @type Touch
  */
-Taxi.Touch = Touch;
+taxi.Touch = Touch;
 
 /**
  * @property WindowHandler
  * @type WindowHandler
  */
-Taxi.WindowHandler = WindowHandler;
+taxi.WindowHandler = WindowHandler;
 
     </pre>
 </div>

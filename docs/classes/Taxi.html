@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Taxi - taxi</title>
+    <title>taxi - taxi</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.2</em>
+            <em>API Docs for: 0.2.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -45,13 +45,23 @@
             
                 <li><a href="../classes/Alert.html">Alert</a></li>
             
+                <li><a href="../classes/BlinkDiffComparison.html">BlinkDiffComparison</a></li>
+            
                 <li><a href="../classes/Browser.html">Browser</a></li>
+            
+                <li><a href="../classes/Chain.html">Chain</a></li>
+            
+                <li><a href="../classes/Comparison.html">Comparison</a></li>
+            
+                <li><a href="../classes/Compatibility.html">Compatibility</a></li>
             
                 <li><a href="../classes/Connection.html">Connection</a></li>
             
                 <li><a href="../classes/Cookie.html">Cookie</a></li>
             
                 <li><a href="../classes/CookieStorage.html">CookieStorage</a></li>
+            
+                <li><a href="../classes/DevicePixelRatio.html">DevicePixelRatio</a></li>
             
                 <li><a href="../classes/Driver.html">Driver</a></li>
             
@@ -75,17 +85,25 @@
             
                 <li><a href="../classes/Navigator.html">Navigator</a></li>
             
+                <li><a href="../classes/Nightwatch.html">Nightwatch</a></li>
+            
+                <li><a href="../classes/Screenshot.html">Screenshot</a></li>
+            
                 <li><a href="../classes/Session.html">Session</a></li>
             
                 <li><a href="../classes/SessionStorage.html">SessionStorage</a></li>
             
                 <li><a href="../classes/Status.html">Status</a></li>
             
-                <li><a href="../classes/Taxi.html">Taxi</a></li>
+                <li><a href="../classes/Stitching.html">Stitching</a></li>
+            
+                <li><a href="../classes/taxi.html">taxi</a></li>
             
                 <li><a href="../classes/TimeOut.html">TimeOut</a></li>
             
                 <li><a href="../classes/Touch.html">Touch</a></li>
+            
+                <li><a href="../classes/Utils.html">Utils</a></li>
             
                 <li><a href="../classes/WindowHandler.html">WindowHandler</a></li>
             
@@ -93,17 +111,27 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/Chain.html">Chain</a></li>
+            
+                <li><a href="../modules/Compatibility.html">Compatibility</a></li>
+            
                 <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/Helpers.html">Helpers</a></li>
             
                 <li><a href="../modules/Interaction.html">Interaction</a></li>
             
                 <li><a href="../modules/Navigation.html">Navigation</a></li>
             
+                <li><a href="../modules/Sequence.html">Sequence</a></li>
+            
                 <li><a href="../modules/Storage.html">Storage</a></li>
             
                 <li><a href="../modules/System.html">System</a></li>
             
-                <li><a href="../modules/Taxi.html">Taxi</a></li>
+                <li><a href="../modules/taxi.html">taxi</a></li>
+            
+                <li><a href="../modules/Utils.html">Utils</a></li>
             
                 <li><a href="../modules/WebDriver.html">WebDriver</a></li>
             
@@ -142,7 +170,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Taxi Class</h1>
+                        <h1>taxi Class</h1>
 <div class="box meta">
     
 
@@ -150,13 +178,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/index.js.html#l28"><code>index.js:28</code></a>
+            Defined in: <a href="../files/index.js.html#l30"><code>index.js:30</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/Taxi.html">Taxi</a>
+            Module: <a href="../modules/taxi.html">taxi</a>
         
     
 
@@ -175,8 +203,8 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Taxi" class="method item">
-    <h3 class="name"><code>Taxi</code></h3>
+        <div id="method_taxi" class="method item">
+    <h3 class="name"><code>taxi</code></h3>
 
     
         <div class="args">
@@ -205,6 +233,10 @@
     
 
     
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Driver.html" class="crosslink">Driver</a></span>
+        </span>
+    
 
     
 
@@ -229,7 +261,7 @@
             
         
         
-        <a href="../files/index.js.html#l28"><code>index.js:28</code></a>
+        <a href="../files/index.js.html#l30"><code>index.js:30</code></a>
         
         </p>
 
@@ -376,6 +408,18 @@
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Driver.html" class="crosslink">Driver</a></span>:
+                    
+                
+            </div>
+        </div>
+    
 
     
 </div>
@@ -423,6 +467,13 @@
                         
                             <li class="index-item property">
                                 <a href="#property_Browser">Browser</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Chain">Chain</a>
 
                                 
                                 
@@ -600,7 +651,7 @@
             
         
         
-        <a href="../files/index.js.html#l52"><code>index.js:52</code></a>
+        <a href="../files/index.js.html#l55"><code>index.js:55</code></a>
         
         </p>
 
@@ -644,7 +695,7 @@
             
         
         
-        <a href="../files/index.js.html#l58"><code>index.js:58</code></a>
+        <a href="../files/index.js.html#l61"><code>index.js:61</code></a>
         
         </p>
 
@@ -688,7 +739,51 @@
             
         
         
-        <a href="../files/index.js.html#l64"><code>index.js:64</code></a>
+        <a href="../files/index.js.html#l67"><code>index.js:67</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Chain" class="property item">
+    <h3 class="name"><code>Chain</code></h3>
+    <span class="type"><a href="../classes/Chain.html" class="crosslink">Chain</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/index.js.html#l73"><code>index.js:73</code></a>
         
         </p>
 
@@ -732,7 +827,7 @@
             
         
         
-        <a href="../files/index.js.html#l70"><code>index.js:70</code></a>
+        <a href="../files/index.js.html#l79"><code>index.js:79</code></a>
         
         </p>
 
@@ -776,7 +871,7 @@
             
         
         
-        <a href="../files/index.js.html#l76"><code>index.js:76</code></a>
+        <a href="../files/index.js.html#l85"><code>index.js:85</code></a>
         
         </p>
 
@@ -820,7 +915,7 @@
             
         
         
-        <a href="../files/index.js.html#l82"><code>index.js:82</code></a>
+        <a href="../files/index.js.html#l91"><code>index.js:91</code></a>
         
         </p>
 
@@ -864,7 +959,7 @@
             
         
         
-        <a href="../files/index.js.html#l88"><code>index.js:88</code></a>
+        <a href="../files/index.js.html#l97"><code>index.js:97</code></a>
         
         </p>
 
@@ -908,7 +1003,7 @@
             
         
         
-        <a href="../files/index.js.html#l94"><code>index.js:94</code></a>
+        <a href="../files/index.js.html#l103"><code>index.js:103</code></a>
         
         </p>
 
@@ -952,7 +1047,7 @@
             
         
         
-        <a href="../files/index.js.html#l100"><code>index.js:100</code></a>
+        <a href="../files/index.js.html#l109"><code>index.js:109</code></a>
         
         </p>
 
@@ -996,7 +1091,7 @@
             
         
         
-        <a href="../files/index.js.html#l106"><code>index.js:106</code></a>
+        <a href="../files/index.js.html#l115"><code>index.js:115</code></a>
         
         </p>
 
@@ -1040,7 +1135,7 @@
             
         
         
-        <a href="../files/index.js.html#l112"><code>index.js:112</code></a>
+        <a href="../files/index.js.html#l121"><code>index.js:121</code></a>
         
         </p>
 
@@ -1084,7 +1179,7 @@
             
         
         
-        <a href="../files/index.js.html#l118"><code>index.js:118</code></a>
+        <a href="../files/index.js.html#l127"><code>index.js:127</code></a>
         
         </p>
 
@@ -1128,7 +1223,7 @@
             
         
         
-        <a href="../files/index.js.html#l124"><code>index.js:124</code></a>
+        <a href="../files/index.js.html#l133"><code>index.js:133</code></a>
         
         </p>
 
@@ -1172,7 +1267,7 @@
             
         
         
-        <a href="../files/index.js.html#l130"><code>index.js:130</code></a>
+        <a href="../files/index.js.html#l139"><code>index.js:139</code></a>
         
         </p>
 
@@ -1216,7 +1311,7 @@
             
         
         
-        <a href="../files/index.js.html#l136"><code>index.js:136</code></a>
+        <a href="../files/index.js.html#l145"><code>index.js:145</code></a>
         
         </p>
 
@@ -1260,7 +1355,7 @@
             
         
         
-        <a href="../files/index.js.html#l142"><code>index.js:142</code></a>
+        <a href="../files/index.js.html#l151"><code>index.js:151</code></a>
         
         </p>
 
@@ -1304,7 +1399,7 @@
             
         
         
-        <a href="../files/index.js.html#l148"><code>index.js:148</code></a>
+        <a href="../files/index.js.html#l157"><code>index.js:157</code></a>
         
         </p>
 
@@ -1348,7 +1443,7 @@
             
         
         
-        <a href="../files/index.js.html#l154"><code>index.js:154</code></a>
+        <a href="../files/index.js.html#l163"><code>index.js:163</code></a>
         
         </p>
 
@@ -1392,7 +1487,7 @@
             
         
         
-        <a href="../files/index.js.html#l160"><code>index.js:160</code></a>
+        <a href="../files/index.js.html#l169"><code>index.js:169</code></a>
         
         </p>
 
@@ -1436,7 +1531,7 @@
             
         
         
-        <a href="../files/index.js.html#l166"><code>index.js:166</code></a>
+        <a href="../files/index.js.html#l175"><code>index.js:175</code></a>
         
         </p>
 
@@ -1480,7 +1575,7 @@
             
         
         
-        <a href="../files/index.js.html#l172"><code>index.js:172</code></a>
+        <a href="../files/index.js.html#l181"><code>index.js:181</code></a>
         
         </p>
 
@@ -1524,7 +1619,7 @@
             
         
         
-        <a href="../files/index.js.html#l178"><code>index.js:178</code></a>
+        <a href="../files/index.js.html#l187"><code>index.js:187</code></a>
         
         </p>
 

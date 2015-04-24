@@ -1,0 +1,3088 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for taxi/lib/helpers/screenshot.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">taxi/lib/helpers/screenshot.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">17.94% <small>(40 / 223)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">8.93% <small>(5 / 56)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">17.94% <small>(40 / 223)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">taxi/lib/helpers/</a> &#187; screenshot.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var logMethods = require('../log');
+var type = require('../type');
+var when = require('../when');
+&nbsp;
+var screenshotScripts = require('../scripts/screenshot');
+&nbsp;
+var PNGImage = require('pngjs-image');
+var fs = require('fs');
+&nbsp;
+module.exports = Screenshot;
+&nbsp;
+/**
+ * Screenshot object
+ *
+ * @constructor
+ * @class Screenshot
+ * @module WebDriver
+ * @submodule Helpers
+ * @param {Driver} driver
+ */
+function Screenshot (driver) {
+    this._driver = driver;
+}
+&nbsp;
+&nbsp;
+/////////////////////
+// Private Methods //
+/////////////////////
+&nbsp;
+/**
+ * Logs a method call by an event
+ *
+ * @param {object} event
+ * @method _logMethodCall
+ * @private
+ */
+Screenshot.prototype._logMethodCall = function (event) {
+    event.target = 'Screenshot';
+    this._driver._logMethodCall(event);
+};
+&nbsp;
+&nbsp;
+/**
+ * Performs a context dependent JSON request for the current session.
+ * The result is parsed for errors.
+ *
+ * @method _requestJSON
+ * @private
+ * @param {String} method
+ * @param {String} path
+ * @param {*} [body]
+ * @return {*}
+ */
+Screenshot.prototype._requestJSON = <span class="fstat-no" title="function not covered" >function (method, path, body) {</span>
+<span class="cstat-no" title="statement not covered" >    return this._driver._requestJSON(method, path, body);</span>
+};
+&nbsp;
+&nbsp;
+////////////////////
+// Public Methods //
+////////////////////
+&nbsp;
+/**
+ * Gets the driver object.
+ * Direct-access. No need to wait.
+ *
+ * @return {Driver}
+ */
+Screenshot.prototype.getDriver = function () {
+    return this._driver;
+};
+&nbsp;
+&nbsp;
+/**
+ * Takes a screenshot as-is from the webdriver protocol
+ *
+ * @method takeRawScreenshot
+ * @param {Object} [options]
+ * @return {Buffer}
+ */
+//Screenshot.prototype.id = 0; //TODO: Turn on for debugging
+Screenshot.prototype.takeRawScreenshot = <span class="fstat-no" title="function not covered" >function (options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return when(this._driver._requestJSON('GET', '/screenshot', undefined, options), <span class="fstat-no" title="function not covered" >function (base64Data) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var buffer = new Buffer(base64Data, 'base64');</span>
+        //var browserName = this.getDriver().deviceName() != '' ? this.getDriver().deviceName() : this.getDriver().browserName();
+        //Screenshot.prototype.id++;
+        //fs.writeFileSync(__dirname + '/' + browserName + " " + this.getDriver().deviceOrientation() + " " + this.getDriver().browserVersion() + " " + this.getDriver().platform() + " " + Screenshot.prototype.id + '.png', buffer);
+<span class="cstat-no" title="statement not covered" >        return buffer;</span>
+    }.bind(this));
+};
+&nbsp;
+&nbsp;
+/**
+ * Takes a screenshot pre-processed and converted into an image
+ *
+ * @method takeProcessedScreenshot
+ * @param {Object} [options]
+ * @return {PNGImage}
+ */
+Screenshot.prototype.takeProcessedScreenshot = <span class="fstat-no" title="function not covered" >function (options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return when(this.takeRawScreenshot(options), <span class="fstat-no" title="function not covered" >function (buffer) {</span></span>
+<span class="cstat-no" title="statement not covered" >		return this._screenshotPrePrecessing(PNGImage.loadImageSync(buffer));</span>
+	}.bind(this));
+};
+&nbsp;
+&nbsp;
+/**
+ * Gets the max. allowed resolution for one screenshot. If the document exceeds this resolution, then
+ * the screenshot will be stitched together from multiple smaller screenshots called sections.
+ *
+ * @method getMaxImageResolution
+ * @return {int}
+ */
+Screenshot.prototype.getMaxImageResolution = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    return this.getDriver().utils().resolve(this.getDriver().getValue('maxImageResolution'));</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Takes a screenshot of the whole document
+ *
+ * @method documentScreenshot
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {ActiveWindow|Element} [options.context] Context of screenshot
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer}
+ */
+Screenshot.prototype.documentScreenshot = function (options) {
+&nbsp;
+    return this._takeScreenshot(<span class="fstat-no" title="function not covered" >function (initData) {</span>
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            x: 0,
+            y: 0,
+            width: initData.document.width,
+            height: initData.document.height
+        };
+    }, options);
+};
+&nbsp;
+/**
+ * Takes a screenshot of the current view-port
+ *
+ * @method viewPortScreenshot
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {ActiveWindow|Element} [options.context] Context of screenshot
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer}
+ */
+Screenshot.prototype.viewPortScreenshot = <span class="fstat-no" title="function not covered" >function (options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return this._takeScreenshot(<span class="fstat-no" title="function not covered" >function (initData) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            x: initData.viewPort.x,
+            y: initData.viewPort.y,
+            width: initData.viewPort.width,
+            height: initData.viewPort.height
+        };
+    }, options);
+};
+&nbsp;
+/**
+ * Takes a screenshot of a specific area
+ *
+ * @method areaScreenshot
+ * @param {int} [x=0] X-coordinate for area
+ * @param {int} [y=0] Y-coordinate for area
+ * @param {int} [width=document.width-x] Width of area to be captured
+ * @param {int} [height=document.height-y] Height of area to be captured
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {ActiveWindow|Element} [options.context] Context of screenshot
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer}
+ */
+Screenshot.prototype.areaScreenshot = <span class="fstat-no" title="function not covered" >function (x, y, width, height, options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return this._takeScreenshot(<span class="fstat-no" title="function not covered" >function (initData) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var localX = x || 0,</span>
+            localY = y || 0,
+            localWidth = width || initData.document.width - localX,
+            localHeight = height || initData.document.height - localY;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            x: localX,
+            y: localY,
+            width: localWidth,
+            height: localHeight
+        };
+    }, options);
+};
+&nbsp;
+/**
+ * Determines the areas that should be blocked-out
+ *
+ * @method _determineBlockOuts
+ * @param {object} area Area that will be captured
+ * @param {object} context Context of the capture (ActiveWindow, Element)
+ * @param {object[]|Element[]|string[]} blockOuts List of block-out areas
+ * @param {object} [blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @return {object[]} List of rectangular areas {x, y, width, height}
+ * @private
+ */
+Screenshot.prototype._determineBlockOuts = <span class="fstat-no" title="function not covered" >function (area, context, blockOuts, blockOutColor) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var defaultColor = blockOutColor || { red: 0, green: 0, blue: 0 };</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return when(this.getDriver().utils().map(blockOuts, <span class="fstat-no" title="function not covered" >function (blockOutEl) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		if (typeof blockOutEl === 'string') {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			return when(context.getElements(blockOutEl), <span class="fstat-no" title="function not covered" >function (elements) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				return elements.map(<span class="fstat-no" title="function not covered" >function (el) {</span></span>
+<span class="cstat-no" title="statement not covered" >					return el.getFrame();</span>
+				});
+			});
+&nbsp;
+		} else <span class="cstat-no" title="statement not covered" >if (typeof blockOutEl === 'object') {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			if (blockOutEl instanceof require('../element')) {</span>
+<span class="cstat-no" title="statement not covered" >				return blockOutEl.getFrame();</span>
+			} else {
+<span class="cstat-no" title="statement not covered" >				return this.getDriver().utils().resolve(blockOutEl);</span>
+			}
+&nbsp;
+		} else {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Unknown block-out type: ' + typeof blockOutEl);</span>
+		}
+&nbsp;
+	}.bind(this)), <span class="fstat-no" title="function not covered" >function (blockOuts) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		var flattenList = [], reducedList;</span>
+&nbsp;
+		// Make sure that we have a flat list
+<span class="cstat-no" title="statement not covered" >		blockOuts.forEach(<span class="fstat-no" title="function not covered" >function (blockOut) {</span></span>
+<span class="cstat-no" title="statement not covered" >			if ((typeof blockOut === 'object') &amp;&amp; (blockOut.length !== undefined)) { // Array</span>
+<span class="cstat-no" title="statement not covered" >				blockOut.forEach(<span class="fstat-no" title="function not covered" >function (item) {</span></span>
+<span class="cstat-no" title="statement not covered" >					flattenList.push(item);</span>
+				});
+			} else {
+<span class="cstat-no" title="statement not covered" >				flattenList.push(blockOut);</span>
+			}
+		});
+&nbsp;
+		// Validate, reduce, and convert coordinates of each block-out area
+<span class="cstat-no" title="statement not covered" >		flattenList = flattenList.map(<span class="fstat-no" title="function not covered" >function (blockOut) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			this._validateRectItem(blockOut);</span>
+<span class="cstat-no" title="statement not covered" >			this._reduceRectItemToArea(blockOut, area);</span>
+&nbsp;
+			// Convert coordinates from root to captured area
+<span class="cstat-no" title="statement not covered" >			blockOut.x -= area.x;</span>
+<span class="cstat-no" title="statement not covered" >			blockOut.y -= area.y;</span>
+&nbsp;
+			// Use default block-out color if none specified
+<span class="cstat-no" title="statement not covered" >			blockOut.color = blockOut.color || defaultColor;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			return blockOut;</span>
+&nbsp;
+		}.bind(this));
+&nbsp;
+		// Remove block-outs that doesn't need to be done
+<span class="cstat-no" title="statement not covered" >		reducedList = flattenList.filter(<span class="fstat-no" title="function not covered" >function (blockOut) {</span></span>
+<span class="cstat-no" title="statement not covered" >			return ((blockOut.width !== 0) &amp;&amp; (blockOut.height !== 0));</span>
+		});
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		return reducedList;</span>
+&nbsp;
+	}.bind(this));
+};
+&nbsp;
+/**
+ * Reduces a frame-item to a specified area
+ *
+ * @method _reduceRectItemToArea
+ * @param {object} item Item that should be reduced
+ * @param {object} area Area to reduce it to
+ * @private
+ */
+Screenshot.prototype._reduceRectItemToArea = <span class="fstat-no" title="function not covered" >function (item, area) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (item.x &lt; area.x) {</span>
+<span class="cstat-no" title="statement not covered" >		item.width -= Math.abs(item.x - area.x);</span>
+<span class="cstat-no" title="statement not covered" >		item.x = area.x;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	if (item.x &gt; area.x + area.width) {</span>
+<span class="cstat-no" title="statement not covered" >		item.x = area.x + area.width;</span>
+<span class="cstat-no" title="statement not covered" >		item.width = 0;</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (item.y &lt; area.y) {</span>
+<span class="cstat-no" title="statement not covered" >		item.height -= Math.abs(item.y - area.y);</span>
+<span class="cstat-no" title="statement not covered" >		item.y = area.y;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	if (item.y &gt; area.y + area.height) {</span>
+<span class="cstat-no" title="statement not covered" >		item.y = area.y + area.height;</span>
+<span class="cstat-no" title="statement not covered" >		item.height = 0;</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (item.width &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >		item.width = 0;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	if (item.width &gt; area.width) {</span>
+<span class="cstat-no" title="statement not covered" >		item.width = area.width;</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (item.height &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >		item.height = 0;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	if (item.height &gt; area.height) {</span>
+<span class="cstat-no" title="statement not covered" >		item.height = area.height;</span>
+	}
+};
+&nbsp;
+/**
+ * Calidates if a rectangular item has all the required properties
+ *
+ * @method _validateRectItem
+ * @param {object} item
+ * @private
+ */
+Screenshot.prototype._validateRectItem = <span class="fstat-no" title="function not covered" >function (item) {</span>
+<span class="cstat-no" title="statement not covered" >	['x', 'y', 'width', 'height'].forEach(<span class="fstat-no" title="function not covered" >function (property) {</span></span>
+<span class="cstat-no" title="statement not covered" >		if (item[property] === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new Error('The "' + property + '" property needs to be defined for item: ' + JSON.stringify(item));</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (typeof item[property] !== 'number') {</span>
+<span class="cstat-no" title="statement not covered" >			throw new Error('The "' + property + '" property needs to be numeric: ' + JSON.stringify(item));</span>
+		}
+	});
+};
+&nbsp;
+&nbsp;
+/**
+ * Takes a screenshot of an area that will be specified through the return-value of the callback
+ *
+ * @method _takeScreenshot
+ * @param {function} fn Function to be called to get area to be captured. Supplies the data retrieved from the client as the first parameters.
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {object} [options.padding] Padding for screenshots
+ * @param {object} [options.padding.viewPort] Padding for view-port screenshots, ignoring areas of the view-port screenshot
+ * @param {int} [options.padding.viewPort.top=0] Padding of view-port screenshot from the top
+ * @param {int} [options.padding.viewPort.bottom=0] Padding of view-port screenshot from the bottom
+ * @param {int} [options.padding.viewPort.left=0] Padding of view-port screenshot from the left
+ * @param {int} [options.padding.viewPort.right=0] Padding of view-port screenshot from the right
+ * @param {object} [options.padding.screenshot] Padding for screenshot, ignoring areas of the screenshot
+ * @param {int} [options.padding.screenshot.top=0] Padding of screenshot from the top
+ * @param {int} [options.padding.screenshot.bottom=0] Padding of screenshot from the bottom
+ * @param {int} [options.padding.screenshot.left=0] Padding of screenshot from the left
+ * @param {int} [options.padding.screenshot.right=0] Padding of screenshot from the right
+ * @param {object} [options.padding.document] Padding for document screenshots, ignoring areas of the document screenshot
+ * @param {int} [options.padding.document.top=0] Padding of document screenshot from the top
+ * @param {int} [options.padding.document.bottom=0] Padding of document screenshot from the bottom
+ * @param {int} [options.padding.document.left=0] Padding of document screenshot from the left
+ * @param {int} [options.padding.document.right=0] Padding of document screenshot from the right
+ * @param {ActiveWindow|Element} [options.context] Context of screenshot
+ * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
+ * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @return {Buffer}
+ * @private
+ */
+Screenshot.prototype._takeScreenshot = function (fn, options) {
+&nbsp;
+	var DevicePixelRatio = require('./devicePixelRatio'),
+		devicePixelRatio = new DevicePixelRatio(this.getDriver()),
+&nbsp;
+		Stitching = require('./stitching'),
+		stitching = new Stitching(this.getDriver());
+&nbsp;
+	return when(devicePixelRatio.getDevicePixelRatio(), <span class="fstat-no" title="function not covered" >function (devicePixelRatio) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return when(stitching.doesNeedStitching(), <span class="fstat-no" title="function not covered" >function (needsStitching) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return when(this.getMaxImageResolution(), <span class="fstat-no" title="function not covered" >function (maxImageResolution) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return when(this._execute(screenshotScripts.init), <span class="fstat-no" title="function not covered" >function (initData) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    initData = JSON.parse(initData);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    var area, sections, padding;</span>
+&nbsp;
+                    // Make sure to account for the device-pixel-ratio
+<span class="cstat-no" title="statement not covered" >                    maxImageResolution *= (1 / devicePixelRatio);</span>
+&nbsp;
+                    // Make sure the document is not too wide; can fix this by increasing maxImageResolution
+                    // We might need to capture only smaller areas, but we need to account also for correct behaving
+                    // browsers like firefox which will always return the whole document.
+<span class="cstat-no" title="statement not covered" >                    if (initData.document.width &gt; maxImageResolution) {</span>
+<span class="cstat-no" title="statement not covered" >                        throw new Error('The maxImageResolution needs to be greater or equal to one time the document width.');</span>
+                    }
+&nbsp;
+                    // Set defaults for padding (if none given) and validate
+<span class="cstat-no" title="statement not covered" >                    padding = this._browserPadding((options &amp;&amp; options.padding) || {});</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    area = fn(initData);</span>
+&nbsp;
+                    // Add requested document padding
+<span class="cstat-no" title="statement not covered" >                    area.x = area.x + padding.document.left;</span>
+<span class="cstat-no" title="statement not covered" >                    area.y = area.y + padding.document.top;</span>
+<span class="cstat-no" title="statement not covered" >                    area.width = area.width - padding.document.left - padding.document.right;</span>
+<span class="cstat-no" title="statement not covered" >                    area.height = area.height - padding.document.top - padding.document.bottom;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    this._validateArea(area, padding, initData);</span>
+&nbsp;
+                    // Determine sections and view-ports to capture
+<span class="cstat-no" title="statement not covered" >                    sections = this._gatherSections(area, padding, initData, maxImageResolution, needsStitching);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    return when(this._determineBlockOuts(area, options.context || this, options.blockOuts || [], options.blockOutColor), <span class="fstat-no" title="function not covered" >function (blockOuts) {</span></span>
+<span class="cstat-no" title="statement not covered" >						return when(this._takeSectionScreenshots(sections, initData, options), <span class="fstat-no" title="function not covered" >function () {</span></span>
+&nbsp;
+							// Stitch images together
+<span class="cstat-no" title="statement not covered" >							var image = this._stitchImages(area, sections, devicePixelRatio);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >							return when(this._execute(screenshotScripts.revert, [initData]), <span class="fstat-no" title="function not covered" >function () {</span></span>
+&nbsp;
+								// Apply block-outs (if available)
+<span class="cstat-no" title="statement not covered" >								this._applyBlockOuts(image, blockOuts, devicePixelRatio);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >								return image.toBlobSync();</span>
+&nbsp;
+							}.bind(this));
+						}.bind(this));
+                    }.bind(this));
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+/**
+ * Applies all areas selected to be blocked-out
+ *
+ * @param {PNGImage} image Image to be blocked-out
+ * @param {object[]} blockOuts List of block-out areas
+ * @param {number} devicePixelRatio Device pixel ratio for browser
+ * @private
+ */
+Screenshot.prototype._applyBlockOuts = <span class="fstat-no" title="function not covered" >function (image, blockOuts, devicePixelRatio) {</span>
+<span class="cstat-no" title="statement not covered" >	blockOuts.forEach(<span class="fstat-no" title="function not covered" >function (blockOut) {</span></span>
+<span class="cstat-no" title="statement not covered" >		image.fillRect(</span>
+			blockOut.x * devicePixelRatio,
+			blockOut.y * devicePixelRatio,
+			blockOut.width * devicePixelRatio,
+			blockOut.height * devicePixelRatio,
+			blockOut.color
+		);
+	});
+};
+&nbsp;
+/**
+ * Determines if the screenshots need additional padding
+ *
+ * Note:
+ *   Overwrite this method if you want to implement standard browser padding.
+ *
+ * @method _browserPadding
+ * @param {object} padding
+ * @private
+ */
+Screenshot.prototype._browserPadding = <span class="fstat-no" title="function not covered" >function (padding) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var paddingViewPortTop = 0, paddingViewPortBottom = 0,</span>
+        paddingViewPortLeft = 0, paddingViewPortRight = 0,
+        paddingScreenshotTop = 0, paddingScreenshotBottom = 0,
+        paddingScreenshotLeft = 0, paddingScreenshotRight = 0,
+        paddingDocumentTop = 0, paddingDocumentBottom = 0,
+        paddingDocumentLeft = 0, paddingDocumentRight = 0,
+&nbsp;
+        browserName = this.getDriver().browserName().toLowerCase(),
+        browserVersion = this.getDriver().browserVersion(),
+        deviceName = this.getDriver().deviceName().toLowerCase(),
+        deviceOrientation = this.getDriver().deviceOrientation().toLowerCase();
+&nbsp;
+    // Exceptions
+<span class="cstat-no" title="statement not covered" >    switch (browserName) {</span>
+&nbsp;
+        case 'iphone':
+            //if (deviceName.indexOf('ipad') !== -1) {
+            //    if ((deviceOrientation === '') || (deviceOrientation === 'portrait')) {
+<span class="cstat-no" title="statement not covered" >                    paddingScreenshotTop = 65; </span>// Browser address bar needs to be trimmed
+<span class="cstat-no" title="statement not covered" >                    paddingScreenshotBottom = 2; </span>// Browser returns view-port that is one pixel smaller than reported
+            //    }
+            //}
+<span class="cstat-no" title="statement not covered" >            break;</span>
+&nbsp;
+        case 'internet explorer':
+            // We expect for future versions to behave the same (black border on the right)
+<span class="cstat-no" title="statement not covered" >            if (browserVersion &gt;= 10) {</span>
+<span class="cstat-no" title="statement not covered" >                paddingDocumentRight = 4;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            break;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    padding.viewPort = padding.viewPort || {};</span>
+<span class="cstat-no" title="statement not covered" >    padding.viewPort.top = padding.viewPort.top || paddingViewPortTop;</span>
+<span class="cstat-no" title="statement not covered" >    padding.viewPort.bottom = padding.viewPort.bottom || paddingViewPortBottom;</span>
+<span class="cstat-no" title="statement not covered" >    padding.viewPort.left = padding.viewPort.left || paddingViewPortLeft;</span>
+<span class="cstat-no" title="statement not covered" >    padding.viewPort.right = padding.viewPort.right || paddingViewPortRight;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    padding.screenshot = padding.screenshot || {};</span>
+<span class="cstat-no" title="statement not covered" >    padding.screenshot.top = padding.screenshot.top || paddingScreenshotTop;</span>
+<span class="cstat-no" title="statement not covered" >    padding.screenshot.bottom = padding.screenshot.bottom || paddingScreenshotBottom;</span>
+<span class="cstat-no" title="statement not covered" >    padding.screenshot.left = padding.screenshot.left || paddingScreenshotLeft;</span>
+<span class="cstat-no" title="statement not covered" >    padding.screenshot.right = padding.screenshot.right || paddingScreenshotRight;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    padding.document = padding.document || {};</span>
+<span class="cstat-no" title="statement not covered" >    padding.document.top = padding.document.top || paddingDocumentTop;</span>
+<span class="cstat-no" title="statement not covered" >    padding.document.bottom = padding.document.bottom || paddingDocumentBottom;</span>
+<span class="cstat-no" title="statement not covered" >    padding.document.left = padding.document.left || paddingDocumentLeft;</span>
+<span class="cstat-no" title="statement not covered" >    padding.document.right = padding.document.right || paddingDocumentRight;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return padding;</span>
+};
+&nbsp;
+/**
+ * Validates and corrects area that was given to capture
+ *
+ * @method _validateArea
+ * @param {object} area
+ * @param {object} padding Padding for screenshots
+ * @param {object} padding.viewPort Padding for view-port screenshots, ignoring areas of the view-port screenshot
+ * @param {int} padding.viewPort.top Padding of view-port screenshot from the top
+ * @param {int} padding.viewPort.bottom Padding of view-port screenshot from the bottom
+ * @param {int} padding.viewPort.left Padding of view-port screenshot from the left
+ * @param {int} padding.viewPort.right Padding of view-port screenshot from the right
+ * @param {object} padding.screenshot Padding for screenshots, ignoring areas of the screenshot
+ * @param {int} padding.screenshot.top Padding of screenshot from the top
+ * @param {int} padding.screenshot.bottom Padding of screenshot from the bottom
+ * @param {int} padding.screenshot.left Padding of screenshot from the left
+ * @param {int} padding.screenshot.right Padding of screenshot from the right
+ * @param {object} padding.document Padding for document screenshots, ignoring areas of the document screenshot
+ * @param {int} padding.document.top Padding of document screenshot from the top
+ * @param {int} padding.document.bottom Padding of document screenshot from the bottom
+ * @param {int} padding.document.left Padding of document screenshot from the left
+ * @param {int} padding.document.right Padding of document screenshot from the right
+ * @param {object} initData
+ * @private
+ */
+Screenshot.prototype._validateArea = <span class="fstat-no" title="function not covered" >function (area, padding, initData) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (area.width &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >        throw new Error('Width of area to capture cannot be negative.');</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (area.height &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >        throw new Error('Height of area to capture cannot be negative.');</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (area.x &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >        area.x = 0;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (area.x &gt;= initData.document.width) {</span>
+<span class="cstat-no" title="statement not covered" >        area.x = initData.document.width - 1;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (area.y &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >        area.y = 0;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (area.y &gt;= initData.document.height) {</span>
+<span class="cstat-no" title="statement not covered" >        area.y = initData.document.height - 1;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (area.x + area.width &gt; initData.document.width) {</span>
+<span class="cstat-no" title="statement not covered" >        area.width = initData.document.width - area.x;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (area.y + area.height &gt; initData.document.height) {</span>
+<span class="cstat-no" title="statement not covered" >        area.height = initData.document.height - area.y;</span>
+    }
+};
+&nbsp;
+&nbsp;
+/**
+ * Calculates the sections that need to be captured on their own to be able to capture the whole document.
+ *
+ * This method depends on the value given to "maxImageResolution".
+ *
+ * @method _gatherSections
+ * @param {object} area Area to capture
+ * @param {object} padding Padding for screenshots
+ * @param {object} padding.viewPort Padding for view-port screenshots, ignoring areas of the view-port screenshot
+ * @param {int} padding.viewPort.top Padding of view-port screenshot from the top
+ * @param {int} padding.viewPort.bottom Padding of view-port screenshot from the bottom
+ * @param {int} padding.viewPort.left Padding of view-port screenshot from the left
+ * @param {int} padding.viewPort.right Padding of view-port screenshot from the right
+ * @param {object} padding.screenshot Padding for screenshots, ignoring areas of the screenshot
+ * @param {int} padding.screenshot.top Padding of screenshot from the top
+ * @param {int} padding.screenshot.bottom Padding of screenshot from the bottom
+ * @param {int} padding.screenshot.left Padding of screenshot from the left
+ * @param {int} padding.screenshot.right Padding of screenshot from the right
+ * @param {object} initData Data that was initially gathered from the client
+ * @param {int} maxImageResolution Max. number of pixels allowed for a screenshot
+ * @param {boolean} needsStitching Does the browser need stitching?
+ * @return {object[]} List of sections
+ * @private
+ */
+Screenshot.prototype._gatherSections = <span class="fstat-no" title="function not covered" >function (area, padding, initData, maxImageResolution, needsStitching) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var sections = [], section,</span>
+        sectionCount, sectionHeight,
+        i, index = 0,
+        yOffset,
+        documentWidth,
+        viewPortHeight = initData.viewPort.height - padding.viewPort.top - padding.viewPort.bottom - padding.screenshot.bottom;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    documentWidth = initData.document.width - area.x;</span>
+&nbsp;
+    // Calculate max. section height considering the max resolution to capture
+<span class="cstat-no" title="statement not covered" >    sectionHeight = Math.floor(maxImageResolution / documentWidth);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (needsStitching) {</span>
+        // When the screenshots are stitched together,
+        // we try here to reduce the amount of screenshots per section.
+        // We don't want to be wasteful so we make sure that the section border is on
+        // even viewPort height; we want to avoid taking a viewPort screenshot and only use
+        // the upper part of it, discarding it and requesting it for the next section.
+<span class="cstat-no" title="statement not covered" >        sectionHeight = Math.floor(sectionHeight / viewPortHeight) * viewPortHeight;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    sectionCount = Math.ceil(area.height / sectionHeight);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; sectionCount; i++) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        yOffset = (i * sectionHeight);</span>
+<span class="cstat-no" title="statement not covered" >        section = {</span>
+            shift: (sectionCount !== 1),
+			x: area.x,
+			y: area.y + yOffset, // Vertical offset for sections
+			dstX: 0,
+			dstY: yOffset, // Vertical offset for sections
+            width: area.width,
+            height: Math.min(sectionHeight, area.height - yOffset),
+            viewPorts: undefined
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (needsStitching) {</span>
+<span class="cstat-no" title="statement not covered" >            section.viewPorts = this._gatherViewPortSections(section, padding, initData, index);</span>
+<span class="cstat-no" title="statement not covered" >            index += section.viewPorts.length;</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            section.viewPorts = [</span>
+                {
+                    srcX: padding.viewPort.left + padding.screenshot.left,
+                    srcY: padding.viewPort.top + padding.screenshot.top,
+                    x: 0,
+                    y: 0,
+                    width: section.width,
+                    height: section.height,
+                    image: undefined,
+                    index: index
+                }
+            ];
+<span class="cstat-no" title="statement not covered" >            index++;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        sections.push(section);</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return sections;</span>
+};
+&nbsp;
+/**
+ * Calculates the sections that need to be captured when the browser is not able to return pixels outside of the view-port.
+ *
+ * @method _gatherViewPortSections
+ * @param {object} section Section that should be captured
+ * @param {object} padding Padding for screenshots
+ * @param {object} padding.viewPort Padding for view-port screenshots, ignoring areas of the view-port screenshot
+ * @param {int} padding.viewPort.top Padding of view-port screenshot from the top
+ * @param {int} padding.viewPort.bottom Padding of view-port screenshot from the bottom
+ * @param {int} padding.viewPort.left Padding of view-port screenshot from the left
+ * @param {int} padding.viewPort.right Padding of view-port screenshot from the right
+ * @param {object} padding.screenshot Padding for screenshots, ignoring areas of the screenshot
+ * @param {int} padding.screenshot.top Padding of screenshot from the top
+ * @param {int} padding.screenshot.bottom Padding of screenshot from the bottom
+ * @param {int} padding.screenshot.left Padding of screenshot from the left
+ * @param {int} padding.screenshot.right Padding of screenshot from the right
+ * @param {object} initData Data that was initially gathered from the client
+ * @param {int} index Index of first view-port
+ * @return {object[]}
+ * @private
+ */
+Screenshot.prototype._gatherViewPortSections = <span class="fstat-no" title="function not covered" >function (section, padding, initData, index) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var viewPorts = [],</span>
+&nbsp;
+        sectionWidth = section.width,
+        sectionHeight = section.height,
+&nbsp;
+        viewPortWidth = initData.viewPort.width - padding.viewPort.left - padding.viewPort.right - padding.screenshot.right,
+        viewPortHeight = initData.viewPort.height - padding.viewPort.top - padding.viewPort.bottom - padding.screenshot.bottom,
+&nbsp;
+        columns = Math.ceil(sectionWidth / viewPortWidth),
+        rows = Math.ceil(sectionHeight / viewPortHeight),
+&nbsp;
+        offsetX, offsetY,
+        x, y;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (y = 0; y &lt; rows; y++) {</span>
+<span class="cstat-no" title="statement not covered" >        for (x = 0; x &lt; columns; x++) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            offsetX = x * viewPortWidth;</span>
+<span class="cstat-no" title="statement not covered" >            offsetY = y * viewPortHeight;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            viewPorts.push({</span>
+                srcX: padding.viewPort.left + padding.screenshot.left,
+                srcY: padding.viewPort.top + padding.screenshot.top,
+                x: offsetX,
+                y: offsetY,
+                width: Math.min(viewPortWidth, sectionWidth - offsetX),
+                height: Math.min(viewPortHeight, sectionHeight - offsetY),
+                image: undefined,
+                index: index
+            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            index++;</span>
+        }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return viewPorts;</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Takes all the screenshots defined in section
+ *
+ * @method _takeSectionScreenshots
+ * @param {object[]} sections List of sections to capture
+ * @param {object} initData Data that was initially gathered from the client
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @private
+ */
+Screenshot.prototype._takeSectionScreenshots = <span class="fstat-no" title="function not covered" >function (sections, initData, options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return when(this.getDriver().utils().map(sections, <span class="fstat-no" title="function not covered" >function (section) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._takeViewPortScreenshots(section, section.viewPorts, initData, options);</span>
+&nbsp;
+    }.bind(this)), <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this._execute(options.completeFn);</span>
+    }.bind(this));
+};
+&nbsp;
+/**
+ * Takes all the screenshots defined in the view-ports
+ *
+ * @method _takeViewPortScreenshots
+ * @param {object} section Section to capture
+ * @param {object[]} viewPorts List of view-ports to capture
+ * @param {object} initData Data that was initially gathered from the client
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @private
+ */
+Screenshot.prototype._takeViewPortScreenshots = <span class="fstat-no" title="function not covered" >function (section, viewPorts, initData, options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return this.getDriver().utils().map(viewPorts, <span class="fstat-no" title="function not covered" >function (viewPort) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._takeViewPortScreenshot(section, viewPort, initData, options);</span>
+    }.bind(this));
+};
+&nbsp;
+/**
+ * Takes a screenshot of the given view-port in relation to the section
+ *
+ * @method _takeViewPortScreenshot
+ * @param {object} section Section to capture
+ * @param {object} viewPort View-ports to capture
+ * @param {object} initData Data that was initially gathered from the client
+ * @param {object} [options]
+ * @param {function} [options.eachFn] Will execute method on client before each screenshot is taken. First parameter is index of screenshot.
+ * @param {function} [options.completeFn] Will execute method on client after all screenshots are taken.
+ * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @private
+ */
+Screenshot.prototype._takeViewPortScreenshot = <span class="fstat-no" title="function not covered" >function (section, viewPort, initData, options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var offsetX = section.x + viewPort.x,</span>
+        offsetY = section.y + viewPort.y,
+        viewPortIndex = viewPort.index,
+        sectionHeight = section.shift ? section.height : null,
+		wait = (options &amp;&amp; options.wait) || 100;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return when(this._execute(screenshotScripts.documentOffset, [offsetX, offsetY, sectionHeight, initData]), <span class="fstat-no" title="function not covered" >function () {</span></span>
+&nbsp;
+        // Just wait a little bit. Some browsers need time for that.
+<span class="cstat-no" title="statement not covered" >        return when(this.getDriver().utils().sleep(wait), <span class="fstat-no" title="function not covered" >function () {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return when(this._execute(options.eachFn, [viewPortIndex]), <span class="fstat-no" title="function not covered" >function () {</span></span>
+&nbsp;
+                // Take screenshot with current section and view-port
+<span class="cstat-no" title="statement not covered" >                return when(this.takeProcessedScreenshot(), <span class="fstat-no" title="function not covered" >function (image) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    viewPort.image = image;</span>
+&nbsp;
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+    }.bind(this));
+};
+&nbsp;
+/**
+ * Processes the screenshots before it is used for stitching
+ *
+ * Note:
+ *  Some browser need some pre-processing like rotating the screenshot.
+ *
+ * @method _screenshotPrePrecessing
+ * @param {PNGImage} image Image to process
+ * @return {PNGImage}
+ * @private
+ */
+Screenshot.prototype._screenshotPrePrecessing = <span class="fstat-no" title="function not covered" >function (image) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var browserName = this.getDriver().browserName().toLowerCase(),</span>
+        browserVersion = this.getDriver().browserVersion(),
+        deviceName = this.getDriver().deviceName().toLowerCase(),
+        deviceOrientation = this.getDriver().deviceOrientation().toLowerCase();
+&nbsp;
+    // Exceptions
+<span class="cstat-no" title="statement not covered" >    switch (browserName) {</span>
+&nbsp;
+        case 'iphone':
+<span class="cstat-no" title="statement not covered" >            if (deviceOrientation === 'landscape') {</span>
+<span class="cstat-no" title="statement not covered" >                image = image.rotateCCW();</span>
+            }
+<span class="cstat-no" title="statement not covered" >            break;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return image;</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Stitches all the sections and view-ports together to one final image
+ *
+ * @method _stitchImages
+ * @param {object} area Area that should have been captured on the page
+ * @param {object[]} sections List of sections that were captured
+ * @param {number} devicePixelRatio Device pixel ratio for browser
+ * @return {PNGImage}
+ * @private
+ */
+Screenshot.prototype._stitchImages = <span class="fstat-no" title="function not covered" >function (area, sections, devicePixelRatio) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var image;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    image = PNGImage.createImage(</span>
+        area.width * devicePixelRatio,
+        area.height * devicePixelRatio
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    sections.forEach(<span class="fstat-no" title="function not covered" >function (section) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        section.viewPorts.forEach(<span class="fstat-no" title="function not covered" >function (viewPort) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var offsetX = (section.dstX + viewPort.x) * devicePixelRatio,</span>
+                offsetY = (section.dstY + viewPort.y) * devicePixelRatio,
+                width = viewPort.width * devicePixelRatio,
+                height = viewPort.height * devicePixelRatio;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            viewPort.image.getImage().bitblt(</span>
+                image.getImage(),
+                viewPort.srcX * devicePixelRatio,
+                viewPort.srcY * devicePixelRatio,
+                Math.min(width - (section.dstX * devicePixelRatio), viewPort.image.getWidth()),
+                Math.min(height - (section.dstY * devicePixelRatio), viewPort.image.getHeight()),
+                offsetX,
+                offsetY
+            );
+&nbsp;
+            // Free-up some memory
+<span class="cstat-no" title="statement not covered" >            viewPort.image = null;</span>
+        });
+    });
+&nbsp;
+    // Force garbage-collection if available (can be turned on with option "--expose-gc" when running node)
+<span class="cstat-no" title="statement not covered" >    if (global.gc) {</span>
+<span class="cstat-no" title="statement not covered" >        global.gc();</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return image;</span>
+};
+&nbsp;
+/**
+ * Executes a script in the browser and returns the result.
+ *
+ * This is a convenience method for accessing the execute method.
+ *
+ * @method _execute
+ * @param {String|Function} script
+ * @param {Array} [args]
+ * @return {*}
+ * @private
+ */
+Screenshot.prototype._execute = <span class="fstat-no" title="function not covered" >function (script, args) {</span>
+<span class="cstat-no" title="statement not covered" >    if (script) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.getDriver().browser().activeWindow().execute(script, args);</span>
+&nbsp;
+    } else { // Ignore script if there is nothing - might happen with screenshot requests
+<span class="cstat-no" title="statement not covered" >        return this.getDriver().utils().resolve(undefined);</span>
+    }
+};
+&nbsp;
+logMethods(Screenshot.prototype);
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 24 2015 00:04:49 GMT-0700 (PDT)</div>
+</div>
+
+<script src="../../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

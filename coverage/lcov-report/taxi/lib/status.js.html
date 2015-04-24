@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header medium">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">taxi/lib/status.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">53.33% <small>(8 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(15 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(7 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">53.33% <small>(8 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(15 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -320,7 +320,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,7 +336,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -347,7 +347,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -358,7 +358,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -370,7 +370,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -381,7 +381,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -392,7 +392,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -409,8 +409,8 @@ module.exports = Status;
  * @submodule System
  * @param {Object} values
  */
-<span class="fstat-no" title="function not covered" >function Status (values) {</span>
-<span class="cstat-no" title="statement not covered" >  this._values = values;</span>
+function Status (values) {
+  this._values = values;
 }
 &nbsp;
 &nbsp;
@@ -425,8 +425,8 @@ module.exports = Status;
  * @method getBuildVersion
  * @return {String}
  */
-Status.prototype.getBuildVersion = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >  return this._values.build.version;</span>
+Status.prototype.getBuildVersion = function () {
+  return this._values.build.version;
 };
 &nbsp;
 /**
@@ -436,8 +436,8 @@ Status.prototype.getBuildVersion = <span class="fstat-no" title="function not co
  * @method getBuildRevision
  * @return {String}
  */
-Status.prototype.getBuildRevision = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >  return this._values.build.revision;</span>
+Status.prototype.getBuildRevision = function () {
+  return this._values.build.revision;
 };
 &nbsp;
 /**
@@ -447,8 +447,8 @@ Status.prototype.getBuildRevision = <span class="fstat-no" title="function not c
  * @method getBuildTime
  * @return {Number}
  */
-Status.prototype.getBuildTime = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >  return this._values.build.time;</span>
+Status.prototype.getBuildTime = function () {
+  return this._values.build.time;
 };
 &nbsp;
 &nbsp;
@@ -459,8 +459,8 @@ Status.prototype.getBuildTime = <span class="fstat-no" title="function not cover
  * @method getOSArchitecture
  * @return {String}
  */
-Status.prototype.getOSArchitecture = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >  return this._values.os.arch;</span>
+Status.prototype.getOSArchitecture = function () {
+  return this._values.os.arch;
 };
 &nbsp;
 /**
@@ -470,8 +470,8 @@ Status.prototype.getOSArchitecture = <span class="fstat-no" title="function not 
  * @method getOSName
  * @return {String}
  */
-Status.prototype.getOSName = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >  return this._values.os.name;</span>
+Status.prototype.getOSName = function () {
+  return this._values.os.name;
 };
 &nbsp;
 /**
@@ -481,8 +481,8 @@ Status.prototype.getOSName = <span class="fstat-no" title="function not covered"
  * @method getOSVersion
  * @return {String}
  */
-Status.prototype.getOSVersion = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >  return this._values.os.version;</span>
+Status.prototype.getOSVersion = function () {
+  return this._values.os.version;
 };
 &nbsp;
 &nbsp;
@@ -491,7 +491,7 @@ Status.prototype.getOSVersion = <span class="fstat-no" title="function not cover
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 05 2015 00:20:24 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 24 2015 00:04:49 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>
