@@ -1,5 +1,7 @@
 var assert = require('assert');
-var taxi = require('taxi');
+var taxi = require('..');
+
+console.time('test');
 
 // Connect to a local Selenium stand-alone server and connect to firefox in synchronous mode.
 var driver = taxi('http://localhost:4444/wd/hub', { browserName:'firefox' }, { mode: taxi.Driver.MODE_SYNC });
@@ -22,6 +24,8 @@ activeWindow.mouse().clickAt(500, 200);
 
 // Close active window
 activeWindow.close();
+
+console.timeEnd('test');
 
 // Close browser
 driver.dispose();

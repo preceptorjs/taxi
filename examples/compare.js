@@ -2,7 +2,7 @@ var taxi = require('..');
 
 // Here, we are connecting to a local Selenium standalone server in sync-mode.
 // However, the comparison feature will also work exactly the same in asynchronous mode.
-var driver = taxi('http://localhost:4444/wd/hub', { browserName:'firefox' }, { mode: taxi.Driver.MODE_SYNC });
+var driver = taxi('http://localhost:4444/wd/hub', { browserName:'firefox' }, { mode: taxi.Driver.MODE_SYNC, debug:true, httpDebug:true });
 
 try {
 	// Prepare objects for use later - some convenience variables, avoiding to repeat ourselves

@@ -19,7 +19,7 @@ try {
 		.navigateTo('http://www.yahoo.com')
 
 		// Enter a search term - here it is "apple"
-		.elementType('.searchwrapper .input-wrapper input', 'apple')
+		.elementSendKeys('.searchwrapper .input-wrapper input', 'apple')
 		.elementClick('button.searchsubmit')
 
 		// Get the title of the page...
