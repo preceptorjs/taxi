@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.1</em>
+            <em>API Docs for: 0.2.2</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -311,11 +311,11 @@ Utils.prototype.map = function (list, fn) {
 /**
  * Evaluates the value according to the execution mode the driver is in
  *
- * @method then
+ * @method when
  * @param {*} value Value that needs to be evaluated. This could possibly be the value itself or a promise.
  * @param {function} fn Function to be called with the evaluated value
  */
-Utils.prototype.then = function (value, fn) {
+Utils.prototype.when = function (value, fn) {
 	return when(value, fn);
 };
 

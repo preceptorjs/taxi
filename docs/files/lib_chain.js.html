@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.1</em>
+            <em>API Docs for: 0.2.2</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -209,7 +209,7 @@ module.exports = Chain;
  *     return this.elements(selector, function (element) {
  *
  *         // Make sure that evaluation will work for sync and async mode
- *         return this.driver().utils().then(
+ *         return this.driver().utils().when(
  *
  *             // Click on the selected element with the object-oriented API
  *             element.mouse().click(button),
@@ -1339,6 +1339,27 @@ Chain.prototype.elementCapture = function (selector, options, callBack) {
  * * **&#x60;title&#x60;** The title needs to be unique to identify each of these comparisons across all test-runs.
  * Additionally, the id parameter can be used to make this identifier unique.
  * * **&#x60;options.compare.id&#x60;** The id will be added to the title to get a unique identifier.
+ *
+ * ##Comparison configuration
+ * General comparison options can be set globally in the driver through the &#x60;setValue&#x60;/&#x60;getValue&#x60; methods.
+ * The options for the comparison, however, need to be supplied for every comparison itself.
+ *
+ * ###Changing configuration options
+ * &#x60;&#x60;&#x60;
+ * driver.setValue(&#x27;blinkDiff.outputOnSuccess&#x27;, true);
+ * &#x60;&#x60;&#x60;
+ *
+ * ###Options
+ * * **&#x60;blinkDiff.outputOnSuccess&#x60;** {&#x60;boolean&#x60;} - Should an output be created when comparison is successful?
+ * There will always be an output if the comparison fails.
+ * * **&#x60;blinkDiff.failOnDifference&#x60;** {&#x60;boolean&#x60;} - Should Taxi trigger an error when a difference is recognized?
+ * * **&#x60;blinkDiff.autoApprove&#x60;** {&#x60;boolean&#x60;} - Should Taxi auto-approve screenshots when no previous comparison
+ * exist? Otherwise, the test will ignore this comparison, saving the current build screenshot.
+ * * **&#x60;blinkDiff.approvedPath&#x60;** {&#x60;string&#x60;} - Path to the approved folder. Defaults to the current working directory.
+ * * **&#x60;blinkDiff.buildPath&#x60;** {&#x60;string&#x60;} - Path to the build folder, holding all the screenshots taken in the recent build.
+ * Defaults to the approved folder.
+ * * **&#x60;blinkDiff.diffPath&#x60;** {&#x60;string&#x60;} - Path to the difference folder, keeping the highlighted differences between
+ * the approved image and the build image. Default to the build folder.
  */
 Chain.prototype.elementCompare = function (selector, title, options, callBack) {
 
