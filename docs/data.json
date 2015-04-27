@@ -6429,7 +6429,7 @@
             "since": "0.2.0",
             "chainable": 1,
             "return": {
-                "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> `function` (`isSimilar`, `element`, `index`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`isSimilar`** {`boolean`|`null`} - Is comparison similar to previous one?\n* **`element`** {`Element`} - Selected element\n* **`index`** {`int`} - Zero-based index of the selected element\n\n**Notes**\n* **`isSimilar`** will be NULL when the value cannot be determined at the time of comparison\ndue to the comparison process, or simply because there was no previous image to compare to.\n* **`isSimilar`** will be true when all of the comparison APIs determined a similarity to previously\ncaptured data, depending on the configuration setting for each of those comparison APIs.\n* **`isSimilar`** will be false when at least one comparison API determines a difference in the\ncurrent and previous state.\n\n---------------------------------------\n\n##Notes\n* **`title`** The title needs to be unique to identify each of these comparisons across all test-runs.\nAdditionally, the id parameter can be used to make this identifier unique.\n* **`options.compare.id`** The id will be added to the title to get a unique identifier.\n\n##Comparison configuration\nGeneral comparison options can be set globally in the driver through the `setValue`/`getValue` methods.\nThe options for the comparison, however, need to be supplied for every comparison itself.\n\n###Changing configuration options\n```\ndriver.setValue('blinkDiff.outputOnSuccess', true);\n```\n\n###Options\n* **`blinkDiff.outputOnSuccess`** {`boolean`} - Should an output be created when comparison is successful?\nThere will always be an output if the comparison fails.\n* **`blinkDiff.failOnDifference`** {`boolean`} - Should Taxi trigger an error when a difference is recognized?\n* **`blinkDiff.autoApprove`** {`boolean`} - Should Taxi auto-approve screenshots when no previous comparison\nexist? Otherwise, the test will ignore this comparison, saving the current build screenshot.\n* **`blinkDiff.approvedPath`** {`string`} - Path to the approved folder. Defaults to the current working directory.\n* **`blinkDiff.buildPath`** {`string`} - Path to the build folder, holding all the screenshots taken in the recent build.\nDefaults to the approved folder.\n* **`blinkDiff.diffPath`** {`string`} - Path to the difference folder, keeping the highlighted differences between\nthe approved image and the build image. Default to the build folder.",
+                "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> `function` (`isSimilar`, `element`, `index`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`isSimilar`** {`boolean`|`null`} - Is comparison similar to previous one?\n* **`element`** {`Element`} - Selected element\n* **`index`** {`int`} - Zero-based index of the selected element\n\n**Notes**\n* **`isSimilar`** will be NULL when the value cannot be determined at the time of comparison\ndue to the comparison process, or simply because there was no previous image to compare to.\n* **`isSimilar`** will be true when all of the comparison APIs determined a similarity to previously\ncaptured data, depending on the configuration setting for each of those comparison APIs.\n* **`isSimilar`** will be false when at least one comparison API determines a difference in the\ncurrent and previous state.\n\n---------------------------------------\n\n##Notes\n* **`title`** The title needs to be unique to identify each of these comparisons across all test-runs.\nAdditionally, the id parameter can be used to make this identifier unique.\n* **`options.compare.id`** The id will be added to the title to get a unique identifier.\n\n##Comparison configuration\nGeneral comparison options can be set globally in the driver through the `setValue`/`getValue` methods.\nThe options for the comparison, however, need to be supplied for every comparison itself.\n\n###Changing configuration options\n```\ndriver.setValue('blinkDiff.outputOnSuccess', true);\n```\n\n###Options\n* **`blinkDiff.outputOnSuccess`** {`boolean`} - Should an output be created when comparison is successful?\nThere will always be an output if the comparison fails.\n* **`blinkDiff.failOnDifference`** {`boolean`} - Should Taxi trigger an error when a difference is recognized?\n* **`blinkDiff.autoApprove`** {`boolean`} - Should Taxi auto-approve screenshots when no previous comparison\nexist? Otherwise, the test will ignore this comparison, saving the current build screenshot.\n* **`blinkDiff.approvedPath`** {`string`} - Path to the approved folder. Defaults to the current working directory.\n* **`blinkDiff.buildPath`** {`string`} - Path to the build folder, holding all the screenshots taken in the recent build.\nDefaults to the approved folder.\n* **`blinkDiff.diffPath`** {`string`} - Path to the difference folder, keeping the highlighted differences between\nthe approved image and the build image. Default to the build folder.\n* **`blinkDiff.options`** {`object`} - Default values for Blink-Diff options. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff#object-usage)",
                 "type": "Chain"
             },
             "class": "Chain",
@@ -6437,7 +6437,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1251,
+            "line": 1252,
             "description": "Clicks on the selected elements",
             "itemtype": "method",
             "name": "elementClick",
@@ -6476,7 +6476,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1294,
+            "line": 1295,
             "description": "Clicks on a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementClickAt",
@@ -6525,7 +6525,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1339,
+            "line": 1340,
             "description": "Double-clicks on the selected elements",
             "itemtype": "method",
             "name": "elementDblClick",
@@ -6564,7 +6564,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1382,
+            "line": 1383,
             "description": "Double-clicks on a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementDblClickAt",
@@ -6613,7 +6613,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1427,
+            "line": 1428,
             "description": "Hovers the mouse over the selected elements",
             "itemtype": "method",
             "name": "elementHover",
@@ -6645,7 +6645,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1461,
+            "line": 1462,
             "description": "Hovers the mouse over a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementHoverAt",
@@ -6687,7 +6687,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1501,
+            "line": 1502,
             "description": "Triggers a touch-event on the selected elements",
             "itemtype": "method",
             "name": "elementTouch",
@@ -6719,7 +6719,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1535,
+            "line": 1536,
             "description": "Triggers a touch-event on the selected element relative to the upper-left corner of the elements",
             "itemtype": "method",
             "name": "elementTouchAt",
@@ -6761,7 +6761,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1571,
+            "line": 1572,
             "description": "Taps on the selected elements",
             "itemtype": "method",
             "name": "elementTap",
@@ -6793,7 +6793,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1605,
+            "line": 1606,
             "description": "Double-taps on the selected elements",
             "itemtype": "method",
             "name": "elementDblTap",
@@ -6825,7 +6825,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1639,
+            "line": 1640,
             "description": "Triggers a long-tap on the selected elements",
             "itemtype": "method",
             "name": "elementLongTap",
@@ -6857,7 +6857,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1677,
+            "line": 1678,
             "description": "Executes a script or function within the active browser window, returning the results",
             "methods": "execute",
             "params": [
@@ -6894,7 +6894,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1716,
+            "line": 1717,
             "description": "Types complete strings or key-strokes into the active window, effectively sending key-strokes to the focused element",
             "itemtype": "method",
             "name": "sendKeys",
@@ -6926,7 +6926,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1748,
+            "line": 1749,
             "description": "Captures the complete document in a PNG buffer",
             "itemtype": "method",
             "name": "captureDocument",
@@ -6996,7 +6996,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1788,
+            "line": 1789,
             "description": "Captures the current view-port in a PNG buffer",
             "itemtype": "method",
             "name": "captureViewPort",
@@ -7066,7 +7066,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1828,
+            "line": 1829,
             "description": "Captures a selected area in a PNG buffer",
             "itemtype": "method",
             "name": "captureArea",
@@ -7164,7 +7164,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1872,
+            "line": 1873,
             "description": "Compares the whole document with images that were captured previously",
             "itemtype": "method",
             "name": "compareDocument",
@@ -7255,7 +7255,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1920,
+            "line": 1921,
             "description": "Compares the view-port with images previously taken",
             "itemtype": "method",
             "name": "compareViewPort",
@@ -7346,7 +7346,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1968,
+            "line": 1969,
             "description": "Compares a specific and fixed area of the document with previously captured images",
             "itemtype": "method",
             "name": "compareArea",
@@ -7465,7 +7465,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2020,
+            "line": 2021,
             "description": "Activates a selected element",
             "itemtype": "method",
             "name": "activeElement",
@@ -7492,7 +7492,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2052,
+            "line": 2053,
             "description": "Closes the currently active window, switching the focus to the next available window",
             "itemtype": "method",
             "name": "closeWindow",
@@ -7519,7 +7519,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2083,
+            "line": 2084,
             "description": "Determines the title of the currently active document",
             "itemtype": "method",
             "name": "title",
@@ -7546,7 +7546,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2115,
+            "line": 2116,
             "description": "Determines the source-code of the currently active document",
             "itemtype": "method",
             "name": "source",
@@ -7573,7 +7573,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2147,
+            "line": 2148,
             "description": "Determines the scroll location coordinates within the currently active document",
             "itemtype": "method",
             "name": "scrollLocation",
@@ -7600,7 +7600,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2181,
+            "line": 2182,
             "description": "Scrolls to an absolute scroll location within the currently active document",
             "itemtype": "method",
             "name": "scrollTo",
@@ -7637,7 +7637,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2214,
+            "line": 2215,
             "description": "Scrolls the currently active document to a specific offset relative to the current scroll location",
             "itemtype": "method",
             "name": "scrollBy",
@@ -7674,7 +7674,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2251,
+            "line": 2252,
             "description": "Clicks on the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "click",
@@ -7718,7 +7718,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2293,
+            "line": 2294,
             "description": "Double-clicks on the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "dblClick",
@@ -7762,7 +7762,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2335,
+            "line": 2336,
             "description": "Hovers the mouse over the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "hover",
@@ -7799,7 +7799,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2372,
+            "line": 2373,
             "description": "Navigates the current document to the supplied URL",
             "itemtype": "method",
             "name": "navigateTo",
@@ -7831,7 +7831,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2404,
+            "line": 2405,
             "description": "Determines the current URL of the active document",
             "itemtype": "method",
             "name": "url",
@@ -7858,7 +7858,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2436,
+            "line": 2437,
             "description": "Goes forward in the document history, equivalent to a user pressing the forward button within the browser",
             "itemtype": "method",
             "name": "forward",
@@ -7885,7 +7885,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2467,
+            "line": 2468,
             "description": "Goes backward in the document history, equivalent to a user pressing the back button within the browser",
             "itemtype": "method",
             "name": "backward",
@@ -7912,7 +7912,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2498,
+            "line": 2499,
             "description": "Refreshes the current document as if the user pressed the refresh button within the browser",
             "itemtype": "method",
             "name": "refresh",
@@ -7939,7 +7939,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2533,
+            "line": 2534,
             "description": "Determines the text content of the currently displayed dialog",
             "itemtype": "method",
             "name": "dialogText",
@@ -7966,7 +7966,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2568,
+            "line": 2569,
             "description": "Sends a string or a list of key-strokes to the currently displayed dialog.\n\nThis is useful when there is a `prompt()` currently open, requesting user input.",
             "itemtype": "method",
             "name": "dialogSendKeys",
@@ -7998,7 +7998,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2605,
+            "line": 2606,
             "description": "Accepts the currently displayed dialog\n\nIn most cases, this will be the \"OK\" button.",
             "itemtype": "method",
             "name": "dialogAccept",
@@ -8025,7 +8025,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2641,
+            "line": 2642,
             "description": "Dismisses the currently displayed dialog\n\nIn most cases, this will be the \"Cancel\" button.",
             "itemtype": "method",
             "name": "dialogDismiss",
@@ -8052,7 +8052,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2681,
+            "line": 2682,
             "description": "Activates one of the available frames within the currently active document",
             "itemtype": "method",
             "name": "activateFrame",
@@ -8084,7 +8084,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2714,
+            "line": 2715,
             "description": "Activates the parent frame (i.e. the document) when a frame was previously activated.",
             "itemtype": "method",
             "name": "activateParentFrame",
@@ -8107,7 +8107,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2748,
+            "line": 2749,
             "description": "Activates a window, switching the currently active document\n\nIf you have multiple documents, you need to switch to each in turn to interact with them.\nYou can only interact with the currently active document.\nThat is where this function call comes in handy.",
             "itemtype": "method",
             "name": "activateWindow",
@@ -8139,7 +8139,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2784,
+            "line": 2785,
             "description": "Determines a list of available windows/documents within the same browser session",
             "itemtype": "method",
             "name": "windows",
@@ -8162,7 +8162,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2819,
+            "line": 2820,
             "description": "Puts Taxi to sleep for a specific amount of time",
             "itemtype": "method",
             "name": "sleep",
@@ -8190,7 +8190,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2848,
+            "line": 2849,
             "description": "Completes the session by finishing up comparison tasks and closing the browser window\n\n**Note**\nYou cannot chain after this function call anymore, and the driver will be closed so that\nthere is no way anymore to access the browser through the same session.\nTo get access again to the browser, you need to create a whole new Taxi instance.",
             "itemtype": "method",
             "name": "end",
@@ -8204,7 +8204,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2874,
+            "line": 2875,
             "description": "Waits for a specific amount of time that an element disappears from the DOM",
             "itemtype": "method",
             "name": "waitForElementNotPresent",
@@ -8250,7 +8250,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2915,
+            "line": 2916,
             "description": "Waits for a specific amount of time that an element will be hidden",
             "itemtype": "method",
             "name": "waitForElementNotDisplayed",
@@ -8296,7 +8296,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2958,
+            "line": 2959,
             "description": "Waits for a specific amount of time that an element appears in the DOM",
             "itemtype": "method",
             "name": "waitForElementPresent",
@@ -8342,7 +8342,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2999,
+            "line": 3000,
             "description": "Waits for a specific amount of time that an element will be shown",
             "itemtype": "method",
             "name": "waitForElementDisplay",
@@ -8388,7 +8388,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3043,
+            "line": 3044,
             "description": "Determines the size of the active window",
             "itemtype": "method",
             "name": "size",
@@ -8415,7 +8415,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3077,
+            "line": 3078,
             "description": "Re-sizes the active window",
             "itemtype": "method",
             "name": "resize",
@@ -8452,7 +8452,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3110,
+            "line": 3111,
             "description": "Determines the absolute location of the active window",
             "itemtype": "method",
             "name": "location",
@@ -8479,7 +8479,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3144,
+            "line": 3145,
             "description": "Determines the absolute location of the active window",
             "itemtype": "method",
             "name": "relocate",
@@ -8516,7 +8516,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3177,
+            "line": 3178,
             "description": "Expands the active window to its maximum size",
             "itemtype": "method",
             "name": "maximize",
@@ -14726,7 +14726,7 @@
         },
         {
             "message": "unknown tag: methods",
-            "line": " lib/chain.js:1677"
+            "line": " lib/chain.js:1678"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
@@ -14778,7 +14778,7 @@
         },
         {
             "message": "Missing item type\nExecutes a script or function within the active browser window, returning the results",
-            "line": " lib/chain.js:1677"
+            "line": " lib/chain.js:1678"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
