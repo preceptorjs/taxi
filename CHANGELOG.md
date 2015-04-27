@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+v0.2.3 - 04/26/15
+* Add element padding for capture and compare
+* Bugfixes
+
 v0.2.2 - 04/24/15
 * Bugfixes
 
