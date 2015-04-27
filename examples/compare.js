@@ -4,6 +4,10 @@ var taxi = require('..');
 // However, the comparison feature will also work exactly the same in asynchronous mode.
 var driver = taxi('http://localhost:4444/wd/hub', { browserName:'firefox' }, { mode: taxi.Driver.MODE_SYNC, debug:true, httpDebug:true });
 
+driver.setValue('blinkDiff.approvedPath', __dirname + '/approved');
+driver.setValue('blinkDiff.buildPath', __dirname + '/build');
+driver.setValue('blinkDiff.diffPath', __dirname + '/highlight');
+
 try {
 	// Prepare objects for use later - some convenience variables, avoiding to repeat ourselves
 	var browser = driver.browser();
