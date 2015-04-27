@@ -202,7 +202,7 @@
         Statements: <span class="metric">88.33% <small>(106 / 120)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">60% <small>(6 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">23.08% <small>(6 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Functions: <span class="metric">81.63% <small>(40 / 49)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -813,7 +813,26 @@
 595
 596
 597
-598</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -1364,18 +1383,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1384,6 +1391,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1959,6 +1997,13 @@ Element.prototype.hasElement = function (selector, selectorType) {
  * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
  * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
  * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {int} [options.allPadding] Padding for all sides
+ * @param {int} [options.hPadding] Padding on left and right side of the element
+ * @param {int} [options.vPadding] Padding on the top and on the bottom of the element
+ * @param {int} [options.leftPadding] Padding on the left of the element
+ * @param {int} [options.rightPadding] Padding on the right of the element
+ * @param {int} [options.topPadding] Padding on the top of the element
+ * @param {int} [options.bottomPadding] Padding on the bottom of the element
  * @return {Buffer} Binary image buffer
  */
 Element.prototype.capture = <span class="fstat-no" title="function not covered" >function (options) {</span>
@@ -1966,9 +2011,14 @@ Element.prototype.capture = <span class="fstat-no" title="function not covered" 
 <span class="cstat-no" title="statement not covered" >	options = options || {};</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >	return when(this.getFrame(), <span class="fstat-no" title="function not covered" >function (frame) {</span></span>
-<span class="cstat-no" title="statement not covered" >		var screenshot = new Screenshot(this.getDriver());</span>
+<span class="cstat-no" title="statement not covered" >		var screenshot = new Screenshot(this.getDriver()),</span>
+			leftPadding = options.leftPadding || options.hPadding || options.allPadding || 0,
+			rightPadding = options.rightPadding || options.hPadding || options.allPadding || 0,
+			topPadding = options.topPadding || options.vPadding || options.allPadding || 0,
+			bottomPadding = options.bottomPadding || options.vPadding || options.allPadding || 0;
+&nbsp;
 <span class="cstat-no" title="statement not covered" >		options.context = this;</span>
-<span class="cstat-no" title="statement not covered" >		return screenshot.areaScreenshot(frame.x, frame.y, frame.width, frame.height, options);</span>
+<span class="cstat-no" title="statement not covered" >		return screenshot.areaScreenshot(frame.x - leftPadding, frame.y - topPadding, frame.width + leftPadding + rightPadding, frame.height + topPadding + bottomPadding, options);</span>
 	}.bind(this));
 };
 &nbsp;
@@ -1995,6 +2045,13 @@ Element.prototype.screenshot = Element.prototype.capture;
  * @param {int} [options.wait=100] Wait in ms before each screenshot
  * @param {object} [options.compare] Options for the comparison. See Blink-Diff documentation.
  * @param {object} [options.compare.id=1] Additional identifier to differentiate comparisons even more.
+ * @param {int} [options.allPadding] Padding for all sides
+ * @param {int} [options.hPadding] Padding on left and right side of the element
+ * @param {int} [options.vPadding] Padding on the top and on the bottom of the element
+ * @param {int} [options.leftPadding] Padding on the left of the element
+ * @param {int} [options.rightPadding] Padding on the right of the element
+ * @param {int} [options.topPadding] Padding on the top of the element
+ * @param {int} [options.bottomPadding] Padding on the bottom of the element
  * @return {boolean|null} Are the screenshots the same? (NULL if there is nothing to compare to)
  */
 Element.prototype.compare = <span class="fstat-no" title="function not covered" >function (title, options) {</span>
@@ -2012,7 +2069,7 @@ logMethods(Element.prototype);
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 24 2015 00:44:03 GMT-0700 (PDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Apr 26 2015 21:42:54 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>

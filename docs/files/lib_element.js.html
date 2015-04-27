@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.2</em>
+            <em>API Docs for: 0.2.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -723,6 +723,13 @@ Element.prototype.hasElement = function (selector, selectorType) {
  * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
  * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
  * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {int} [options.allPadding] Padding for all sides
+ * @param {int} [options.hPadding] Padding on left and right side of the element
+ * @param {int} [options.vPadding] Padding on the top and on the bottom of the element
+ * @param {int} [options.leftPadding] Padding on the left of the element
+ * @param {int} [options.rightPadding] Padding on the right of the element
+ * @param {int} [options.topPadding] Padding on the top of the element
+ * @param {int} [options.bottomPadding] Padding on the bottom of the element
  * @return {Buffer} Binary image buffer
  */
 Element.prototype.capture = function (options) {
@@ -730,9 +737,14 @@ Element.prototype.capture = function (options) {
 	options = options || {};
 
 	return when(this.getFrame(), function (frame) {
-		var screenshot = new Screenshot(this.getDriver());
+		var screenshot = new Screenshot(this.getDriver()),
+			leftPadding = options.leftPadding || options.hPadding || options.allPadding || 0,
+			rightPadding = options.rightPadding || options.hPadding || options.allPadding || 0,
+			topPadding = options.topPadding || options.vPadding || options.allPadding || 0,
+			bottomPadding = options.bottomPadding || options.vPadding || options.allPadding || 0;
+
 		options.context = this;
-		return screenshot.areaScreenshot(frame.x, frame.y, frame.width, frame.height, options);
+		return screenshot.areaScreenshot(frame.x - leftPadding, frame.y - topPadding, frame.width + leftPadding + rightPadding, frame.height + topPadding + bottomPadding, options);
 	}.bind(this));
 };
 
@@ -759,6 +771,13 @@ Element.prototype.screenshot = Element.prototype.capture;
  * @param {int} [options.wait=100] Wait in ms before each screenshot
  * @param {object} [options.compare] Options for the comparison. See Blink-Diff documentation.
  * @param {object} [options.compare.id=1] Additional identifier to differentiate comparisons even more.
+ * @param {int} [options.allPadding] Padding for all sides
+ * @param {int} [options.hPadding] Padding on left and right side of the element
+ * @param {int} [options.vPadding] Padding on the top and on the bottom of the element
+ * @param {int} [options.leftPadding] Padding on the left of the element
+ * @param {int} [options.rightPadding] Padding on the right of the element
+ * @param {int} [options.topPadding] Padding on the top of the element
+ * @param {int} [options.bottomPadding] Padding on the bottom of the element
  * @return {boolean|null} Are the screenshots the same? (NULL if there is nothing to compare to)
  */
 Element.prototype.compare = function (title, options) {

@@ -2,7 +2,7 @@
     "project": {
         "name": "taxi",
         "description": "Object-oriented Selenium WebDriver Client",
-        "version": "0.2.2"
+        "version": "0.2.3"
     },
     "files": {
         "lib/comparison/blinkdiff.js": {
@@ -1611,6 +1611,20 @@
         {
             "file": "lib/comparison/blinkdiff.js",
             "line": 78,
+            "description": "Gets the default comparison options",
+            "itemtype": "method",
+            "name": "getOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "BlinkDiffComparison",
+            "module": "WebDriver",
+            "submodule": "Helpers"
+        },
+        {
+            "file": "lib/comparison/blinkdiff.js",
+            "line": 88,
             "description": "Should an output be created when comparison is successful?",
             "itemtype": "method",
             "name": "shouldOutputOnSuccess",
@@ -1624,7 +1638,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 95,
+            "line": 105,
             "description": "Should an exception be thrown when there are differences?",
             "itemtype": "method",
             "name": "shouldFailOnDifference",
@@ -1638,7 +1652,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 112,
+            "line": 122,
             "description": "Should screenshot be auto-approved?",
             "itemtype": "method",
             "name": "shouldAutoApprove",
@@ -1652,7 +1666,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 123,
+            "line": 133,
             "description": "Gets the path where approved screenshots are found",
             "itemtype": "method",
             "name": "getApprovedPath",
@@ -1666,7 +1680,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 133,
+            "line": 143,
             "description": "Gets the path where current screenshots will be written to",
             "itemtype": "method",
             "name": "getBuildPath",
@@ -1680,7 +1694,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 143,
+            "line": 153,
             "description": "Gets the path where differences will be written to",
             "itemtype": "method",
             "name": "getDiffPath",
@@ -1694,7 +1708,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 154,
+            "line": 164,
             "description": "Loads the Blink-Diff library, creating output instructing user to install the module",
             "itemtype": "method",
             "name": "_loadBlinkDiff",
@@ -1710,7 +1724,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 175,
+            "line": 185,
             "description": "Gets the name of the browser folder, categorizing screenshots from the same browser + platform",
             "itemtype": "method",
             "name": "_getFolderName",
@@ -1726,7 +1740,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 191,
+            "line": 201,
             "description": "Gets the name of the file-base, converting unique identifiers to filename safe strings",
             "itemtype": "method",
             "name": "_getBaseName",
@@ -1754,7 +1768,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 205,
+            "line": 215,
             "description": "Gets the approved path for the current image",
             "itemtype": "method",
             "name": "_getApprovedImagePath",
@@ -1784,7 +1798,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 221,
+            "line": 232,
             "description": "Gets the build path for the current image",
             "itemtype": "method",
             "name": "_getBuildImagePath",
@@ -1814,7 +1828,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 237,
+            "line": 249,
             "description": "Gets the difference path for the current image",
             "itemtype": "method",
             "name": "_getDiffImagePath",
@@ -1844,7 +1858,55 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 254,
+            "line": 266,
+            "description": "Checks if a filename suffix is required for the approved folder\n\nNote:\nThis is only true if multiple file-types end up in the same folder",
+            "itemtype": "method",
+            "name": "_needsApprovedSuffix",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "BlinkDiffComparison",
+            "module": "WebDriver",
+            "submodule": "Helpers"
+        },
+        {
+            "file": "lib/comparison/blinkdiff.js",
+            "line": 284,
+            "description": "Checks if a filename suffix is required for the build folder\n\nNote:\nThis is only true if multiple file-types end up in the same folder",
+            "itemtype": "method",
+            "name": "_needsBuildSuffix",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "BlinkDiffComparison",
+            "module": "WebDriver",
+            "submodule": "Helpers"
+        },
+        {
+            "file": "lib/comparison/blinkdiff.js",
+            "line": 302,
+            "description": "Checks if a filename suffix is required for the diff folder\n\nNote:\nThis is only true if multiple file-types end up in the same folder",
+            "itemtype": "method",
+            "name": "_needsDiffSuffix",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "BlinkDiffComparison",
+            "module": "WebDriver",
+            "submodule": "Helpers"
+        },
+        {
+            "file": "lib/comparison/blinkdiff.js",
+            "line": 321,
             "description": "Saves a blob to the filesystem",
             "itemtype": "method",
             "name": "_saveBlob",
@@ -1868,7 +1930,19 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 271,
+            "line": 338,
+            "description": "Prepares all of the folders, creating them if needed",
+            "itemtype": "method",
+            "name": "_prepareFolders",
+            "access": "private",
+            "tagname": "",
+            "class": "BlinkDiffComparison",
+            "module": "WebDriver",
+            "submodule": "Helpers"
+        },
+        {
+            "file": "lib/comparison/blinkdiff.js",
+            "line": 355,
             "description": "Compares a specific screenshot",
             "itemtype": "method",
             "name": "compare",
@@ -1896,7 +1970,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 325,
+            "line": 414,
             "description": "Setup of comparison",
             "itemtype": "method",
             "name": "setup",
@@ -1906,7 +1980,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 334,
+            "line": 423,
             "description": "Tear-down of comparison",
             "itemtype": "method",
             "name": "tearDown",
@@ -2943,7 +3017,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 533,
+            "line": 529,
             "description": "Validates and corrects area that was given to capture",
             "itemtype": "method",
             "name": "_validateArea",
@@ -3055,7 +3129,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 588,
+            "line": 584,
             "description": "Calculates the sections that need to be captured on their own to be able to capture the whole document.\n\nThis method depends on the value given to \"maxImageResolution\".",
             "itemtype": "method",
             "name": "_gatherSections",
@@ -3154,7 +3228,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 676,
+            "line": 672,
             "description": "Calculates the sections that need to be captured when the browser is not able to return pixels outside of the view-port.",
             "itemtype": "method",
             "name": "_gatherViewPortSections",
@@ -3248,7 +3322,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 738,
+            "line": 734,
             "description": "Takes all the screenshots defined in section",
             "itemtype": "method",
             "name": "_takeSectionScreenshots",
@@ -3299,7 +3373,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 760,
+            "line": 756,
             "description": "Takes all the screenshots defined in the view-ports",
             "itemtype": "method",
             "name": "_takeViewPortScreenshots",
@@ -3355,7 +3429,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 780,
+            "line": 776,
             "description": "Takes a screenshot of the given view-port in relation to the section",
             "itemtype": "method",
             "name": "_takeViewPortScreenshot",
@@ -3411,7 +3485,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 819,
+            "line": 815,
             "description": "Processes the screenshots before it is used for stitching\n\nNote:\n Some browser need some pre-processing like rotating the screenshot.",
             "itemtype": "method",
             "name": "_screenshotPrePrecessing",
@@ -3434,7 +3508,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 851,
+            "line": 847,
             "description": "Stitches all the sections and view-ports together to one final image",
             "itemtype": "method",
             "name": "_stitchImages",
@@ -3467,7 +3541,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 902,
+            "line": 898,
             "description": "Executes a script in the browser and returns the result.\n\nThis is a convenience method for accessing the execute method.",
             "itemtype": "method",
             "name": "_execute",
@@ -5418,7 +5492,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5435,7 +5509,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 227,
+            "line": 228,
             "description": "Retrieves the attribute value of the selected elements",
             "itemtype": "method",
             "name": "elementAttribute",
@@ -5458,7 +5532,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5475,7 +5549,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 270,
+            "line": 272,
             "description": "Checks if the selected elements have a specific class",
             "itemtype": "method",
             "name": "elementHasClass",
@@ -5498,7 +5572,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5515,7 +5589,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 316,
+            "line": 319,
             "description": "Determines a list of classes assigned to the selected elements",
             "itemtype": "method",
             "name": "elementClasses",
@@ -5533,7 +5607,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5550,7 +5624,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 358,
+            "line": 362,
             "description": "Gets the text content of the selected elements",
             "itemtype": "method",
             "name": "elementText",
@@ -5568,7 +5642,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5585,7 +5659,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 400,
+            "line": 405,
             "description": "Determines if selected elements have a string or even a sub-string in their text content",
             "itemtype": "method",
             "name": "elementHasText",
@@ -5608,7 +5682,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5625,7 +5699,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 449,
+            "line": 455,
             "description": "Determines the contents of the `value` attribute on each selected element\n\n**Note**\nThis will only work on elements that have a `value` attribute.",
             "itemtype": "method",
             "name": "elementValue",
@@ -5643,7 +5717,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5657,7 +5731,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 486,
+            "line": 493,
             "description": "Gets the name of the tag for each selected element",
             "itemtype": "method",
             "name": "elementTagName",
@@ -5675,7 +5749,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5689,7 +5763,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 520,
+            "line": 528,
             "description": "Determines the value of a CSS property for each selected element\n\n**Note**\nUse the original CSS property name according to the CSS standard, **not** the JavaScript naming convention for CSS properties.",
             "itemtype": "method",
             "name": "elementCssValue",
@@ -5712,7 +5786,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5726,7 +5800,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 558,
+            "line": 567,
             "description": "Checks if the selected elements are displayed somewhere on the page",
             "itemtype": "method",
             "name": "elementIsDisplayed",
@@ -5744,7 +5818,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5758,7 +5832,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 592,
+            "line": 602,
             "description": "Checks if the selected elements are checked\n\n**Note**\nThis function will only work on elements which have a \"checked\"-value (i.e. checkbox, radiobox, or options element).",
             "itemtype": "method",
             "name": "elementIsSelected",
@@ -5776,7 +5850,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5790,7 +5864,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 629,
+            "line": 640,
             "description": "Checks if the selected elements are enabled",
             "itemtype": "method",
             "name": "elementIsEnabled",
@@ -5808,7 +5882,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5822,7 +5896,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 664,
+            "line": 675,
             "description": "Types complete strings or key-strokes into the selected element",
             "itemtype": "method",
             "name": "elementSendKeys",
@@ -5845,7 +5919,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5859,7 +5933,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 698,
+            "line": 710,
             "description": "Clears the contents of the selected elements\n\n**Note**\nThis will only work on elements that can be cleared like input boxes and text areas.",
             "itemtype": "method",
             "name": "elementClear",
@@ -5877,7 +5951,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5891,7 +5965,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 734,
+            "line": 747,
             "description": "Submits the selected form elements\n\n\n**Note**\nThis should be usually only one form element. It doesn't make sense to apply this to any other element type.",
             "itemtype": "method",
             "name": "elementSubmit",
@@ -5909,7 +5983,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5923,7 +5997,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 771,
+            "line": 785,
             "description": "Determines the size of the selected elements",
             "itemtype": "method",
             "name": "elementSize",
@@ -5941,7 +6015,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5955,7 +6029,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 807,
+            "line": 822,
             "description": "Determines the absolute location of the selected elements",
             "itemtype": "method",
             "name": "elementLocation",
@@ -5973,7 +6047,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -5987,7 +6061,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 843,
+            "line": 859,
             "description": "Determines the location of the selected elements relative to the current view-ports top-left corner",
             "itemtype": "method",
             "name": "elementLocationInView",
@@ -6005,7 +6079,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6019,7 +6093,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 879,
+            "line": 896,
             "description": "Determines the absolute location and size of the selected elements",
             "itemtype": "method",
             "name": "elementFrame",
@@ -6037,7 +6111,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6051,7 +6125,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 917,
+            "line": 935,
             "description": "Determines the absolute coordinates of the center of the selected elements",
             "itemtype": "method",
             "name": "elementAbsoluteCenter",
@@ -6069,7 +6143,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6083,7 +6157,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 953,
+            "line": 972,
             "description": "Determines the coordinates of the center of the selected elements relative to the elements top-left corner",
             "itemtype": "method",
             "name": "elementRelativeCenter",
@@ -6101,7 +6175,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6115,7 +6189,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 989,
+            "line": 1009,
             "description": "Captures an element in a PNG buffer, discarding or ignoring the rest of the document from the image",
             "itemtype": "method",
             "name": "elementCapture",
@@ -6162,6 +6236,48 @@
                             "type": "Int",
                             "optional": true,
                             "optdefault": "100"
+                        },
+                        {
+                            "name": "allPadding",
+                            "description": "Padding for all sides",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "hPadding",
+                            "description": "Padding on left and right side of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "vPadding",
+                            "description": "Padding on the top and on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "leftPadding",
+                            "description": "Padding on the left of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "rightPadding",
+                            "description": "Padding on the right of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "topPadding",
+                            "description": "Padding on the top of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "bottomPadding",
+                            "description": "Padding on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
                         }
                     ]
                 },
@@ -6173,13 +6289,13 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
-                "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`imageBuffer`, `element`, `index`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`imageBuffer`** {`Buffer`} - Binary buffer of the PNG image\n* **`element`** {`Element`} - Selected element\n* **`index`** {`int`} - Zero-based index of the selected element\n\n---------------------------------------\n\n##options.eachFn (`index`)\nThis function is executed on the client-side just before a new screenshot is taken.\nHow often this function is executed depends on the browser and should only be used\nto prepare for screenshots (i.e. removing a floating header on the second image).\n\n###Scope\n> {`document.window`} - within the browser\n\n###Parameters\n* **`index`** {`int`} - Zero-based index of screenshot that will be taken\n\n**Note**\nSince this function is executed on the client, it will not be able to capture\nvariables in the lexical scope. The function will be serialized, sent to the client,\nde-serialized, and executed without knowing the context of its initial definition.\n\n---------------------------------------\n\n##options.completeFn ()\nThis function is executed on the client-side just after all screenshots were taken.\nThis function will only be called once and it can be used to revert changes applied\nto the document during eachFn calls (i.e. re-attaching a floating header).\n\n###Scope\n> {`document.window`} - within the browser\n\n###Parameters\n> none\n\n**Note**\nSince this function is executed on the client, it will not be able to capture\nvariables in the lexical scope. The function will be serialized, sent to the client,\nde-serialized, and executed without knowing the context of its initial definition.\n\n---------------------------------------\n\n##options.blockOuts\nSometimes, you want to block-out areas on a screenshot, be it for censoring purposes or\nfor comparison during multiple test-runs with every changing data (i.e. date/time label).\nIn this list, you can supply CSS selectors, a list of already selected elements, or even\na list of pre-defined fixed areas. All of these different \"selectors\" can be combined\nin the same list.\n\n###CSS Selector\nThe supplied CSS selector will be used to find single or multiple DOM element in the\ndocument. Taxi will flatten the list whenever multiple items are found.\n\n###Element Selector\nThese are objects that were already selected previously and re-used for this purpose.\n\n###Static object\nThis object holds static information about the location and the size of the area to\nblock-out.\n\nThe object has following properties:\n* **`x`** {`int`} - X-coordinate of the area\n* **`y`** {`int`} - Y-coordinate of the area\n* **`width`** {`int`} - Width of the area\n* **`height`** {`int`} - Height of the area\n* **`[color]`** {`object`} - Custom block-out color for this area only. See options.blockOutColor for more information.\n\n---------------------------------------\n\n##options.blockOutColor\nThis is the default color for all block-out areas that do not have custom colors.\n\n###Properties\n* **`[red]`** {`int`} -   Red component of the color for blocking-out the area. Accepted values\nare from 0-255. 0 means that there is no intensity of this component within the resulting color;\n255 is the full intensity.\n* **`[green]`** {`int`} - Green component of the color for blocking-out the area. Accepted values\nare from 0-255. 0 means that there is no intensity of this component within the resulting color;\n255 is the full intensity.\n* **`[blue]`** {`int`} -  Blue component of the color for blocking-out the area. Accepted values\nare from 0-255. 0 means that there is no intensity of this component within the resulting color;\n255 is the full intensity.\n* **`[alpha]`** {`int`} - Alpha channel of the color for blocking-out the area. Accepted values\nare from 0.0-1.0. 0 means that there is no intensity of this component within the resulting color;\n1.0 is the full intensity.\n\n---------------------------------------\n\n##options.wait\nSometimes, it is required to slow-down the screen-capturing process. By default,\nTaxi will wait 100 milliseconds before each screenshot to make sure that changes\ncaused by the scrolling behavior were applied in the browser view-port.\nExtend this time if the screenshot needs special behavior.",
+                "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`imageBuffer`, `element`, `index`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`imageBuffer`** {`Buffer`} - Binary buffer of the PNG image\n* **`element`** {`Element`} - Selected element\n* **`index`** {`int`} - Zero-based index of the selected element\n\n---------------------------------------\n\n##options.eachFn (`index`)\nThis function is executed on the client-side just before a new screenshot is taken.\nHow often this function is executed depends on the browser and should only be used\nto prepare for screenshots (i.e. removing a floating header on the second image).\n\n###Scope\n> {`document.window`} - within the browser\n\n###Parameters\n* **`index`** {`int`} - Zero-based index of screenshot that will be taken\n\n**Note**\nSince this function is executed on the client, it will not be able to capture\nvariables in the lexical scope. The function will be serialized, sent to the client,\nde-serialized, and executed without knowing the context of its initial definition.\n\n---------------------------------------\n\n##options.completeFn ()\nThis function is executed on the client-side just after all screenshots were taken.\nThis function will only be called once and it can be used to revert changes applied\nto the document during eachFn calls (i.e. re-attaching a floating header).\n\n###Scope\n> {`document.window`} - within the browser\n\n###Parameters\n> none\n\n**Note**\nSince this function is executed on the client, it will not be able to capture\nvariables in the lexical scope. The function will be serialized, sent to the client,\nde-serialized, and executed without knowing the context of its initial definition.\n\n---------------------------------------\n\n##options.blockOuts\nSometimes, you want to block-out areas on a screenshot, be it for censoring purposes or\nfor comparison during multiple test-runs with every changing data (i.e. date/time label).\nIn this list, you can supply CSS selectors, a list of already selected elements, or even\na list of pre-defined fixed areas. All of these different \"selectors\" can be combined\nin the same list.\n\n###CSS Selector\nThe supplied CSS selector will be used to find single or multiple DOM element in the\ndocument. Taxi will flatten the list whenever multiple items are found.\n\n###Element Selector\nThese are objects that were already selected previously and re-used for this purpose.\n\n###Static object\nThis object holds static information about the location and the size of the area to\nblock-out.\n\nThe object has following properties:\n* **`x`** {`int`} - X-coordinate of the area\n* **`y`** {`int`} - Y-coordinate of the area\n* **`width`** {`int`} - Width of the area\n* **`height`** {`int`} - Height of the area\n* **`[color]`** {`object`} - Custom block-out color for this area only. See options.blockOutColor for more information.\n\n---------------------------------------\n\n##options.blockOutColor\nThis is the default color for all block-out areas that do not have custom colors.\n\n###Properties\n* **`[red]`** {`int`} -   Red component of the color for blocking-out the area. Accepted values\nare from 0-255. 0 means that there is no intensity of this component within the resulting color;\n255 is the full intensity.\n* **`[green]`** {`int`} - Green component of the color for blocking-out the area. Accepted values\nare from 0-255. 0 means that there is no intensity of this component within the resulting color;\n255 is the full intensity.\n* **`[blue]`** {`int`} -  Blue component of the color for blocking-out the area. Accepted values\nare from 0-255. 0 means that there is no intensity of this component within the resulting color;\n255 is the full intensity.\n* **`[alpha]`** {`int`} - Alpha channel of the color for blocking-out the area. Accepted values\nare from 0.0-1.0. 0 means that there is no intensity of this component within the resulting color;\n1.0 is the full intensity.\n\n---------------------------------------\n\n##options.wait\nSometimes, it is required to slow-down the screen-capturing process. By default,\nTaxi will wait 100 milliseconds before each screenshot to make sure that changes\ncaused by the scrolling behavior were applied in the browser view-port.\nExtend this time if the screenshot needs special behavior.\n\n\n##options.*padding\nPadding that reaches outside of the document itself will be reduced to the extend of the document.",
                 "type": "Chain"
             },
             "class": "Chain",
@@ -6187,7 +6303,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1119,
+            "line": 1152,
             "description": "Compares the image of selected elements from previous captures/comparisons",
             "itemtype": "method",
             "name": "elementCompare",
@@ -6254,6 +6370,48 @@
                                     "optdefault": "1"
                                 }
                             ]
+                        },
+                        {
+                            "name": "allPadding",
+                            "description": "Padding for all sides",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "hPadding",
+                            "description": "Padding on left and right side of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "vPadding",
+                            "description": "Padding on the top and on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "leftPadding",
+                            "description": "Padding on the left of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "rightPadding",
+                            "description": "Padding on the right of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "topPadding",
+                            "description": "Padding on the top of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "bottomPadding",
+                            "description": "Padding on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
                         }
                     ]
                 },
@@ -6265,7 +6423,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6279,7 +6437,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1209,
+            "line": 1251,
             "description": "Clicks on the selected elements",
             "itemtype": "method",
             "name": "elementClick",
@@ -6304,7 +6462,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6318,7 +6476,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1251,
+            "line": 1294,
             "description": "Clicks on a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementClickAt",
@@ -6353,7 +6511,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6367,7 +6525,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1295,
+            "line": 1339,
             "description": "Double-clicks on the selected elements",
             "itemtype": "method",
             "name": "elementDblClick",
@@ -6392,7 +6550,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6406,7 +6564,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1337,
+            "line": 1382,
             "description": "Double-clicks on a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementDblClickAt",
@@ -6441,7 +6599,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6455,7 +6613,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1381,
+            "line": 1427,
             "description": "Hovers the mouse over the selected elements",
             "itemtype": "method",
             "name": "elementHover",
@@ -6473,7 +6631,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6487,7 +6645,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1414,
+            "line": 1461,
             "description": "Hovers the mouse over a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementHoverAt",
@@ -6515,7 +6673,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6529,7 +6687,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1453,
+            "line": 1501,
             "description": "Triggers a touch-event on the selected elements",
             "itemtype": "method",
             "name": "elementTouch",
@@ -6547,7 +6705,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6561,7 +6719,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1486,
+            "line": 1535,
             "description": "Triggers a touch-event on the selected element relative to the upper-left corner of the elements",
             "itemtype": "method",
             "name": "elementTouchAt",
@@ -6589,7 +6747,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6603,7 +6761,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1521,
+            "line": 1571,
             "description": "Taps on the selected elements",
             "itemtype": "method",
             "name": "elementTap",
@@ -6621,7 +6779,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6635,7 +6793,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1554,
+            "line": 1605,
             "description": "Double-taps on the selected elements",
             "itemtype": "method",
             "name": "elementDblTap",
@@ -6653,7 +6811,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6667,7 +6825,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1587,
+            "line": 1639,
             "description": "Triggers a long-tap on the selected elements",
             "itemtype": "method",
             "name": "elementLongTap",
@@ -6685,7 +6843,7 @@
                 }
             ],
             "throws": {
-                "description": "When no element could be found with the given CSS selector.",
+                "description": "When there is no active document available",
                 "type": "Error"
             },
             "since": "0.2.0",
@@ -6699,7 +6857,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1624,
+            "line": 1677,
             "description": "Executes a script or function within the active browser window, returning the results",
             "methods": "execute",
             "params": [
@@ -6721,6 +6879,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -6732,7 +6894,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1662,
+            "line": 1716,
             "description": "Types complete strings or key-strokes into the active window, effectively sending key-strokes to the focused element",
             "itemtype": "method",
             "name": "sendKeys",
@@ -6749,6 +6911,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -6760,7 +6926,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1693,
+            "line": 1748,
             "description": "Captures the complete document in a PNG buffer",
             "itemtype": "method",
             "name": "captureDocument",
@@ -6812,6 +6978,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "see": [
                 "Chain.elementCapture"
             ],
@@ -6826,7 +6996,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1732,
+            "line": 1788,
             "description": "Captures the current view-port in a PNG buffer",
             "itemtype": "method",
             "name": "captureViewPort",
@@ -6878,6 +7048,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "see": [
                 "Chain.elementCapture"
             ],
@@ -6892,7 +7066,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1771,
+            "line": 1828,
             "description": "Captures a selected area in a PNG buffer",
             "itemtype": "method",
             "name": "captureArea",
@@ -6972,6 +7146,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "see": [
                 "Chain.elementCapture"
             ],
@@ -6986,7 +7164,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1814,
+            "line": 1872,
             "description": "Compares the whole document with images that were captured previously",
             "itemtype": "method",
             "name": "compareDocument",
@@ -7058,6 +7236,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "see": [
                 "Chain.elementCapture",
                 "Chain.elementCompare"
@@ -7073,7 +7255,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1861,
+            "line": 1920,
             "description": "Compares the view-port with images previously taken",
             "itemtype": "method",
             "name": "compareViewPort",
@@ -7145,6 +7327,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "see": [
                 "Chain.elementCapture",
@@ -7160,7 +7346,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1908,
+            "line": 1968,
             "description": "Compares a specific and fixed area of the document with previously captured images",
             "itemtype": "method",
             "name": "compareArea",
@@ -7260,6 +7446,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "see": [
                 "Chain.elementCapture",
@@ -7275,7 +7465,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1959,
+            "line": 2020,
             "description": "Activates a selected element",
             "itemtype": "method",
             "name": "activeElement",
@@ -7287,6 +7477,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7298,7 +7492,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1990,
+            "line": 2052,
             "description": "Closes the currently active window, switching the focus to the next available window",
             "itemtype": "method",
             "name": "closeWindow",
@@ -7310,6 +7504,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7321,7 +7519,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2020,
+            "line": 2083,
             "description": "Determines the title of the currently active document",
             "itemtype": "method",
             "name": "title",
@@ -7333,6 +7531,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7344,7 +7546,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2051,
+            "line": 2115,
             "description": "Determines the source-code of the currently active document",
             "itemtype": "method",
             "name": "source",
@@ -7356,6 +7558,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7367,7 +7573,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2082,
+            "line": 2147,
             "description": "Determines the scroll location coordinates within the currently active document",
             "itemtype": "method",
             "name": "scrollLocation",
@@ -7379,6 +7585,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7390,7 +7600,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2115,
+            "line": 2181,
             "description": "Scrolls to an absolute scroll location within the currently active document",
             "itemtype": "method",
             "name": "scrollTo",
@@ -7412,6 +7622,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7423,7 +7637,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2147,
+            "line": 2214,
             "description": "Scrolls the currently active document to a specific offset relative to the current scroll location",
             "itemtype": "method",
             "name": "scrollBy",
@@ -7445,6 +7659,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7456,7 +7674,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2183,
+            "line": 2251,
             "description": "Clicks on the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "click",
@@ -7485,6 +7703,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7496,7 +7718,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2224,
+            "line": 2293,
             "description": "Double-clicks on the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "dblClick",
@@ -7525,6 +7747,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7536,7 +7762,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2265,
+            "line": 2335,
             "description": "Hovers the mouse over the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "hover",
@@ -7558,6 +7784,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7569,7 +7799,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2301,
+            "line": 2372,
             "description": "Navigates the current document to the supplied URL",
             "itemtype": "method",
             "name": "navigateTo",
@@ -7586,6 +7816,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7597,7 +7831,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2332,
+            "line": 2404,
             "description": "Determines the current URL of the active document",
             "itemtype": "method",
             "name": "url",
@@ -7609,6 +7843,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7620,7 +7858,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2363,
+            "line": 2436,
             "description": "Goes forward in the document history, equivalent to a user pressing the forward button within the browser",
             "itemtype": "method",
             "name": "forward",
@@ -7632,6 +7870,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7643,7 +7885,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2393,
+            "line": 2467,
             "description": "Goes backward in the document history, equivalent to a user pressing the back button within the browser",
             "itemtype": "method",
             "name": "backward",
@@ -7655,6 +7897,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7666,7 +7912,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2423,
+            "line": 2498,
             "description": "Refreshes the current document as if the user pressed the refresh button within the browser",
             "itemtype": "method",
             "name": "refresh",
@@ -7678,6 +7924,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7689,7 +7939,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2457,
+            "line": 2533,
             "description": "Determines the text content of the currently displayed dialog",
             "itemtype": "method",
             "name": "dialogText",
@@ -7701,6 +7951,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no dialog available",
+                "type": "Error"
+            },
             "since": "0.2.1",
             "chainable": 1,
             "return": {
@@ -7712,7 +7966,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2491,
+            "line": 2568,
             "description": "Sends a string or a list of key-strokes to the currently displayed dialog.\n\nThis is useful when there is a `prompt()` currently open, requesting user input.",
             "itemtype": "method",
             "name": "dialogSendKeys",
@@ -7729,6 +7983,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no dialog available",
+                "type": "Error"
+            },
             "since": "0.2.1",
             "chainable": 1,
             "return": {
@@ -7740,7 +7998,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2529,
+            "line": 2605,
             "description": "Accepts the currently displayed dialog\n\nIn most cases, this will be the \"OK\" button.",
             "itemtype": "method",
             "name": "dialogAccept",
@@ -7752,6 +8010,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no dialog available",
+                "type": "Error"
+            },
             "since": "0.2.1",
             "chainable": 1,
             "return": {
@@ -7763,7 +8025,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2564,
+            "line": 2641,
             "description": "Dismisses the currently displayed dialog\n\nIn most cases, this will be the \"Cancel\" button.",
             "itemtype": "method",
             "name": "dialogDismiss",
@@ -7775,6 +8037,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no dialog available",
+                "type": "Error"
+            },
             "since": "0.2.1",
             "chainable": 1,
             "return": {
@@ -7786,7 +8052,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2603,
+            "line": 2681,
             "description": "Activates one of the available frames within the currently active document",
             "itemtype": "method",
             "name": "activateFrame",
@@ -7805,6 +8071,10 @@
             ],
             "since": "0.2.0",
             "chainable": 1,
+            "throws": {
+                "description": "When the frame identified by the id doesn't exist",
+                "type": "Error"
+            },
             "return": {
                 "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`activeWindow`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`activeWindow`** {`ActiveWindow`} - Active browser document/window",
                 "type": "Chain"
@@ -7814,7 +8084,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2634,
+            "line": 2714,
             "description": "Activates the parent frame (i.e. the document) when a frame was previously activated.",
             "itemtype": "method",
             "name": "activateParentFrame",
@@ -7837,7 +8107,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2668,
+            "line": 2748,
             "description": "Activates a window, switching the currently active document\n\nIf you have multiple documents, you need to switch to each in turn to interact with them.\nYou can only interact with the currently active document.\nThat is where this function call comes in handy.",
             "itemtype": "method",
             "name": "activateWindow",
@@ -7856,6 +8126,10 @@
             ],
             "since": "0.2.0",
             "chainable": 1,
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "return": {
                 "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`browser`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`browser`** {`Browser`} - The browser session",
                 "type": "Chain"
@@ -7865,7 +8139,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2703,
+            "line": 2784,
             "description": "Determines a list of available windows/documents within the same browser session",
             "itemtype": "method",
             "name": "windows",
@@ -7888,7 +8162,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2738,
+            "line": 2819,
             "description": "Puts Taxi to sleep for a specific amount of time",
             "itemtype": "method",
             "name": "sleep",
@@ -7916,7 +8190,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2769,
+            "line": 2848,
             "description": "Completes the session by finishing up comparison tasks and closing the browser window\n\n**Note**\nYou cannot chain after this function call anymore, and the driver will be closed so that\nthere is no way anymore to access the browser through the same session.\nTo get access again to the browser, you need to create a whole new Taxi instance.",
             "itemtype": "method",
             "name": "end",
@@ -7930,7 +8204,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2795,
+            "line": 2874,
             "description": "Waits for a specific amount of time that an element disappears from the DOM",
             "itemtype": "method",
             "name": "waitForElementNotPresent",
@@ -7961,6 +8235,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -7972,7 +8250,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2835,
+            "line": 2915,
             "description": "Waits for a specific amount of time that an element will be hidden",
             "itemtype": "method",
             "name": "waitForElementNotDisplayed",
@@ -8003,6 +8281,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -8014,7 +8296,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2877,
+            "line": 2958,
             "description": "Waits for a specific amount of time that an element appears in the DOM",
             "itemtype": "method",
             "name": "waitForElementPresent",
@@ -8045,6 +8327,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -8056,7 +8342,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2917,
+            "line": 2999,
             "description": "Waits for a specific amount of time that an element will be shown",
             "itemtype": "method",
             "name": "waitForElementDisplay",
@@ -8087,6 +8373,10 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "since": "0.2.0",
             "chainable": 1,
             "return": {
@@ -8098,7 +8388,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2960,
+            "line": 3043,
             "description": "Determines the size of the active window",
             "itemtype": "method",
             "name": "size",
@@ -8110,8 +8400,12 @@
                     "optional": true
                 }
             ],
-            "since": "0.2.1",
+            "since": "0.2.2",
             "chainable": 1,
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "return": {
                 "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`size`, `activeWindow`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`size`** {`object`} - Size of the selected element\n    * **`width`** {`int`} - Width of the selected element\n    * **`height`** {`int`} - Height of the selected element\n* **`activeWindow`** {`ActiveWindow`} - Active browser document/window",
                 "type": "Chain"
@@ -8121,7 +8415,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2993,
+            "line": 3077,
             "description": "Re-sizes the active window",
             "itemtype": "method",
             "name": "resize",
@@ -8143,8 +8437,12 @@
                     "optional": true
                 }
             ],
-            "since": "0.2.1",
+            "since": "0.2.2",
             "chainable": 1,
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "return": {
                 "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`activeWindow`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`activeWindow`** {`ActiveWindow`} - Active browser document/window",
                 "type": "Chain"
@@ -8154,7 +8452,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3025,
+            "line": 3110,
             "description": "Determines the absolute location of the active window",
             "itemtype": "method",
             "name": "location",
@@ -8166,8 +8464,12 @@
                     "optional": true
                 }
             ],
-            "since": "0.2.1",
+            "since": "0.2.2",
             "chainable": 1,
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "return": {
                 "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`location`, `activeWindow`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`location`** {`object`} - Absolute location of the selected element\n    * **`x`** {`int`} - Absolute x-coordinate of the selected element\n    * **`y`** {`int`} - Absolute y-coordinate of the selected element\n* **`activeWindow`** {`ActiveWindow`} - Active browser document/window",
                 "type": "Chain"
@@ -8177,7 +8479,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3058,
+            "line": 3144,
             "description": "Determines the absolute location of the active window",
             "itemtype": "method",
             "name": "relocate",
@@ -8199,8 +8501,12 @@
                     "optional": true
                 }
             ],
-            "since": "0.2.1",
+            "since": "0.2.2",
             "chainable": 1,
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "return": {
                 "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`activeWindow`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`activeWindow`** {`ActiveWindow`} - Active browser document/window",
                 "type": "Chain"
@@ -8210,7 +8516,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3090,
+            "line": 3177,
             "description": "Expands the active window to its maximum size",
             "itemtype": "method",
             "name": "maximize",
@@ -8222,8 +8528,12 @@
                     "optional": true
                 }
             ],
-            "since": "0.2.1",
+            "since": "0.2.2",
             "chainable": 1,
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
             "return": {
                 "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function (`activeWindow`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`activeWindow`** {`ActiveWindow`} - Active browser document/window",
                 "type": "Chain"
@@ -10355,6 +10665,48 @@
                             "type": "Int",
                             "optional": true,
                             "optdefault": "100"
+                        },
+                        {
+                            "name": "allPadding",
+                            "description": "Padding for all sides",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "hPadding",
+                            "description": "Padding on left and right side of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "vPadding",
+                            "description": "Padding on the top and on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "leftPadding",
+                            "description": "Padding on the left of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "rightPadding",
+                            "description": "Padding on the right of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "topPadding",
+                            "description": "Padding on the top of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "bottomPadding",
+                            "description": "Padding on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
                         }
                     ]
                 }
@@ -10369,7 +10721,7 @@
         },
         {
             "file": "lib/element.js",
-            "line": 563,
+            "line": 575,
             "description": "Takes a screenshot of the document",
             "itemtype": "method",
             "name": "screenshot",
@@ -10393,7 +10745,7 @@
         },
         {
             "file": "lib/element.js",
-            "line": 573,
+            "line": 585,
             "description": "Compares the screenshot of the element with a previous screenshot, showing differences between them",
             "itemtype": "method",
             "name": "compare",
@@ -10455,6 +10807,48 @@
                                     "optdefault": "1"
                                 }
                             ]
+                        },
+                        {
+                            "name": "allPadding",
+                            "description": "Padding for all sides",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "hPadding",
+                            "description": "Padding on left and right side of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "vPadding",
+                            "description": "Padding on the top and on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "leftPadding",
+                            "description": "Padding on the left of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "rightPadding",
+                            "description": "Padding on the right of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "topPadding",
+                            "description": "Padding on the top of the element",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "bottomPadding",
+                            "description": "Padding on the bottom of the element",
+                            "type": "Int",
+                            "optional": true
                         }
                     ]
                 }
@@ -14332,7 +14726,7 @@
         },
         {
             "message": "unknown tag: methods",
-            "line": " lib/chain.js:1624"
+            "line": " lib/chain.js:1677"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
@@ -14384,7 +14778,7 @@
         },
         {
             "message": "Missing item type\nExecutes a script or function within the active browser window, returning the results",
-            "line": " lib/chain.js:1624"
+            "line": " lib/chain.js:1677"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.2</em>
+            <em>API Docs for: 0.2.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -252,6 +252,16 @@ BlinkDiffComparison.prototype.getDriver = function () {
 
 
 /**
+ * Gets the default comparison options
+ *
+ * @method getOptions
+ * @return {object}
+ */
+BlinkDiffComparison.prototype.getOptions = function () {
+	return this.getDriver().getValue(&#x27;blinkDiff.options&#x27;) || {};
+};
+
+/**
  * Should an output be created when comparison is successful?
  *
  * @method shouldOutputOnSuccess
@@ -389,9 +399,10 @@ BlinkDiffComparison.prototype._getBaseName = function (title, id) {
  */
 BlinkDiffComparison.prototype._getApprovedImagePath = function (title, id) {
 	var baseName = this._getBaseName(title, id || 1),
-		folderName = this._getFolderName();
+		folderName = this._getFolderName(),
+		suffix = this._needsApprovedSuffix() ? &#x27;_approved&#x27; : &#x27;&#x27;;
 
-	return path.join(this.getApprovedPath(), folderName, baseName + &#x27;.png&#x27;);
+	return path.join(this.getApprovedPath(), folderName, baseName + suffix + &#x27;.png&#x27;);
 };
 
 /**
@@ -405,9 +416,10 @@ BlinkDiffComparison.prototype._getApprovedImagePath = function (title, id) {
  */
 BlinkDiffComparison.prototype._getBuildImagePath = function (title, id) {
 	var baseName = this._getBaseName(title, id || 1),
-		folderName = this._getFolderName();
+		folderName = this._getFolderName(),
+		suffix = this._needsBuildSuffix() ? &#x27;_build&#x27; : &#x27;&#x27;;
 
-	return path.join(this.getDiffPath(), folderName, baseName + &#x27;_build.png&#x27;);
+	return path.join(this.getBuildPath(), folderName, baseName + suffix + &#x27;.png&#x27;);
 };
 
 /**
@@ -421,9 +433,64 @@ BlinkDiffComparison.prototype._getBuildImagePath = function (title, id) {
  */
 BlinkDiffComparison.prototype._getDiffImagePath = function (title, id) {
 	var baseName = this._getBaseName(title, id || 1),
-		folderName = this._getFolderName();
+		folderName = this._getFolderName(),
+		suffix = this._needsDiffSuffix() ? &#x27;_diff&#x27; : &#x27;&#x27;;
 
-	return path.join(this.getDiffPath(), folderName, baseName + &#x27;_diff.png&#x27;);
+	return path.join(this.getDiffPath(), folderName, baseName + suffix + &#x27;.png&#x27;);
+};
+
+/**
+ * Checks if a filename suffix is required for the approved folder
+ *
+ * Note:
+ * This is only true if multiple file-types end up in the same folder
+ *
+ * @method _needsApprovedSuffix
+ * @return {boolean}
+ * @private
+ */
+BlinkDiffComparison.prototype._needsApprovedSuffix = function () {
+	var approvedPath = this.getApprovedPath(),
+		buildPath = this.getBuildPath(),
+		diffPath = this.getDiffPath();
+
+	return ((approvedPath == buildPath) || (approvedPath == diffPath));
+};
+
+/**
+ * Checks if a filename suffix is required for the build folder
+ *
+ * Note:
+ * This is only true if multiple file-types end up in the same folder
+ *
+ * @method _needsBuildSuffix
+ * @return {boolean}
+ * @private
+ */
+BlinkDiffComparison.prototype._needsBuildSuffix = function () {
+	var approvedPath = this.getApprovedPath(),
+		buildPath = this.getBuildPath(),
+		diffPath = this.getDiffPath();
+
+	return ((buildPath == approvedPath) || (buildPath == diffPath));
+};
+
+/**
+ * Checks if a filename suffix is required for the diff folder
+ *
+ * Note:
+ * This is only true if multiple file-types end up in the same folder
+ *
+ * @method _needsDiffSuffix
+ * @return {boolean}
+ * @private
+ */
+BlinkDiffComparison.prototype._needsDiffSuffix = function () {
+	var approvedPath = this.getApprovedPath(),
+		buildPath = this.getBuildPath(),
+		diffPath = this.getDiffPath();
+
+	return ((diffPath == buildPath) || (diffPath == approvedPath));
 };
 
 
@@ -445,6 +512,23 @@ BlinkDiffComparison.prototype._saveBlob = function (filePath, blob) {
 
 
 /**
+ * Prepares all of the folders, creating them if needed
+ *
+ * @method _prepareFolders
+ * @private
+ */
+BlinkDiffComparison.prototype._prepareFolders = function () {
+
+	[this.getApprovedPath(), this.getBuildPath(), this.getDiffPath()].forEach(function (path) {
+
+		if (!fs.existsSync(path)) {
+			mkdirp.sync(path);
+		}
+	});
+};
+
+
+/**
  * Compares a specific screenshot
  *
  * @method compare
@@ -457,7 +541,9 @@ BlinkDiffComparison.prototype.compare = function (title, imageBlob, options) {
 	var BlinkDiff,
 		diffPath, buildPath, approvedPath,
 		instance,
-		result, passed;
+		result, passed, localOptions;
+
+	this._prepareFolders();
 
 	approvedPath = this._getApprovedImagePath(title, options.id);
 	buildPath = this._getBuildImagePath(title, options.id);
@@ -465,6 +551,9 @@ BlinkDiffComparison.prototype.compare = function (title, imageBlob, options) {
 
 	// Make sure that the &quot;id&quot; is removed so that it doesn&#x27;t clash with BlinkDiff
 	delete options.id;
+
+	// Apply default options, overwritten by given options
+	localOptions = utils.deepExtend({}, [this.getOptions(), options]);
 
 	this._saveBlob(buildPath, imageBlob);
 
@@ -478,11 +567,11 @@ BlinkDiffComparison.prototype.compare = function (title, imageBlob, options) {
 
 	} else {
 
-		options.imageA = PNGImage.readImageSync(approvedPath);
-		options.imageB = PNGImage.loadImageSync(imageBlob);
+		localOptions.imageA = PNGImage.readImageSync(approvedPath);
+		localOptions.imageB = PNGImage.loadImageSync(imageBlob);
 
 		BlinkDiff = this._loadBlinkDiff();
-		instance = new BlinkDiff(options);
+		instance = new BlinkDiff(localOptions);
 		result = instance.runSync();
 
 		passed = instance.hasPassed(result.code);

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.2</em>
+            <em>API Docs for: 0.2.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -367,6 +367,7 @@ Chain.prototype._scopeCallBack = function (cb, args) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with each selected element in turn
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -408,6 +409,7 @@ Chain.prototype.elements = function (selector, callBack) {
  * @param {string} attribute Name of the attribute to get the value of
  * @param {function} [callBack] Callback function that will be triggered with the attribute value
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -451,6 +453,7 @@ Chain.prototype.elementAttribute = function (selector, attribute, callBack) {
  * @param {string} className Name of class to look for
  * @param {function} [callBack] Callback function that will be triggered with the result of the request
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -496,6 +499,7 @@ Chain.prototype.elementHasClass = function (selector, className, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the list of classes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -538,6 +542,7 @@ Chain.prototype.elementClasses = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be called with the text content of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -581,6 +586,7 @@ Chain.prototype.elementText = function (selector, callBack) {
  * @param {string|RegEx} text String, sub-string, or regular expression to look for in the elements
  * @param {function} [callBack] Callback function that will be called with the result of the request
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -632,6 +638,7 @@ Chain.prototype.elementHasText = function (selector, text, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be called with the value of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -666,6 +673,7 @@ Chain.prototype.elementValue = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the name of the tag of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -704,6 +712,7 @@ Chain.prototype.elementTagName = function (selector, callBack) {
  * @param {string} property Name of the CSS property to determine the value of
  * @param {function} [callBack] Callback function that will trigger with the value of the CSS property of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -738,6 +747,7 @@ Chain.prototype.elementCssValue = function (selector, property, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the result of the request
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -775,6 +785,7 @@ Chain.prototype.elementIsDisplayed = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the result of the request
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -809,6 +820,7 @@ Chain.prototype.elementIsSelected = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the result of the request
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -836,7 +848,6 @@ Chain.prototype.elementIsEnabled = function (selector, callBack) {
 	}.bind(this));
 };
 
-
 /**
  * Types complete strings or key-strokes into the selected element
  *
@@ -845,6 +856,7 @@ Chain.prototype.elementIsEnabled = function (selector, callBack) {
  * @param {string|string[]} keys or key-strokes to send
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -881,6 +893,7 @@ Chain.prototype.elementSendKeys = function (selector, keys, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -918,6 +931,7 @@ Chain.prototype.elementClear = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -951,6 +965,7 @@ Chain.prototype.elementSubmit = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the size of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -987,6 +1002,7 @@ Chain.prototype.elementSize = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the location of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1023,6 +1039,7 @@ Chain.prototype.elementLocation = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the location of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1059,6 +1076,7 @@ Chain.prototype.elementLocationInView = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the size and location of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1097,6 +1115,7 @@ Chain.prototype.elementFrame = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the absolute center coordinates of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1133,6 +1152,7 @@ Chain.prototype.elementAbsoluteCenter = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered with the relative center coordinates of the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1173,10 +1193,19 @@ Chain.prototype.elementRelativeCenter = function (selector, callBack) {
  * @param {object[]|Element[]|string[]} [options.blockOuts] List of areas/elements that should be blocked-out
  * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
  * @param {int} [options.wait=100] Wait in ms before each screenshot
+ * @param {int} [options.allPadding] Padding for all sides
+ * @param {int} [options.hPadding] Padding on left and right side of the element
+ * @param {int} [options.vPadding] Padding on the top and on the bottom of the element
+ * @param {int} [options.leftPadding] Padding on the left of the element
+ * @param {int} [options.rightPadding] Padding on the right of the element
+ * @param {int} [options.topPadding] Padding on the top of the element
+ * @param {int} [options.bottomPadding] Padding on the bottom of the element
  * @param {function} [callBack] Callback function that will be triggered with the image-buffer of the screenshot from the selected element
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -1281,6 +1310,10 @@ Chain.prototype.elementRelativeCenter = function (selector, callBack) {
  * Taxi will wait 100 milliseconds before each screenshot to make sure that changes
  * caused by the scrolling behavior were applied in the browser view-port.
  * Extend this time if the screenshot needs special behavior.
+ *
+ *
+ * ##options.*padding
+ * Padding that reaches outside of the document itself will be reduced to the extend of the document.
  */
 Chain.prototype.elementCapture = function (selector, options, callBack) {
 	return this._elementAction(selector, function (element, index) {
@@ -1306,10 +1339,19 @@ Chain.prototype.elementCapture = function (selector, options, callBack) {
  * @param {int} [options.wait=100] Wait in ms before each screenshot
  * @param {object} [options.compare] Options for the comparison. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff#object-usage)
  * @param {object} [options.compare.id=1] Additional identifier to differentiate comparison
+ * @param {int} [options.allPadding] Padding for all sides
+ * @param {int} [options.hPadding] Padding on left and right side of the element
+ * @param {int} [options.vPadding] Padding on the top and on the bottom of the element
+ * @param {int} [options.leftPadding] Padding on the left of the element
+ * @param {int} [options.rightPadding] Padding on the right of the element
+ * @param {int} [options.topPadding] Padding on the top of the element
+ * @param {int} [options.bottomPadding] Padding on the bottom of the element
  * @param {function} [callBack] Callback function that will be triggered with the result of the request
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -1390,6 +1432,7 @@ Chain.prototype.elementCompare = function (selector, title, options, callBack) {
  * @param {int} [button=Mouse.BUTTON_LEFT] Button that should be pressed when click action is executed.
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1434,6 +1477,7 @@ Chain.prototype.elementClick = function (selector, button, callBack) {
  * @param {int} [button=Mouse.BUTTON_LEFT] Button that should be pressed when click action is executed.
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1476,6 +1520,7 @@ Chain.prototype.elementClickAt = function (selector, xOffset, yOffset, button, c
  * @param {int} [button=Mouse.BUTTON_LEFT] Button that should be pressed when click action is executed.
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1520,6 +1565,7 @@ Chain.prototype.elementDblClick = function (selector, button, callBack) {
  * @param {int} [button=Mouse.BUTTON_LEFT] Button that should be pressed when click action is executed.
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1561,6 +1607,7 @@ Chain.prototype.elementDblClickAt = function (selector, xOffset, yOffset, button
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1596,6 +1643,7 @@ Chain.prototype.elementHover = function (selector, callBack) {
  * @param {int} yOffset Y-offset relative to the top corner of the selected element
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1633,6 +1681,7 @@ Chain.prototype.elementHoverAt = function (selector, xOffset, yOffset, callBack)
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1668,6 +1717,7 @@ Chain.prototype.elementTouch = function (selector, callBack) {
  * @param {int} yOffset Y-offset relative to the top corner of the selected element
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1701,6 +1751,7 @@ Chain.prototype.elementTouchAt = function (selector, xOffset, yOffset, callBack)
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1734,6 +1785,7 @@ Chain.prototype.elementTap = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1767,6 +1819,7 @@ Chain.prototype.elementDblTap = function (selector, callBack) {
  * @param {string} selector CSS selector of DOM elements
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @throws {Error} When no element could be found with the given CSS selector.
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1804,6 +1857,7 @@ Chain.prototype.elementLongTap = function (selector, callBack) {
  * @param {string|function} script Script or serializable function that should be executed on the client
  * @param {*[]} [args] List of arguments supplied to the script when executed on the client-side
  * @param {function} [callBack] Callback function that will be triggered with the result of the script
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1841,6 +1895,7 @@ Chain.prototype.execute = function (script, args, callBack) {
  * @method sendKeys
  * @param {string|string[]} keys or key-strokes to send
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -1877,6 +1932,7 @@ Chain.prototype.sendKeys = function (keys, callBack) {
  * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
  * @param {int} [options.wait=100] Wait in ms before each screenshot
  * @param {function} [callBack] Callback function that will be triggered with the image-buffer of the document screenshot
+ * @throws {Error} When there is no active document available
  * @see Chain.elementCapture
  * @since 0.2.0
  * @chainable
@@ -1916,6 +1972,7 @@ Chain.prototype.captureDocument = function (options, callBack) {
  * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
  * @param {int} [options.wait=100] Wait in ms before each screenshot
  * @param {function} [callBack] Callback function that will be triggered with the image-buffer of the view-port screenshot
+ * @throws {Error} When there is no active document available
  * @see Chain.elementCapture
  * @since 0.2.0
  * @chainable
@@ -1959,6 +2016,7 @@ Chain.prototype.captureViewPort = function (options, callBack) {
  * @param {object} [options.blockOutColor=black] Color to be used for blocking-out areas {red, green, blue, alpha}
  * @param {int} [options.wait=100] Wait in ms before each screenshot
  * @param {function} [callBack] Callback function that will be triggered with the image-buffer of the area screenshot
+ * @throws {Error} When there is no active document available
  * @see Chain.elementCapture
  * @since 0.2.0
  * @chainable
@@ -2001,6 +2059,7 @@ Chain.prototype.captureArea = function (x, y, width, height, options, callBack) 
  * @param {object} [options.compare] Options for the comparison. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff)
  * @param {object} [options.compare.id=1] Additional identifier to differentiate comparison
  * @param {function} [callBack] Callback function that will be triggered with the reuslt of the request
+ * @throws {Error} When there is no active document available
  * @see Chain.elementCapture
  * @see Chain.elementCompare
  * @since 0.2.0
@@ -2048,6 +2107,7 @@ Chain.prototype.compareDocument = function (title, options, callBack) {
  * @param {object} [options.compare] Options for the comparison. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff)
  * @param {object} [options.compare.id=1] Additional identifier to differentiate comparison
  * @param {function} [callBack] Callback function that will be triggered with the result of the request
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @see Chain.elementCapture
  * @see Chain.elementCompare
@@ -2099,6 +2159,7 @@ Chain.prototype.compareViewPort = function (title, options, callBack) {
  * @param {object} [options.compare] Options for the comparison. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff)
  * @param {object} [options.compare.id=1] Additional identifier to differentiate comparison
  * @param {function} [callBack] Callback function that will be triggered with the result fo the request
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @see Chain.elementCapture
  * @see Chain.elementCompare
@@ -2137,6 +2198,7 @@ Chain.prototype.compareArea = function (title, x, y, width, height, options, cal
  *
  * @method activeElement
  * @param {function} [callBack] Callback function that will be triggered with the currently active element
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2168,6 +2230,7 @@ Chain.prototype.activeElement = function (callBack) {
  *
  * @method closeWindow
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2198,6 +2261,7 @@ Chain.prototype.closeWindow = function (callBack) {
  *
  * @method title
  * @param {function} [callBack] Callback function that will be triggered with the title of the document
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2229,6 +2293,7 @@ Chain.prototype.title = function (callBack) {
  *
  * @method source
  * @param {function} [callBack] Callback function that will be triggered with the source-code of the document
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2260,6 +2325,7 @@ Chain.prototype.source = function (callBack) {
  *
  * @method scrollLocation
  * @param {function} [callBack] Callback function that will be triggered with the scroll-location of the active window
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2295,6 +2361,7 @@ Chain.prototype.scrollLocation = function (callBack) {
  * @param {int} x Absolute x-coordinate to scroll to
  * @param {int} y Absolute y-coordinate to scroll to
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2327,6 +2394,7 @@ Chain.prototype.scrollTo = function (x, y, callBack) {
  * @param {int} xOffset X-offset to scroll to relative to the current scroll position
  * @param {int} yOffset Y-offset to scroll to relative to the current scroll position
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2364,6 +2432,7 @@ Chain.prototype.scrollBy = function (xOffset, yOffset, callBack) {
  * @param {int} y Absolute y-coordinate to click on
  * @param {int} [button=Mouse.BUTTON_LEFT] Button that should be pressed when click action is executed.
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2405,6 +2474,7 @@ Chain.prototype.click = function (x, y, button, callBack) {
  * @param {int} y Absolute y-coordinate to double-click on
  * @param {int} [button=Mouse.BUTTON_LEFT] Button that should be pressed when click action is executed.
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2445,6 +2515,7 @@ Chain.prototype.dblClick = function (x, y, button, callBack) {
  * @param {int} x Absolute x-coordinate to hover above
  * @param {int} y Absolute y-coordinate to hover above
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2480,6 +2551,7 @@ Chain.prototype.hover = function (x, y, callBack) {
  * @method navigateTo
  * @param {string} url URL that should be navigated to
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2510,6 +2582,7 @@ Chain.prototype.navigateTo = function (url, callBack) {
  *
  * @method url
  * @param {function} [callBack] Callback function that will be called with the URL of the document
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2541,6 +2614,7 @@ Chain.prototype.url = function (callBack) {
  *
  * @method forward
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2571,6 +2645,7 @@ Chain.prototype.forward = function (callBack) {
  *
  * @method backward
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2601,6 +2676,7 @@ Chain.prototype.backward = function (callBack) {
  *
  * @method refresh
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -2635,6 +2711,7 @@ Chain.prototype.refresh = function (callBack) {
  *
  * @method dialogText
  * @param {function} [callBack] Callback function that will be triggered with the text-content of the dialog
+ * @throws {Error} When there is no dialog available
  * @since 0.2.1
  * @chainable
  * @return {Chain} The chain object
@@ -2672,6 +2749,7 @@ Chain.prototype.dialogText = function (callBack) {
  * @method dialogSendKeys
  * @param {string|string[]} keys or key-strokes to send
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no dialog available
  * @since 0.2.1
  * @chainable
  * @return {Chain} The chain object
@@ -2700,8 +2778,6 @@ Chain.prototype.dialogSendKeys = function (keys, callBack) {
 	}.bind(this));
 };
 
-Chain.prototype.dialogType = Chain.prototype.dialogSendKeys;
-
 /**
  * Accepts the currently displayed dialog
  *
@@ -2709,6 +2785,7 @@ Chain.prototype.dialogType = Chain.prototype.dialogSendKeys;
  *
  * @method dialogAccept
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no dialog available
  * @since 0.2.1
  * @chainable
  * @return {Chain} The chain object
@@ -2744,6 +2821,7 @@ Chain.prototype.dialogAccept = function (callBack) {
  *
  * @method dialogDismiss
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no dialog available
  * @since 0.2.1
  * @chainable
  * @return {Chain} The chain object
@@ -2784,6 +2862,8 @@ Chain.prototype.dialogDismiss = function (callBack) {
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @since 0.2.0
  * @chainable
+ * @throws {Error} When there is no active document available
+ * @throws {Error} When the frame identified by the id doesn&#x27;t exist
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -2853,6 +2933,7 @@ Chain.prototype.activateParentFrame = function (callBack) {
  * @param {function} [callBack] Callback function that will be triggered when the action completes
  * @since 0.2.0
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -2940,8 +3021,6 @@ Chain.prototype.sleep = function (ms, callBack) {
 	}.bind(this));
 };
 
-Chain.prototype.pause = Chain.prototype.sleep;
-
 /**
  * Completes the session by finishing up comparison tasks and closing the browser window
  *
@@ -2976,6 +3055,7 @@ Chain.prototype.end = function () {
  * @param {int} [timeOut=10000] Max. time-out in waiting on the element
  * @param {boolean} [abortOnFailure=true] Should an exception be thrown when time-out is reached?
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -3016,6 +3096,7 @@ Chain.prototype.waitForElementNotPresent = function (selector, timeOut, abortOnF
  * @param {int} [timeOut=10000] Max. time-out in waiting on the element
  * @param {boolean} [abortOnFailure=true] Should an exception be thrown when time-out is reached?
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -3058,6 +3139,7 @@ Chain.prototype.waitForElementNotDisplayed = function (selector, timeOut, abortO
  * @param {int} [timeOut=10000] Max. time-out in waiting on the element
  * @param {boolean} [abortOnFailure=true] Should an exception be thrown when time-out is reached?
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -3098,6 +3180,7 @@ Chain.prototype.waitForElementPresent = function (selector, timeOut, abortOnFail
  * @param {int} [timeOut=10000] Max. time-out in waiting on the element
  * @param {boolean} [abortOnFailure=true] Should an exception be thrown when time-out is reached?
  * @param {function} [callBack] Callback function that will be triggered when the action completes
+ * @throws {Error} When there is no active document available
  * @since 0.2.0
  * @chainable
  * @return {Chain} The chain object
@@ -3138,8 +3221,9 @@ Chain.prototype.waitForElementDisplay = function (selector, timeOut, abortOnFail
  *
  * @method size
  * @param {function} [callBack] Callback function that will be triggered with the size of the window
- * @since 0.2.1
+ * @since 0.2.2
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -3173,8 +3257,9 @@ Chain.prototype.size = function (callBack) {
  * @param {int} width Width of the window
  * @param {int} height Height of the window
  * @param {function} [callBack] Callback function that will be triggered when the action completes
- * @since 0.2.1
+ * @since 0.2.2
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -3203,8 +3288,9 @@ Chain.prototype.resize = function (width, height, callBack) {
  *
  * @method location
  * @param {function} [callBack] Callback function that will be triggered with the location of the window
- * @since 0.2.1
+ * @since 0.2.2
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -3238,8 +3324,9 @@ Chain.prototype.location = function (callBack) {
  * @param {int} x Absolute x-coordinate of the next window location
  * @param {int} y Absolute y-coordinate of the next window location
  * @param {function} [callBack] Callback function that will be triggered when the action completes
- * @since 0.2.1
+ * @since 0.2.2
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------
@@ -3268,8 +3355,9 @@ Chain.prototype.relocate = function (x, y, callBack) {
  *
  * @method maximize
  * @param {function} [callBack] Callback function that will be triggered when the action completes
- * @since 0.2.1
+ * @since 0.2.2
  * @chainable
+ * @throws {Error} When there is no active document available
  * @return {Chain} The chain object
  *
  * ---------------------------------------

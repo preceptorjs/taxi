@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.2</em>
+            <em>API Docs for: 0.2.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -669,12 +669,8 @@ Screenshot.prototype._browserPadding = function (padding) {
     switch (browserName) {
 
         case &#x27;iphone&#x27;:
-            //if (deviceName.indexOf(&#x27;ipad&#x27;) !== -1) {
-            //    if ((deviceOrientation === &#x27;&#x27;) || (deviceOrientation === &#x27;portrait&#x27;)) {
-                    paddingScreenshotTop = 65; // Browser address bar needs to be trimmed
-                    paddingScreenshotBottom = 2; // Browser returns view-port that is one pixel smaller than reported
-            //    }
-            //}
+			paddingScreenshotTop = 65; // Browser address bar needs to be trimmed
+			paddingScreenshotBottom = 2; // Browser returns view-port that is one pixel smaller than reported
             break;
 
         case &#x27;internet explorer&#x27;:
