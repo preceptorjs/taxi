@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+v0.2.4 - 05/04/15
+* Switch synchronous request library - experimental
+
 v0.2.3 - 04/26/15
 * Add element padding for capture and compare
 * Bugfixes

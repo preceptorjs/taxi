@@ -1,6 +1,6 @@
 {
   "name": "taxi",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Object-oriented Selenium WebDriver Client",
   "license": "MIT",
   "main": "index.js",
@@ -42,7 +42,7 @@
     "preceptor-core": "~0.10.0",
     "promise": "~3.2.0",
     "sleep.js": "0.1.0",
-    "sync-request": "~2.0.1",
+    "sync-req": "^0.1.2",
     "then-request": "~2.1.1"
   },
   "devDependencies": {
