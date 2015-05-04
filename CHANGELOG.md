@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+v0.2.5 - 05/04/15
+* Remove unnecessary spaces in folder/file names for comparison
+
 v0.2.4 - 05/04/15
 * Switch synchronous request library - experimental
 
