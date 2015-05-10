@@ -4,6 +4,7 @@ CHANGELOG
 v0.2.6
 * Bugfix for devicePixelRatio rounding error
 * Avoid taking multiple screenshots for stitching if stitching is not required
+* Add horizontal padding for browser adjustment in cases where the website does something weird
 
 v0.2.5 - 05/04/15
 * Remove unnecessary spaces in folder/file names for comparison
