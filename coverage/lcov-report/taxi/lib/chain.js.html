@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">taxi/lib/chain.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">21.09% <small>(89 / 422)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">21.13% <small>(90 / 426)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 172)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 174)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 210)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 212)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">21.09% <small>(89 / 422)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">21.13% <small>(90 / 426)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -3426,7 +3426,49 @@
 3208
 3209
 3210
-3211</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+3211
+3212
+3213
+3214
+3215
+3216
+3217
+3218
+3219
+3220
+3221
+3222
+3223
+3224
+3225
+3226
+3227
+3228
+3229
+3230
+3231
+3232
+3233
+3234
+3235
+3236
+3237
+3238
+3239
+3240
+3241
+3242
+3243
+3244
+3245
+3246
+3247
+3248
+3249
+3250
+3251
+3252
+3253</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -3642,6 +3684,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -4572,6 +4654,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -6823,6 +6907,46 @@ Chain.prototype._scopeCallBack = <span class="fstat-no" title="function not cove
 // #############
 &nbsp;
 /**
+ * Adjusts the configurations according to the browsers behavior.
+ *
+ * Note:
+ * This is needed especially when screenshots should be taken since
+ * browsers behave here very different from each other.
+ *
+ * Needs to be called only once per taxi instance.
+ *
+ * @method adjust
+ * @param {object} [options] Preparation options for chaining
+ * @param {int} [options.url='http://www.example.org'] Default website for adjustment for browser
+ * @param {int} [options.horizontalPadding=0] Padding of the document
+ * @param {function} [callBack] Callback function that will be triggered with each selected element in turn
+ * @throws {Error} When there is no active document available
+ * @since 0.2.6
+ * @chainable
+ * @return {Chain} The chain object
+ *
+ * ---------------------------------------
+ *
+ * ##Callback function
+ * &gt; function ()
+ *
+ * ###Scope
+ * &gt; {`Chain`}
+ *
+ * ###Parameters
+ * none
+ */
+Chain.prototype.adjust = <span class="fstat-no" title="function not covered" >function (options, callBack) {</span>
+&nbsp;
+	// Navigate to adjustment website
+<span class="cstat-no" title="statement not covered" >	return this._driverAction(this._driver.adjust(options), <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >		if (callBack) {</span>
+<span class="cstat-no" title="statement not covered" >			return this._scopeCallBack(callBack, []);</span>
+		}
+	}.bind(this));
+};
+&nbsp;
+/**
  * Selects DOM elements, triggering each selected element on the supplied callback function
  *
  * @method elements
@@ -7854,17 +7978,19 @@ Chain.prototype.elementCapture = <span class="fstat-no" title="function not cove
  * ```
  *
  * ###Options
- * * **`blinkDiff.outputOnSuccess`** {`boolean`} - Should an output be created when comparison is successful?
+ * * **`blinkDiff.outputOnSuccess`** {`boolean`} [default=true] - Should an output be created when comparison is successful?
  * There will always be an output if the comparison fails.
- * * **`blinkDiff.failOnDifference`** {`boolean`} - Should Taxi trigger an error when a difference is recognized?
- * * **`blinkDiff.autoApprove`** {`boolean`} - Should Taxi auto-approve screenshots when no previous comparison
+ * * **`blinkDiff.failOnDifference`** {`boolean`} [default=true] - Should Taxi trigger an error when a difference is recognized?
+ * * **`blinkDiff.autoApprove`** {`boolean`} [default=false] - Should Taxi auto-approve screenshots when no previous comparison
  * exist? Otherwise, the test will ignore this comparison, saving the current build screenshot.
- * * **`blinkDiff.approvedPath`** {`string`} - Path to the approved folder. Defaults to the current working directory.
- * * **`blinkDiff.buildPath`** {`string`} - Path to the build folder, holding all the screenshots taken in the recent build.
+ * * **`blinkDiff.approvedPath`** {`string`} [default=cwd] - Path to the approved folder. Defaults to the current working directory.
+ * * **`blinkDiff.buildPath`** {`string`} [default=approvedPath] - Path to the build folder, holding all the screenshots taken in the recent build.
  * Defaults to the approved folder.
- * * **`blinkDiff.diffPath`** {`string`} - Path to the difference folder, keeping the highlighted differences between
+ * * **`blinkDiff.diffPath`** {`string`} [default=buildPath] - Path to the difference folder, keeping the highlighted differences between
  * the approved image and the build image. Default to the build folder.
  * * **`blinkDiff.options`** {`object`} - Default values for Blink-Diff options. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff#object-usage)
+ * * **`blinkDiff.batchFailures`** {`boolean`} [default=false] - Failures are batched to the end of the tests when this flag is set.
+ * * **`blinkDiff.failOnAdditions`** {`boolean`} [default=false] - Fail when no approved screenshot is found.
  */
 Chain.prototype.elementCompare = <span class="fstat-no" title="function not covered" >function (selector, title, options, callBack) {</span>
 &nbsp;
@@ -9851,7 +9977,7 @@ logMethods(Chain.prototype);
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 27 2015 00:44:34 GMT-0700 (PDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 13 2015 02:44:24 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -182,8 +182,9 @@ module.exports = {
      * and it will modify the document as needed.
      *
      * @method init
+	 * @param {int} horizontalPadding
      */
-    init: function () {
+    init: function (horizontalPadding) {
         var de = document.documentElement,
             body = document.body,
             el, initData;
@@ -201,7 +202,8 @@ module.exports = {
             bodyOverflow: body.style.overflow,
             bodyWidth: body.style.width,
             bodyHeight: body.style.height,
-            viewPortWidth: el.offsetWidth
+            viewPortWidth: el.offsetWidth,
+			horizontalPadding: horizontalPadding
         };
 
         de.removeChild(el);
@@ -210,7 +212,7 @@ module.exports = {
         body.style.overflow = &#x27;hidden&#x27;;
 
         // Make document only one pixel height and twice wide as the view-port
-        body.style.width = (initData.viewPortWidth * 2) + &#x27;px&#x27;;
+        body.style.width = ((initData.viewPortWidth - horizontalPadding) * 2) + &#x27;px&#x27;;
         body.style.height = &#x27;1px&#x27;;
 
         return JSON.stringify(initData);
@@ -230,6 +232,7 @@ module.exports = {
         body.style.height = initData.bodyHeight;
     }
 };
+
     </pre>
 </div>
 

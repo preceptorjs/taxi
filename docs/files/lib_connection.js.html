@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -449,7 +449,7 @@ function createInternalConnection (mode) {
       result = require(&#x27;then-request&#x27;);
       break;
     case &#x27;sync&#x27;:
-      result = require(&#x27;sync-request&#x27;);
+      result = require(&#x27;sync-req&#x27;);
       break;
     default:
       throw new Error(&#x27;Expected options.mode to be &quot;async&quot; or &quot;sync&quot; but got &#x27; + JSON.stringify(mode));

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -359,6 +359,46 @@ Chain.prototype._scopeCallBack = function (cb, args) {
 // #############
 // Element
 // #############
+
+/**
+ * Adjusts the configurations according to the browsers behavior.
+ *
+ * Note:
+ * This is needed especially when screenshots should be taken since
+ * browsers behave here very different from each other.
+ *
+ * Needs to be called only once per taxi instance.
+ *
+ * @method adjust
+ * @param {object} [options] Preparation options for chaining
+ * @param {int} [options.url=&#x27;http://www.example.org&#x27;] Default website for adjustment for browser
+ * @param {int} [options.horizontalPadding=0] Padding of the document
+ * @param {function} [callBack] Callback function that will be triggered with each selected element in turn
+ * @throws {Error} When there is no active document available
+ * @since 0.2.6
+ * @chainable
+ * @return {Chain} The chain object
+ *
+ * ---------------------------------------
+ *
+ * ##Callback function
+ * &gt; function ()
+ *
+ * ###Scope
+ * &gt; {&#x60;Chain&#x60;}
+ *
+ * ###Parameters
+ * none
+ */
+Chain.prototype.adjust = function (options, callBack) {
+
+	// Navigate to adjustment website
+	return this._driverAction(this._driver.adjust(options), function () {
+		if (callBack) {
+			return this._scopeCallBack(callBack, []);
+		}
+	}.bind(this));
+};
 
 /**
  * Selects DOM elements, triggering each selected element on the supplied callback function
@@ -1392,17 +1432,19 @@ Chain.prototype.elementCapture = function (selector, options, callBack) {
  * &#x60;&#x60;&#x60;
  *
  * ###Options
- * * **&#x60;blinkDiff.outputOnSuccess&#x60;** {&#x60;boolean&#x60;} - Should an output be created when comparison is successful?
+ * * **&#x60;blinkDiff.outputOnSuccess&#x60;** {&#x60;boolean&#x60;} [default=true] - Should an output be created when comparison is successful?
  * There will always be an output if the comparison fails.
- * * **&#x60;blinkDiff.failOnDifference&#x60;** {&#x60;boolean&#x60;} - Should Taxi trigger an error when a difference is recognized?
- * * **&#x60;blinkDiff.autoApprove&#x60;** {&#x60;boolean&#x60;} - Should Taxi auto-approve screenshots when no previous comparison
+ * * **&#x60;blinkDiff.failOnDifference&#x60;** {&#x60;boolean&#x60;} [default=true] - Should Taxi trigger an error when a difference is recognized?
+ * * **&#x60;blinkDiff.autoApprove&#x60;** {&#x60;boolean&#x60;} [default=false] - Should Taxi auto-approve screenshots when no previous comparison
  * exist? Otherwise, the test will ignore this comparison, saving the current build screenshot.
- * * **&#x60;blinkDiff.approvedPath&#x60;** {&#x60;string&#x60;} - Path to the approved folder. Defaults to the current working directory.
- * * **&#x60;blinkDiff.buildPath&#x60;** {&#x60;string&#x60;} - Path to the build folder, holding all the screenshots taken in the recent build.
+ * * **&#x60;blinkDiff.approvedPath&#x60;** {&#x60;string&#x60;} [default=cwd] - Path to the approved folder. Defaults to the current working directory.
+ * * **&#x60;blinkDiff.buildPath&#x60;** {&#x60;string&#x60;} [default=approvedPath] - Path to the build folder, holding all the screenshots taken in the recent build.
  * Defaults to the approved folder.
- * * **&#x60;blinkDiff.diffPath&#x60;** {&#x60;string&#x60;} - Path to the difference folder, keeping the highlighted differences between
+ * * **&#x60;blinkDiff.diffPath&#x60;** {&#x60;string&#x60;} [default=buildPath] - Path to the difference folder, keeping the highlighted differences between
  * the approved image and the build image. Default to the build folder.
  * * **&#x60;blinkDiff.options&#x60;** {&#x60;object&#x60;} - Default values for Blink-Diff options. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff#object-usage)
+ * * **&#x60;blinkDiff.batchFailures&#x60;** {&#x60;boolean&#x60;} [default=false] - Failures are batched to the end of the tests when this flag is set.
+ * * **&#x60;blinkDiff.failOnAdditions&#x60;** {&#x60;boolean&#x60;} [default=false] - Fail when no approved screenshot is found.
  */
 Chain.prototype.elementCompare = function (selector, title, options, callBack) {
 

@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">taxi/lib/helpers/stitching.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">38.1% <small>(16 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">37.21% <small>(16 / 43)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Functions: <span class="metric">7.69% <small>(1 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">38.1% <small>(16 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">37.21% <small>(16 / 43)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -409,7 +409,17 @@
 191
 192
 193
-194</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -492,34 +502,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -683,13 +703,15 @@ Stitching.prototype.getDriver = <span class="fstat-no" title="function not cover
  * This information will then be cached for each driver instance, determining this only once per instance.
  *
  * @method doesNeedStitching
+ * @param {object} [options]
+ * @param {int} [options.horizontalPadding=0] Padding of the document
  * @return {number}
  */
-Stitching.prototype.doesNeedStitching = <span class="fstat-no" title="function not covered" >function () {</span>
+Stitching.prototype.doesNeedStitching = <span class="fstat-no" title="function not covered" >function (options) {</span>
 <span class="cstat-no" title="statement not covered" >    var needsStitching = this.getDriver().getValue('needsStitching');</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (needsStitching === null) {</span>
-<span class="cstat-no" title="statement not covered" >        return when(this._determineNeedsStitching(), <span class="fstat-no" title="function not covered" >function (value) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(this._determineNeedsStitching(options), <span class="fstat-no" title="function not covered" >function (value) {</span></span>
 <span class="cstat-no" title="statement not covered" >            this.getDriver().setValue('needsStitching', value); </span>// Cache value
 <span class="cstat-no" title="statement not covered" >            return value;</span>
         }.bind(this));
@@ -702,11 +724,17 @@ Stitching.prototype.doesNeedStitching = <span class="fstat-no" title="function n
  * Determines if the browser needs stitching due to the fact of taking only view-port screenshots instead of
  * whole document ones.
  *
+ * Note:
+ * ```horizontalPadding``` is any element that extents horizontally
+ * outside of the document, i.e. negative absolute position.
+ *
  * @method _determineNeedsStitching
+ * @param {object} [options]
+ * @param {int} [options.horizontalPadding=0] Padding of the document
  * @return {boolean}
  * @private
  */
-Stitching.prototype._determineNeedsStitching = <span class="fstat-no" title="function not covered" >function () {</span>
+Stitching.prototype._determineNeedsStitching = <span class="fstat-no" title="function not covered" >function (options) {</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >	var Screenshot = require('./screenshot'),</span>
 		screenshot = new Screenshot(this.getDriver()),
@@ -714,11 +742,13 @@ Stitching.prototype._determineNeedsStitching = <span class="fstat-no" title="fun
 		DevicePixelRatio = require('./devicePixelRatio'),
 		devicePixelRatio = new DevicePixelRatio(this.getDriver());
 &nbsp;
+<span class="cstat-no" title="statement not covered" >	options = options || {};</span>
+&nbsp;
 	// Determine device-pixel-ratio
-<span class="cstat-no" title="statement not covered" >    return when(devicePixelRatio.getDevicePixelRatio(), <span class="fstat-no" title="function not covered" >function (devicePixelRatio) {</span></span>
+<span class="cstat-no" title="statement not covered" >    return when(devicePixelRatio.getDevicePixelRatio(options), <span class="fstat-no" title="function not covered" >function (devicePixelRatio) {</span></span>
 &nbsp;
         // Reduce size of document to get a small screenshot for stitching determination
-<span class="cstat-no" title="statement not covered" >        return when(this._execute(stitchingScripts.init), <span class="fstat-no" title="function not covered" >function (initData) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return when(this._execute(stitchingScripts.init, [options.horizontalPadding || 0]), <span class="fstat-no" title="function not covered" >function (initData) {</span></span>
 <span class="cstat-no" title="statement not covered" >            initData = JSON.parse(initData);</span>
 &nbsp;
             // Take screenshot (hopefully very small, but big enough to get the stitching info)
@@ -800,7 +830,7 @@ logMethods(Stitching.prototype);
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 27 2015 00:44:34 GMT-0700 (PDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 13 2015 02:44:24 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../../prettify.js"></script>

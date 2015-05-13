@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -182,8 +182,9 @@ module.exports = {
      * screenshots like dimensions of document and view-port.
      *
      * @method init
+	 * @param {boolean} needsStitching
      */
-    init: function () {
+    init: function (needsStitching) {
 
         var initData = {
                 viewPort: {},
@@ -232,11 +233,14 @@ module.exports = {
             initData.bodyTransform.property = &#x27;transform&#x27;;
         }
         initData.bodyTransform.value = body.style[initData.bodyTransform.property];
+		initData.needsStitching = needsStitching;
 
         // Change document
 
         // Reset scrolling through translate
-        body.style[initData.bodyTransform.property] = &#x27;translate(&#x27; + initData.viewPort.x + &#x27;px, &#x27; + initData.viewPort.y + &#x27;px)&#x27;;
+		if (needsStitching) {
+			body.style[initData.bodyTransform.property] = &#x27;translate(&#x27; + initData.viewPort.x + &#x27;px, &#x27; + initData.viewPort.y + &#x27;px)&#x27;;
+		}
 
         return JSON.stringify(initData);
     },
@@ -254,7 +258,9 @@ module.exports = {
         body.style.height = initData.document.cssHeight;
 
         // Reset document offset
-        body.style[initData.bodyTransform.property] = initData.bodyTransform.value;
+		if (initData.needsStitching) {
+			body.style[initData.bodyTransform.property] = initData.bodyTransform.value;
+		}
     },
 
 
@@ -272,13 +278,16 @@ module.exports = {
             initX = initData.viewPort.x,
             initY = initData.viewPort.y;
 
-        body.style[property] = &#x27;translate(&#x27; + ((x * -1) + initX) + &#x27;px, &#x27; + ((y * -1) + initY) + &#x27;px)&#x27;;
+		if (initData.needsStitching) {
+			body.style[property] = &#x27;translate(&#x27; + ((x * -1) + initX) + &#x27;px, &#x27; + ((y * -1) + initY) + &#x27;px)&#x27;;
 
-        if (height) {
-            body.style.height = height;
-        }
-    }
+			if (height) {
+				body.style.height = height;
+			}
+		}
+	}
 };
+
     </pre>
 </div>
 

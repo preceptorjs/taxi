@@ -2,7 +2,7 @@
     "project": {
         "name": "taxi",
         "description": "Object-oriented Selenium WebDriver Client",
-        "version": "0.2.3"
+        "version": "0.2.7"
     },
     "files": {
         "lib/comparison/blinkdiff.js": {
@@ -438,7 +438,7 @@
             "namespaces": {},
             "module": "WebDriver",
             "namespace": "",
-            "description": "Device-Pixel-Ratio object",
+            "description": "Blink-Diff comparison object",
             "file": "lib/helpers/stitching.js",
             "line": 13
         },
@@ -627,8 +627,8 @@
             "extension_for": [],
             "module": "WebDriver",
             "file": "lib/comparison/blinkdiff.js",
-            "line": 15,
-            "description": "Device-Pixel-Ratio object",
+            "line": 17,
+            "description": "Blink-Diff comparison object",
             "is_constructor": 1,
             "submodule": "Helpers",
             "params": [
@@ -1543,7 +1543,7 @@
     "classitems": [
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 33,
+            "line": 36,
             "description": "Logs a method call by an event",
             "params": [
                 {
@@ -1562,7 +1562,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 46,
+            "line": 49,
             "description": "Performs a context dependent JSON request for the current session.\nThe result is parsed for errors.",
             "itemtype": "method",
             "name": "_requestJSON",
@@ -1596,7 +1596,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 66,
+            "line": 69,
             "description": "Gets the driver object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "getDriver",
@@ -1610,7 +1610,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 78,
+            "line": 81,
             "description": "Gets the default comparison options",
             "itemtype": "method",
             "name": "getOptions",
@@ -1624,7 +1624,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 88,
+            "line": 91,
             "description": "Should an output be created when comparison is successful?",
             "itemtype": "method",
             "name": "shouldOutputOnSuccess",
@@ -1638,7 +1638,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 105,
+            "line": 108,
             "description": "Should an exception be thrown when there are differences?",
             "itemtype": "method",
             "name": "shouldFailOnDifference",
@@ -1652,7 +1652,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 122,
+            "line": 125,
             "description": "Should screenshot be auto-approved?",
             "itemtype": "method",
             "name": "shouldAutoApprove",
@@ -1666,7 +1666,35 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 133,
+            "line": 136,
+            "description": "Batch failures until the end?",
+            "itemtype": "method",
+            "name": "shouldBatchFailures",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "BlinkDiffComparison",
+            "module": "WebDriver",
+            "submodule": "Helpers"
+        },
+        {
+            "file": "lib/comparison/blinkdiff.js",
+            "line": 146,
+            "description": "Should comparison fail on additions?",
+            "itemtype": "method",
+            "name": "shouldFailOnAdditions",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "BlinkDiffComparison",
+            "module": "WebDriver",
+            "submodule": "Helpers"
+        },
+        {
+            "file": "lib/comparison/blinkdiff.js",
+            "line": 157,
             "description": "Gets the path where approved screenshots are found",
             "itemtype": "method",
             "name": "getApprovedPath",
@@ -1680,7 +1708,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 143,
+            "line": 167,
             "description": "Gets the path where current screenshots will be written to",
             "itemtype": "method",
             "name": "getBuildPath",
@@ -1694,7 +1722,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 153,
+            "line": 177,
             "description": "Gets the path where differences will be written to",
             "itemtype": "method",
             "name": "getDiffPath",
@@ -1708,23 +1736,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 164,
-            "description": "Loads the Blink-Diff library, creating output instructing user to install the module",
-            "itemtype": "method",
-            "name": "_loadBlinkDiff",
-            "return": {
-                "description": "",
-                "type": "BlinkDiff"
-            },
-            "access": "private",
-            "tagname": "",
-            "class": "BlinkDiffComparison",
-            "module": "WebDriver",
-            "submodule": "Helpers"
-        },
-        {
-            "file": "lib/comparison/blinkdiff.js",
-            "line": 185,
+            "line": 187,
             "description": "Gets the name of the browser folder, categorizing screenshots from the same browser + platform",
             "itemtype": "method",
             "name": "_getFolderName",
@@ -1740,7 +1752,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 201,
+            "line": 203,
             "description": "Gets the name of the file-base, converting unique identifiers to filename safe strings",
             "itemtype": "method",
             "name": "_getBaseName",
@@ -1768,7 +1780,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 215,
+            "line": 217,
             "description": "Gets the approved path for the current image",
             "itemtype": "method",
             "name": "_getApprovedImagePath",
@@ -1798,7 +1810,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 232,
+            "line": 234,
             "description": "Gets the build path for the current image",
             "itemtype": "method",
             "name": "_getBuildImagePath",
@@ -1828,7 +1840,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 249,
+            "line": 251,
             "description": "Gets the difference path for the current image",
             "itemtype": "method",
             "name": "_getDiffImagePath",
@@ -1858,7 +1870,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 266,
+            "line": 268,
             "description": "Checks if a filename suffix is required for the approved folder\n\nNote:\nThis is only true if multiple file-types end up in the same folder",
             "itemtype": "method",
             "name": "_needsApprovedSuffix",
@@ -1874,7 +1886,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 284,
+            "line": 286,
             "description": "Checks if a filename suffix is required for the build folder\n\nNote:\nThis is only true if multiple file-types end up in the same folder",
             "itemtype": "method",
             "name": "_needsBuildSuffix",
@@ -1890,7 +1902,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 302,
+            "line": 304,
             "description": "Checks if a filename suffix is required for the diff folder\n\nNote:\nThis is only true if multiple file-types end up in the same folder",
             "itemtype": "method",
             "name": "_needsDiffSuffix",
@@ -1906,7 +1918,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 321,
+            "line": 323,
             "description": "Saves a blob to the filesystem",
             "itemtype": "method",
             "name": "_saveBlob",
@@ -1930,7 +1942,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 338,
+            "line": 340,
             "description": "Prepares all of the folders, creating them if needed",
             "itemtype": "method",
             "name": "_prepareFolders",
@@ -1942,7 +1954,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 355,
+            "line": 357,
             "description": "Compares a specific screenshot",
             "itemtype": "method",
             "name": "compare",
@@ -1970,7 +1982,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 414,
+            "line": 427,
             "description": "Setup of comparison",
             "itemtype": "method",
             "name": "setup",
@@ -1980,7 +1992,7 @@
         },
         {
             "file": "lib/comparison/blinkdiff.js",
-            "line": 423,
+            "line": 436,
             "description": "Tear-down of comparison",
             "itemtype": "method",
             "name": "tearDown",
@@ -2314,9 +2326,26 @@
         {
             "file": "lib/helpers/devicePixelRatio.js",
             "line": 75,
-            "description": "Gets the device-pixel-ratio of the browser.\nIf this info is not available yet, then it will determine it.\nIt will then be cached for each driver instance, determining this\nonly once per instance.",
+            "description": "Gets the device-pixel-ratio of the browser.\nIf this info is not available yet, then it will determine it.\nIt will then be cached for each driver instance, determining this\nonly once per instance.\n\nNote:\n```horizontalPadding``` is any element that extents horizontally\noutside of the document, i.e. negative absolute position.",
             "itemtype": "method",
             "name": "getDevicePixelRatio",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        }
+                    ]
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Number"
@@ -2327,10 +2356,27 @@
         },
         {
             "file": "lib/helpers/devicePixelRatio.js",
-            "line": 97,
+            "line": 103,
             "description": "Determines the device-pixel-ratio of the browser.",
             "itemtype": "method",
             "name": "_determineDevicePixelRatio",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        }
+                    ]
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Number"
@@ -2343,7 +2389,7 @@
         },
         {
             "file": "lib/helpers/devicePixelRatio.js",
-            "line": 138,
+            "line": 148,
             "description": "Executes a script in the browser and returns the result.\n\nThis is a convenience method for accessing the execute method.",
             "itemtype": "method",
             "name": "_execute",
@@ -2507,6 +2553,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -2557,7 +2610,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 148,
+            "line": 149,
             "description": "Takes a screenshot of the current view-port",
             "itemtype": "method",
             "name": "viewPortScreenshot",
@@ -2569,6 +2622,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -2619,7 +2679,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 173,
+            "line": 175,
             "description": "Takes a screenshot of a specific area",
             "itemtype": "method",
             "name": "areaScreenshot",
@@ -2659,6 +2719,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -2709,7 +2776,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 208,
+            "line": 211,
             "description": "Determines the areas that should be blocked-out",
             "itemtype": "method",
             "name": "_determineBlockOuts",
@@ -2749,7 +2816,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 288,
+            "line": 291,
             "description": "Reduces a frame-item to a specified area",
             "itemtype": "method",
             "name": "_reduceRectItemToArea",
@@ -2773,7 +2840,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 331,
+            "line": 334,
             "description": "Calidates if a rectangular item has all the required properties",
             "itemtype": "method",
             "name": "_validateRectItem",
@@ -2792,7 +2859,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 350,
+            "line": 353,
             "description": "Takes a screenshot of an area that will be specified through the return-value of the callback",
             "itemtype": "method",
             "name": "_takeScreenshot",
@@ -2808,6 +2875,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
                         {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
@@ -2971,7 +3045,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 448,
+            "line": 459,
             "description": "Applies all areas selected to be blocked-out",
             "params": [
                 {
@@ -2998,7 +3072,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 468,
+            "line": 479,
             "description": "Determines if the screenshots need additional padding\n\nNote:\n  Overwrite this method if you want to implement standard browser padding.",
             "itemtype": "method",
             "name": "_browserPadding",
@@ -3017,7 +3091,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 529,
+            "line": 540,
             "description": "Validates and corrects area that was given to capture",
             "itemtype": "method",
             "name": "_validateArea",
@@ -3129,7 +3203,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 584,
+            "line": 595,
             "description": "Calculates the sections that need to be captured on their own to be able to capture the whole document.\n\nThis method depends on the value given to \"maxImageResolution\".",
             "itemtype": "method",
             "name": "_gatherSections",
@@ -3228,7 +3302,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 672,
+            "line": 683,
             "description": "Calculates the sections that need to be captured when the browser is not able to return pixels outside of the view-port.",
             "itemtype": "method",
             "name": "_gatherViewPortSections",
@@ -3322,7 +3396,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 734,
+            "line": 745,
             "description": "Takes all the screenshots defined in section",
             "itemtype": "method",
             "name": "_takeSectionScreenshots",
@@ -3373,7 +3447,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 756,
+            "line": 767,
             "description": "Takes all the screenshots defined in the view-ports",
             "itemtype": "method",
             "name": "_takeViewPortScreenshots",
@@ -3429,7 +3503,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 776,
+            "line": 787,
             "description": "Takes a screenshot of the given view-port in relation to the section",
             "itemtype": "method",
             "name": "_takeViewPortScreenshot",
@@ -3485,7 +3559,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 815,
+            "line": 826,
             "description": "Processes the screenshots before it is used for stitching\n\nNote:\n Some browser need some pre-processing like rotating the screenshot.",
             "itemtype": "method",
             "name": "_screenshotPrePrecessing",
@@ -3508,7 +3582,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 847,
+            "line": 858,
             "description": "Stitches all the sections and view-ports together to one final image",
             "itemtype": "method",
             "name": "_stitchImages",
@@ -3541,7 +3615,7 @@
         },
         {
             "file": "lib/helpers/screenshot.js",
-            "line": 898,
+            "line": 909,
             "description": "Executes a script in the browser and returns the result.\n\nThis is a convenience method for accessing the execute method.",
             "itemtype": "method",
             "name": "_execute",
@@ -3639,6 +3713,23 @@
             "description": "Is stitching needed for browser?\n\nSome browsers (i.e. Chrome) do only take a screenshot of the view-port instead of the whole document as per standard.\nThis information will then be cached for each driver instance, determining this only once per instance.",
             "itemtype": "method",
             "name": "doesNeedStitching",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        }
+                    ]
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Number"
@@ -3649,10 +3740,27 @@
         },
         {
             "file": "lib/helpers/stitching.js",
-            "line": 97,
-            "description": "Determines if the browser needs stitching due to the fact of taking only view-port screenshots instead of\nwhole document ones.",
+            "line": 99,
+            "description": "Determines if the browser needs stitching due to the fact of taking only view-port screenshots instead of\nwhole document ones.\n\nNote:\n```horizontalPadding``` is any element that extents horizontally\noutside of the document, i.e. negative absolute position.",
             "itemtype": "method",
             "name": "_determineNeedsStitching",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        }
+                    ]
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Boolean"
@@ -3665,7 +3773,7 @@
         },
         {
             "file": "lib/helpers/stitching.js",
-            "line": 134,
+            "line": 144,
             "description": "Processes the exception handling of stitching determination\n\nNote:\n  Overwrite this method if you want to change the stitching behavior of browsers.",
             "params": [
                 {
@@ -3696,7 +3804,7 @@
         },
         {
             "file": "lib/helpers/stitching.js",
-            "line": 173,
+            "line": 183,
             "description": "Executes a script in the browser and returns the result.\n\nThis is a convenience method for accessing the execute method.",
             "itemtype": "method",
             "name": "_execute",
@@ -3729,12 +3837,19 @@
             "description": "Initialize the device-pixel-ratio determination,\ncollecting information that need to be reverted later on and\nmodifying the document for device-pixel-ratio data.",
             "itemtype": "method",
             "name": "init",
+            "params": [
+                {
+                    "name": "horizontalPadding",
+                    "description": "",
+                    "type": "Int"
+                }
+            ],
             "class": "ActiveWindow",
             "module": "WebDriver"
         },
         {
             "file": "lib/scripts/devicePixelRatio.js",
-            "line": 58,
+            "line": 60,
             "description": "Reverts all changes done to the document in the init",
             "itemtype": "method",
             "name": "revert",
@@ -3754,12 +3869,19 @@
             "description": "Initializes screenshots and gathers data to revert changes.\nThis function will also gather information required for\nscreenshots like dimensions of document and view-port.",
             "itemtype": "method",
             "name": "init",
+            "params": [
+                {
+                    "name": "needsStitching",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
             "class": "ActiveWindow",
             "module": "WebDriver"
         },
         {
             "file": "lib/scripts/screenshot.js",
-            "line": 68,
+            "line": 72,
             "description": "Reverts changes done to the document during the screenshot process",
             "itemtype": "method",
             "name": "revert",
@@ -3775,7 +3897,7 @@
         },
         {
             "file": "lib/scripts/screenshot.js",
-            "line": 85,
+            "line": 91,
             "description": "Moves document to a specified offset (instead of really scrolling)",
             "params": [
                 {
@@ -3808,12 +3930,19 @@
             "description": "Initializes the stitching determination.\nIt gathers the current document state,\nand it will modify the document as needed.",
             "itemtype": "method",
             "name": "init",
+            "params": [
+                {
+                    "name": "horizontalPadding",
+                    "description": "",
+                    "type": "Int"
+                }
+            ],
             "class": "ActiveWindow",
             "module": "WebDriver"
         },
         {
             "file": "lib/scripts/stitching.js",
-            "line": 43,
+            "line": 45,
             "description": "Revert changes done to the document during the init-phase",
             "itemtype": "method",
             "name": "revert",
@@ -3962,6 +4091,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -4006,7 +4142,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 156,
+            "line": 157,
             "description": "Captures the complete document",
             "itemtype": "method",
             "name": "documentScreenshot",
@@ -4017,6 +4153,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
                         {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
@@ -4064,7 +4207,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 171,
+            "line": 173,
             "description": "Captures the currently visible view-port",
             "itemtype": "method",
             "name": "captureViewPort",
@@ -4075,6 +4218,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
                         {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
@@ -4120,7 +4270,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 190,
+            "line": 193,
             "description": "Captures the currently visible view-port",
             "itemtype": "method",
             "name": "viewPortScreenshot",
@@ -4131,6 +4281,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
                         {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
@@ -4178,7 +4335,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 205,
+            "line": 209,
             "description": "Captures a specific area of the document",
             "itemtype": "method",
             "name": "captureArea",
@@ -4217,6 +4374,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
                         {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
@@ -4262,7 +4426,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 228,
+            "line": 233,
             "description": "Captures a specific area of the document",
             "itemtype": "method",
             "name": "areaScreenshot",
@@ -4301,6 +4465,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
                         {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
@@ -4348,7 +4519,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 247,
+            "line": 253,
             "description": "Take a screenshot of the current page and save to a file",
             "itemtype": "method",
             "name": "saveScreenshot",
@@ -4357,6 +4528,13 @@
                     "name": "path",
                     "description": "Path where the file should be saved to",
                     "type": "String"
+                },
+                {
+                    "name": "options.horizontalPadding",
+                    "description": "Padding of the document for adjustment",
+                    "type": "Int",
+                    "optional": true,
+                    "optdefault": "0"
                 },
                 {
                     "name": "options.eachFn",
@@ -4403,7 +4581,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 278,
+            "line": 285,
             "description": "Compares the document with a previous screenshot, showing differences between them",
             "itemtype": "method",
             "name": "compareDocument",
@@ -4420,6 +4598,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -4479,7 +4664,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 301,
+            "line": 309,
             "description": "Compares the view-port with a previous screenshot, showing differences between them",
             "itemtype": "method",
             "name": "compareViewPort",
@@ -4496,6 +4681,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -4555,7 +4747,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 324,
+            "line": 333,
             "description": "Compares an area of the document with a previous screenshot, showing differences between them",
             "itemtype": "method",
             "name": "compareArea",
@@ -4600,6 +4792,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -4659,7 +4858,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 352,
+            "line": 362,
             "description": "Get the element on the page that currently has focus",
             "itemtype": "method",
             "name": "getActiveElement",
@@ -4673,7 +4872,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 364,
+            "line": 374,
             "description": "Get an element via a selector.\nWill throw an error if the element does not exist.",
             "itemtype": "method",
             "name": "getElement",
@@ -4699,7 +4898,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 385,
+            "line": 395,
             "description": "Get elements via a selector.",
             "itemtype": "method",
             "name": "getElements",
@@ -4725,7 +4924,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 407,
+            "line": 417,
             "description": "Does a specific element exist?",
             "itemtype": "method",
             "name": "hasElement",
@@ -4751,7 +4950,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 422,
+            "line": 432,
             "description": "Close the current window",
             "itemtype": "method",
             "name": "close",
@@ -4761,7 +4960,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 432,
+            "line": 442,
             "description": "Get the current page title",
             "itemtype": "method",
             "name": "getTitle",
@@ -4775,7 +4974,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 442,
+            "line": 452,
             "description": "Get the current page source",
             "itemtype": "method",
             "name": "getSource",
@@ -4789,7 +4988,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 453,
+            "line": 463,
             "description": "Get the global-touch object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "touch",
@@ -4803,7 +5002,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 464,
+            "line": 474,
             "description": "Get the global-mouse object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "mouse",
@@ -4817,7 +5016,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 475,
+            "line": 485,
             "description": "Get the Navigator object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "navigator",
@@ -4831,7 +5030,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 486,
+            "line": 496,
             "description": "Get the Frame object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "frame",
@@ -4845,7 +5044,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 497,
+            "line": 507,
             "description": "Get the Alert object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "alert",
@@ -4859,7 +5058,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 509,
+            "line": 519,
             "description": "Gets the scroll coordinates",
             "itemtype": "method",
             "name": "getScrollPosition",
@@ -4873,7 +5072,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 524,
+            "line": 534,
             "description": "Scrolls to a specific coordinate",
             "itemtype": "method",
             "name": "scrollTo",
@@ -4899,7 +5098,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 537,
+            "line": 547,
             "description": "Scrolls by a specific coordinate, relative to the current position",
             "itemtype": "method",
             "name": "scrollBy",
@@ -4925,7 +5124,7 @@
         },
         {
             "file": "lib/activeWindow.js",
-            "line": 558,
+            "line": 568,
             "description": "Convert code to string before execution",
             "params": [
                 {
@@ -5475,6 +5674,55 @@
         {
             "file": "lib/chain.js",
             "line": 187,
+            "description": "Adjusts the configurations according to the browsers behavior.\n\nNote:\nThis is needed especially when screenshots should be taken since\nbrowsers behave here very different from each other.\n\nNeeds to be called only once per taxi instance.",
+            "itemtype": "method",
+            "name": "adjust",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Preparation options for chaining",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "url",
+                            "description": "Default website for adjustment for browser",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "'http://www.example.org'"
+                        },
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        }
+                    ]
+                },
+                {
+                    "name": "callBack",
+                    "description": "Callback function that will be triggered with each selected element in turn",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "throws": {
+                "description": "When there is no active document available",
+                "type": "Error"
+            },
+            "since": "0.2.6",
+            "chainable": 1,
+            "return": {
+                "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> function ()\n\n###Scope\n> {`Chain`}\n\n###Parameters\nnone",
+                "type": "Chain"
+            },
+            "class": "Chain",
+            "module": "Chain"
+        },
+        {
+            "file": "lib/chain.js",
+            "line": 227,
             "description": "Selects DOM elements, triggering each selected element on the supplied callback function",
             "itemtype": "method",
             "name": "elements",
@@ -5509,7 +5757,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 228,
+            "line": 268,
             "description": "Retrieves the attribute value of the selected elements",
             "itemtype": "method",
             "name": "elementAttribute",
@@ -5549,7 +5797,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 272,
+            "line": 312,
             "description": "Checks if the selected elements have a specific class",
             "itemtype": "method",
             "name": "elementHasClass",
@@ -5589,7 +5837,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 319,
+            "line": 359,
             "description": "Determines a list of classes assigned to the selected elements",
             "itemtype": "method",
             "name": "elementClasses",
@@ -5624,7 +5872,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 362,
+            "line": 402,
             "description": "Gets the text content of the selected elements",
             "itemtype": "method",
             "name": "elementText",
@@ -5659,7 +5907,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 405,
+            "line": 445,
             "description": "Determines if selected elements have a string or even a sub-string in their text content",
             "itemtype": "method",
             "name": "elementHasText",
@@ -5699,7 +5947,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 455,
+            "line": 495,
             "description": "Determines the contents of the `value` attribute on each selected element\n\n**Note**\nThis will only work on elements that have a `value` attribute.",
             "itemtype": "method",
             "name": "elementValue",
@@ -5731,7 +5979,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 493,
+            "line": 533,
             "description": "Gets the name of the tag for each selected element",
             "itemtype": "method",
             "name": "elementTagName",
@@ -5763,7 +6011,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 528,
+            "line": 568,
             "description": "Determines the value of a CSS property for each selected element\n\n**Note**\nUse the original CSS property name according to the CSS standard, **not** the JavaScript naming convention for CSS properties.",
             "itemtype": "method",
             "name": "elementCssValue",
@@ -5800,7 +6048,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 567,
+            "line": 607,
             "description": "Checks if the selected elements are displayed somewhere on the page",
             "itemtype": "method",
             "name": "elementIsDisplayed",
@@ -5832,7 +6080,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 602,
+            "line": 642,
             "description": "Checks if the selected elements are checked\n\n**Note**\nThis function will only work on elements which have a \"checked\"-value (i.e. checkbox, radiobox, or options element).",
             "itemtype": "method",
             "name": "elementIsSelected",
@@ -5864,7 +6112,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 640,
+            "line": 680,
             "description": "Checks if the selected elements are enabled",
             "itemtype": "method",
             "name": "elementIsEnabled",
@@ -5896,7 +6144,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 675,
+            "line": 715,
             "description": "Types complete strings or key-strokes into the selected element",
             "itemtype": "method",
             "name": "elementSendKeys",
@@ -5933,7 +6181,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 710,
+            "line": 750,
             "description": "Clears the contents of the selected elements\n\n**Note**\nThis will only work on elements that can be cleared like input boxes and text areas.",
             "itemtype": "method",
             "name": "elementClear",
@@ -5965,7 +6213,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 747,
+            "line": 787,
             "description": "Submits the selected form elements\n\n\n**Note**\nThis should be usually only one form element. It doesn't make sense to apply this to any other element type.",
             "itemtype": "method",
             "name": "elementSubmit",
@@ -5997,7 +6245,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 785,
+            "line": 825,
             "description": "Determines the size of the selected elements",
             "itemtype": "method",
             "name": "elementSize",
@@ -6029,7 +6277,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 822,
+            "line": 862,
             "description": "Determines the absolute location of the selected elements",
             "itemtype": "method",
             "name": "elementLocation",
@@ -6061,7 +6309,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 859,
+            "line": 899,
             "description": "Determines the location of the selected elements relative to the current view-ports top-left corner",
             "itemtype": "method",
             "name": "elementLocationInView",
@@ -6093,7 +6341,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 896,
+            "line": 936,
             "description": "Determines the absolute location and size of the selected elements",
             "itemtype": "method",
             "name": "elementFrame",
@@ -6125,7 +6373,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 935,
+            "line": 975,
             "description": "Determines the absolute coordinates of the center of the selected elements",
             "itemtype": "method",
             "name": "elementAbsoluteCenter",
@@ -6157,7 +6405,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 972,
+            "line": 1012,
             "description": "Determines the coordinates of the center of the selected elements relative to the elements top-left corner",
             "itemtype": "method",
             "name": "elementRelativeCenter",
@@ -6189,7 +6437,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1009,
+            "line": 1049,
             "description": "Captures an element in a PNG buffer, discarding or ignoring the rest of the document from the image",
             "itemtype": "method",
             "name": "elementCapture",
@@ -6303,7 +6551,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1152,
+            "line": 1192,
             "description": "Compares the image of selected elements from previous captures/comparisons",
             "itemtype": "method",
             "name": "elementCompare",
@@ -6429,7 +6677,7 @@
             "since": "0.2.0",
             "chainable": 1,
             "return": {
-                "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> `function` (`isSimilar`, `element`, `index`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`isSimilar`** {`boolean`|`null`} - Is comparison similar to previous one?\n* **`element`** {`Element`} - Selected element\n* **`index`** {`int`} - Zero-based index of the selected element\n\n**Notes**\n* **`isSimilar`** will be NULL when the value cannot be determined at the time of comparison\ndue to the comparison process, or simply because there was no previous image to compare to.\n* **`isSimilar`** will be true when all of the comparison APIs determined a similarity to previously\ncaptured data, depending on the configuration setting for each of those comparison APIs.\n* **`isSimilar`** will be false when at least one comparison API determines a difference in the\ncurrent and previous state.\n\n---------------------------------------\n\n##Notes\n* **`title`** The title needs to be unique to identify each of these comparisons across all test-runs.\nAdditionally, the id parameter can be used to make this identifier unique.\n* **`options.compare.id`** The id will be added to the title to get a unique identifier.\n\n##Comparison configuration\nGeneral comparison options can be set globally in the driver through the `setValue`/`getValue` methods.\nThe options for the comparison, however, need to be supplied for every comparison itself.\n\n###Changing configuration options\n```\ndriver.setValue('blinkDiff.outputOnSuccess', true);\n```\n\n###Options\n* **`blinkDiff.outputOnSuccess`** {`boolean`} - Should an output be created when comparison is successful?\nThere will always be an output if the comparison fails.\n* **`blinkDiff.failOnDifference`** {`boolean`} - Should Taxi trigger an error when a difference is recognized?\n* **`blinkDiff.autoApprove`** {`boolean`} - Should Taxi auto-approve screenshots when no previous comparison\nexist? Otherwise, the test will ignore this comparison, saving the current build screenshot.\n* **`blinkDiff.approvedPath`** {`string`} - Path to the approved folder. Defaults to the current working directory.\n* **`blinkDiff.buildPath`** {`string`} - Path to the build folder, holding all the screenshots taken in the recent build.\nDefaults to the approved folder.\n* **`blinkDiff.diffPath`** {`string`} - Path to the difference folder, keeping the highlighted differences between\nthe approved image and the build image. Default to the build folder.\n* **`blinkDiff.options`** {`object`} - Default values for Blink-Diff options. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff#object-usage)",
+                "description": "The chain object\n\n---------------------------------------\n\n##Callback function\n> `function` (`isSimilar`, `element`, `index`)\n\n###Scope\n> {`Chain`}\n\n###Parameters\n* **`isSimilar`** {`boolean`|`null`} - Is comparison similar to previous one?\n* **`element`** {`Element`} - Selected element\n* **`index`** {`int`} - Zero-based index of the selected element\n\n**Notes**\n* **`isSimilar`** will be NULL when the value cannot be determined at the time of comparison\ndue to the comparison process, or simply because there was no previous image to compare to.\n* **`isSimilar`** will be true when all of the comparison APIs determined a similarity to previously\ncaptured data, depending on the configuration setting for each of those comparison APIs.\n* **`isSimilar`** will be false when at least one comparison API determines a difference in the\ncurrent and previous state.\n\n---------------------------------------\n\n##Notes\n* **`title`** The title needs to be unique to identify each of these comparisons across all test-runs.\nAdditionally, the id parameter can be used to make this identifier unique.\n* **`options.compare.id`** The id will be added to the title to get a unique identifier.\n\n##Comparison configuration\nGeneral comparison options can be set globally in the driver through the `setValue`/`getValue` methods.\nThe options for the comparison, however, need to be supplied for every comparison itself.\n\n###Changing configuration options\n```\ndriver.setValue('blinkDiff.outputOnSuccess', true);\n```\n\n###Options\n* **`blinkDiff.outputOnSuccess`** {`boolean`} [default=true] - Should an output be created when comparison is successful?\nThere will always be an output if the comparison fails.\n* **`blinkDiff.failOnDifference`** {`boolean`} [default=true] - Should Taxi trigger an error when a difference is recognized?\n* **`blinkDiff.autoApprove`** {`boolean`} [default=false] - Should Taxi auto-approve screenshots when no previous comparison\nexist? Otherwise, the test will ignore this comparison, saving the current build screenshot.\n* **`blinkDiff.approvedPath`** {`string`} [default=cwd] - Path to the approved folder. Defaults to the current working directory.\n* **`blinkDiff.buildPath`** {`string`} [default=approvedPath] - Path to the build folder, holding all the screenshots taken in the recent build.\nDefaults to the approved folder.\n* **`blinkDiff.diffPath`** {`string`} [default=buildPath] - Path to the difference folder, keeping the highlighted differences between\nthe approved image and the build image. Default to the build folder.\n* **`blinkDiff.options`** {`object`} - Default values for Blink-Diff options. See the [Blink-Diff documentation](https://github.com/yahoo/blink-diff#object-usage)\n* **`blinkDiff.batchFailures`** {`boolean`} [default=false] - Failures are batched to the end of the tests when this flag is set.\n* **`blinkDiff.failOnAdditions`** {`boolean`} [default=false] - Fail when no approved screenshot is found.",
                 "type": "Chain"
             },
             "class": "Chain",
@@ -6437,7 +6685,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1252,
+            "line": 1294,
             "description": "Clicks on the selected elements",
             "itemtype": "method",
             "name": "elementClick",
@@ -6476,7 +6724,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1295,
+            "line": 1337,
             "description": "Clicks on a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementClickAt",
@@ -6525,7 +6773,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1340,
+            "line": 1382,
             "description": "Double-clicks on the selected elements",
             "itemtype": "method",
             "name": "elementDblClick",
@@ -6564,7 +6812,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1383,
+            "line": 1425,
             "description": "Double-clicks on a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementDblClickAt",
@@ -6613,7 +6861,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1428,
+            "line": 1470,
             "description": "Hovers the mouse over the selected elements",
             "itemtype": "method",
             "name": "elementHover",
@@ -6645,7 +6893,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1462,
+            "line": 1504,
             "description": "Hovers the mouse over a specific coordinate relative to the upper-left corner of the selected elements",
             "itemtype": "method",
             "name": "elementHoverAt",
@@ -6687,7 +6935,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1502,
+            "line": 1544,
             "description": "Triggers a touch-event on the selected elements",
             "itemtype": "method",
             "name": "elementTouch",
@@ -6719,7 +6967,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1536,
+            "line": 1578,
             "description": "Triggers a touch-event on the selected element relative to the upper-left corner of the elements",
             "itemtype": "method",
             "name": "elementTouchAt",
@@ -6761,7 +7009,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1572,
+            "line": 1614,
             "description": "Taps on the selected elements",
             "itemtype": "method",
             "name": "elementTap",
@@ -6793,7 +7041,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1606,
+            "line": 1648,
             "description": "Double-taps on the selected elements",
             "itemtype": "method",
             "name": "elementDblTap",
@@ -6825,7 +7073,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1640,
+            "line": 1682,
             "description": "Triggers a long-tap on the selected elements",
             "itemtype": "method",
             "name": "elementLongTap",
@@ -6857,7 +7105,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1678,
+            "line": 1720,
             "description": "Executes a script or function within the active browser window, returning the results",
             "methods": "execute",
             "params": [
@@ -6894,7 +7142,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1717,
+            "line": 1759,
             "description": "Types complete strings or key-strokes into the active window, effectively sending key-strokes to the focused element",
             "itemtype": "method",
             "name": "sendKeys",
@@ -6926,7 +7174,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1749,
+            "line": 1791,
             "description": "Captures the complete document in a PNG buffer",
             "itemtype": "method",
             "name": "captureDocument",
@@ -6996,7 +7244,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1789,
+            "line": 1831,
             "description": "Captures the current view-port in a PNG buffer",
             "itemtype": "method",
             "name": "captureViewPort",
@@ -7066,7 +7314,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1829,
+            "line": 1871,
             "description": "Captures a selected area in a PNG buffer",
             "itemtype": "method",
             "name": "captureArea",
@@ -7164,7 +7412,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1873,
+            "line": 1915,
             "description": "Compares the whole document with images that were captured previously",
             "itemtype": "method",
             "name": "compareDocument",
@@ -7255,7 +7503,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1921,
+            "line": 1963,
             "description": "Compares the view-port with images previously taken",
             "itemtype": "method",
             "name": "compareViewPort",
@@ -7346,7 +7594,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 1969,
+            "line": 2011,
             "description": "Compares a specific and fixed area of the document with previously captured images",
             "itemtype": "method",
             "name": "compareArea",
@@ -7465,7 +7713,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2021,
+            "line": 2063,
             "description": "Activates a selected element",
             "itemtype": "method",
             "name": "activeElement",
@@ -7492,7 +7740,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2053,
+            "line": 2095,
             "description": "Closes the currently active window, switching the focus to the next available window",
             "itemtype": "method",
             "name": "closeWindow",
@@ -7519,7 +7767,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2084,
+            "line": 2126,
             "description": "Determines the title of the currently active document",
             "itemtype": "method",
             "name": "title",
@@ -7546,7 +7794,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2116,
+            "line": 2158,
             "description": "Determines the source-code of the currently active document",
             "itemtype": "method",
             "name": "source",
@@ -7573,7 +7821,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2148,
+            "line": 2190,
             "description": "Determines the scroll location coordinates within the currently active document",
             "itemtype": "method",
             "name": "scrollLocation",
@@ -7600,7 +7848,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2182,
+            "line": 2224,
             "description": "Scrolls to an absolute scroll location within the currently active document",
             "itemtype": "method",
             "name": "scrollTo",
@@ -7637,7 +7885,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2215,
+            "line": 2257,
             "description": "Scrolls the currently active document to a specific offset relative to the current scroll location",
             "itemtype": "method",
             "name": "scrollBy",
@@ -7674,7 +7922,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2252,
+            "line": 2294,
             "description": "Clicks on the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "click",
@@ -7718,7 +7966,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2294,
+            "line": 2336,
             "description": "Double-clicks on the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "dblClick",
@@ -7762,7 +8010,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2336,
+            "line": 2378,
             "description": "Hovers the mouse over the active document at the specified absolute coordinates",
             "itemtype": "method",
             "name": "hover",
@@ -7799,7 +8047,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2373,
+            "line": 2415,
             "description": "Navigates the current document to the supplied URL",
             "itemtype": "method",
             "name": "navigateTo",
@@ -7831,7 +8079,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2405,
+            "line": 2447,
             "description": "Determines the current URL of the active document",
             "itemtype": "method",
             "name": "url",
@@ -7858,7 +8106,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2437,
+            "line": 2479,
             "description": "Goes forward in the document history, equivalent to a user pressing the forward button within the browser",
             "itemtype": "method",
             "name": "forward",
@@ -7885,7 +8133,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2468,
+            "line": 2510,
             "description": "Goes backward in the document history, equivalent to a user pressing the back button within the browser",
             "itemtype": "method",
             "name": "backward",
@@ -7912,7 +8160,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2499,
+            "line": 2541,
             "description": "Refreshes the current document as if the user pressed the refresh button within the browser",
             "itemtype": "method",
             "name": "refresh",
@@ -7939,7 +8187,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2534,
+            "line": 2576,
             "description": "Determines the text content of the currently displayed dialog",
             "itemtype": "method",
             "name": "dialogText",
@@ -7966,7 +8214,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2569,
+            "line": 2611,
             "description": "Sends a string or a list of key-strokes to the currently displayed dialog.\n\nThis is useful when there is a `prompt()` currently open, requesting user input.",
             "itemtype": "method",
             "name": "dialogSendKeys",
@@ -7998,7 +8246,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2606,
+            "line": 2648,
             "description": "Accepts the currently displayed dialog\n\nIn most cases, this will be the \"OK\" button.",
             "itemtype": "method",
             "name": "dialogAccept",
@@ -8025,7 +8273,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2642,
+            "line": 2684,
             "description": "Dismisses the currently displayed dialog\n\nIn most cases, this will be the \"Cancel\" button.",
             "itemtype": "method",
             "name": "dialogDismiss",
@@ -8052,7 +8300,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2682,
+            "line": 2724,
             "description": "Activates one of the available frames within the currently active document",
             "itemtype": "method",
             "name": "activateFrame",
@@ -8084,7 +8332,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2715,
+            "line": 2757,
             "description": "Activates the parent frame (i.e. the document) when a frame was previously activated.",
             "itemtype": "method",
             "name": "activateParentFrame",
@@ -8107,7 +8355,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2749,
+            "line": 2791,
             "description": "Activates a window, switching the currently active document\n\nIf you have multiple documents, you need to switch to each in turn to interact with them.\nYou can only interact with the currently active document.\nThat is where this function call comes in handy.",
             "itemtype": "method",
             "name": "activateWindow",
@@ -8139,7 +8387,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2785,
+            "line": 2827,
             "description": "Determines a list of available windows/documents within the same browser session",
             "itemtype": "method",
             "name": "windows",
@@ -8162,7 +8410,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2820,
+            "line": 2862,
             "description": "Puts Taxi to sleep for a specific amount of time",
             "itemtype": "method",
             "name": "sleep",
@@ -8190,7 +8438,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2849,
+            "line": 2891,
             "description": "Completes the session by finishing up comparison tasks and closing the browser window\n\n**Note**\nYou cannot chain after this function call anymore, and the driver will be closed so that\nthere is no way anymore to access the browser through the same session.\nTo get access again to the browser, you need to create a whole new Taxi instance.",
             "itemtype": "method",
             "name": "end",
@@ -8204,7 +8452,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2875,
+            "line": 2917,
             "description": "Waits for a specific amount of time that an element disappears from the DOM",
             "itemtype": "method",
             "name": "waitForElementNotPresent",
@@ -8250,7 +8498,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2916,
+            "line": 2958,
             "description": "Waits for a specific amount of time that an element will be hidden",
             "itemtype": "method",
             "name": "waitForElementNotDisplayed",
@@ -8296,7 +8544,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 2959,
+            "line": 3001,
             "description": "Waits for a specific amount of time that an element appears in the DOM",
             "itemtype": "method",
             "name": "waitForElementPresent",
@@ -8342,7 +8590,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3000,
+            "line": 3042,
             "description": "Waits for a specific amount of time that an element will be shown",
             "itemtype": "method",
             "name": "waitForElementDisplay",
@@ -8388,7 +8636,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3044,
+            "line": 3086,
             "description": "Determines the size of the active window",
             "itemtype": "method",
             "name": "size",
@@ -8415,7 +8663,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3078,
+            "line": 3120,
             "description": "Re-sizes the active window",
             "itemtype": "method",
             "name": "resize",
@@ -8452,7 +8700,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3111,
+            "line": 3153,
             "description": "Determines the absolute location of the active window",
             "itemtype": "method",
             "name": "location",
@@ -8479,7 +8727,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3145,
+            "line": 3187,
             "description": "Determines the absolute location of the active window",
             "itemtype": "method",
             "name": "relocate",
@@ -8516,7 +8764,7 @@
         },
         {
             "file": "lib/chain.js",
-            "line": 3178,
+            "line": 3220,
             "description": "Expands the active window to its maximum size",
             "itemtype": "method",
             "name": "maximize",
@@ -9777,6 +10025,41 @@
         {
             "file": "lib/driver.js",
             "line": 480,
+            "description": "Adjusts the configurations according to the browsers behavior.\n\nNote:\nThis is needed especially when screenshots should be taken since\nbrowsers behave here very different from each other.\n\nNeeds to be called only once per taxi instance.",
+            "itemtype": "method",
+            "name": "adjust",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Preparation options",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "url",
+                            "description": "Default website for adjustment for browser",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "'http://www.example.org'"
+                        },
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        }
+                    ]
+                }
+            ],
+            "since": "0.2.6",
+            "class": "Driver",
+            "module": "WebDriver",
+            "submodule": "Core"
+        },
+        {
+            "file": "lib/driver.js",
+            "line": 514,
             "description": "Gets the browser object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "browser",
@@ -9790,7 +10073,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 492,
+            "line": 526,
             "description": "Get the time-out object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "timeOut",
@@ -9804,7 +10087,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 504,
+            "line": 538,
             "description": "Get the helpers object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "helpers",
@@ -9818,7 +10101,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 516,
+            "line": 550,
             "description": "Get the chain object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "chain",
@@ -9832,7 +10115,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 527,
+            "line": 561,
             "description": "Get the compatibility object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "compatibility",
@@ -9846,7 +10129,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 539,
+            "line": 573,
             "description": "Get the status of the html5 application cache",
             "itemtype": "method",
             "name": "getApplicationCacheStatus",
@@ -9860,7 +10143,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 550,
+            "line": 584,
             "description": "Get the log for a given log type. Log buffer is reset after each request.",
             "itemtype": "method",
             "name": "getLogs",
@@ -9881,7 +10164,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 569,
+            "line": 603,
             "description": "Get available log types",
             "itemtype": "method",
             "name": "getLogTypes",
@@ -9895,7 +10178,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 580,
+            "line": 614,
             "description": "End this Driver session",
             "itemtype": "method",
             "name": "dispose",
@@ -9913,7 +10196,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 609,
+            "line": 643,
             "description": "End this Driver session\n\nAlias for `dispose`",
             "itemtype": "method",
             "name": "quit",
@@ -9923,7 +10206,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 618,
+            "line": 652,
             "description": "Get the Session-Storage object.\nDirect-access. No need to wait.",
             "itemtype": "method",
             "name": "sessionStorage",
@@ -9937,7 +10220,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 630,
+            "line": 664,
             "description": "Sauce Labs Methods",
             "itemtype": "method",
             "name": "sauceJobUpdate",
@@ -9958,7 +10241,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 675,
+            "line": 709,
             "description": "Extract a session ID and the accepted capabilities from a server response",
             "params": [
                 {
@@ -9977,7 +10260,7 @@
         },
         {
             "file": "lib/driver.js",
-            "line": 697,
+            "line": 731,
             "description": "Setup debug output",
             "params": [
                 {
@@ -10635,6 +10918,13 @@
                     "optional": true,
                     "props": [
                         {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
                             "type": "Function",
@@ -10721,7 +11011,7 @@
         },
         {
             "file": "lib/element.js",
-            "line": 575,
+            "line": 576,
             "description": "Takes a screenshot of the document",
             "itemtype": "method",
             "name": "screenshot",
@@ -10745,7 +11035,7 @@
         },
         {
             "file": "lib/element.js",
-            "line": 585,
+            "line": 586,
             "description": "Compares the screenshot of the element with a previous screenshot, showing differences between them",
             "itemtype": "method",
             "name": "compare",
@@ -10761,6 +11051,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "horizontalPadding",
+                            "description": "Padding of the document for adjustment",
+                            "type": "Int",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
                         {
                             "name": "eachFn",
                             "description": "Will execute method on client before each screenshot is taken. First parameter is index of screenshot.",
@@ -14722,11 +15019,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/helpers/stitching.js:134"
+            "line": " lib/helpers/stitching.js:144"
         },
         {
             "message": "unknown tag: methods",
-            "line": " lib/chain.js:1678"
+            "line": " lib/chain.js:1720"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
@@ -14746,7 +15043,7 @@
         },
         {
             "message": "Missing item type\nApplies all areas selected to be blocked-out",
-            "line": " lib/helpers/screenshot.js:448"
+            "line": " lib/helpers/screenshot.js:459"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
@@ -14754,11 +15051,11 @@
         },
         {
             "message": "Missing item type\nProcesses the exception handling of stitching determination\n\nNote:\n  Overwrite this method if you want to change the stitching behavior of browsers.",
-            "line": " lib/helpers/stitching.js:134"
+            "line": " lib/helpers/stitching.js:144"
         },
         {
             "message": "Missing item type\nMoves document to a specified offset (instead of really scrolling)",
-            "line": " lib/scripts/screenshot.js:85"
+            "line": " lib/scripts/screenshot.js:91"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
@@ -14766,7 +15063,7 @@
         },
         {
             "message": "Missing item type\nConvert code to string before execution",
-            "line": " lib/activeWindow.js:558"
+            "line": " lib/activeWindow.js:568"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
@@ -14778,7 +15075,7 @@
         },
         {
             "message": "Missing item type\nExecutes a script or function within the active browser window, returning the results",
-            "line": " lib/chain.js:1678"
+            "line": " lib/chain.js:1720"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",
@@ -14806,11 +15103,11 @@
         },
         {
             "message": "Missing item type\nExtract a session ID and the accepted capabilities from a server response",
-            "line": " lib/driver.js:675"
+            "line": " lib/driver.js:709"
         },
         {
             "message": "Missing item type\nSetup debug output",
-            "line": " lib/driver.js:697"
+            "line": " lib/driver.js:731"
         },
         {
             "message": "Missing item type\nGets the driver object.\nDirect-access. No need to wait.",

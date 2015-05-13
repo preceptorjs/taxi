@@ -68,7 +68,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "Helpers",
             "name": "Helpers",
-            "description": "Device-Pixel-Ratio object"
+            "description": "Blink-Diff comparison object"
         },
         {
             "displayName": "Interaction",

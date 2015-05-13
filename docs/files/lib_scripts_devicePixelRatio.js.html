@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -186,8 +186,9 @@ module.exports = {
      * modifying the document for device-pixel-ratio data.
      *
      * @method init
+	 * @param {int} horizontalPadding
      */
-    init: function () {
+    init: function (horizontalPadding) {
         var de = document.documentElement,
             body = document.body,
             el, initData;
@@ -208,7 +209,8 @@ module.exports = {
             documentWidth: Math.max(body.scrollWidth, body.offsetWidth, de.clientWidth, de.scrollWidth, de.offsetWidth),
             devicePixelRatio: window.devicePixelRatio || 1,
             padding: body.style.padding,
-            viewPortWidth: el.offsetWidth
+            viewPortWidth: el.offsetWidth,
+			horizontalPadding: horizontalPadding
         };
 
         de.removeChild(el);
@@ -217,12 +219,12 @@ module.exports = {
         body.style.overflow = &#x27;hidden&#x27;;
 
         // Make document only one pixel height and as wide as the view-port
-        body.style.width = initData.viewPortWidth + &#x27;px&#x27;;
+        body.style.width = (initData.viewPortWidth - horizontalPadding) + &#x27;px&#x27;;
         body.style.height = &#x27;1px&#x27;;
         body.style.minHeight = &#x27;0&#x27;;
         body.style.minWidth = &#x27;0&#x27;;
 
-        de.style.width = initData.viewPortWidth + &#x27;px&#x27;;
+        de.style.width = (initData.viewPortWidth - horizontalPadding) + &#x27;px&#x27;;
         de.style.height = &#x27;1px&#x27;;
         de.style.minHeight = &#x27;0&#x27;;
         de.style.minWidth = &#x27;0&#x27;;
@@ -245,6 +247,7 @@ module.exports = {
         body.style.height = initData.bodyHeight;
     }
 };
+
     </pre>
 </div>
 

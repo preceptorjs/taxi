@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">taxi/lib/helpers/devicePixelRatio.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">64.1% <small>(25 / 39)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">65% <small>(26 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">25% <small>(2 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">41.67% <small>(5 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Functions: <span class="metric">54.55% <small>(6 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">64.1% <small>(25 / 39)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">65% <small>(26 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -374,7 +374,17 @@
 156
 157
 158
-159</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -457,20 +467,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -478,9 +474,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
@@ -612,14 +632,20 @@ DevicePixelRatio.prototype.getDriver = function () {
  * It will then be cached for each driver instance, determining this
  * only once per instance.
  *
+ * Note:
+ * ```horizontalPadding``` is any element that extents horizontally
+ * outside of the document, i.e. negative absolute position.
+ *
  * @method getDevicePixelRatio
+ * @param {object} [options]
+ * @param {int} [options.horizontalPadding=0] Padding of the document
  * @return {number}
  */
-DevicePixelRatio.prototype.getDevicePixelRatio = function () {
+DevicePixelRatio.prototype.getDevicePixelRatio = function (options) {
 	var devicePixelRatio = this.getDriver().getValue('devicePixelRatio');
 &nbsp;
 	<span class="missing-if-branch" title="else path not taken" >E</span>if (devicePixelRatio === null) {
-		return when(this._determineDevicePixelRatio(), <span class="fstat-no" title="function not covered" >function (value) {</span>
+		return when(this._determineDevicePixelRatio(options), <span class="fstat-no" title="function not covered" >function (value) {</span>
 <span class="cstat-no" title="statement not covered" >			this.getDriver().setValue('devicePixelRatio', value); </span>// Cache value
 <span class="cstat-no" title="statement not covered" >			return value;</span>
 		}.bind(this));
@@ -632,16 +658,20 @@ DevicePixelRatio.prototype.getDevicePixelRatio = function () {
  * Determines the device-pixel-ratio of the browser.
  *
  * @method _determineDevicePixelRatio
+ * @param {object} [options]
+ * @param {int} [options.horizontalPadding=0] Padding of the document
  * @return {number}
  * @private
  */
-DevicePixelRatio.prototype._determineDevicePixelRatio = function () {
+DevicePixelRatio.prototype._determineDevicePixelRatio = function (options) {
 &nbsp;
 	var Screenshot = require('./screenshot'),
 		screenshot = new Screenshot(this.getDriver());
 &nbsp;
+	options = options || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+&nbsp;
 	// Reduce size of document to get a small screenshot for ratio determination
-	return when(this._execute(devicePixelRatioScripts.init), <span class="fstat-no" title="function not covered" >function (initData) {</span>
+	return when(this._execute(devicePixelRatioScripts.init, [options.horizontalPadding || 0]), <span class="fstat-no" title="function not covered" >function (initData) {</span>
 <span class="cstat-no" title="statement not covered" >		initData = JSON.parse(initData);</span>
 &nbsp;
 		// Take screenshot (hopefully very small, but big enough to get the ratio right)
@@ -695,7 +725,7 @@ logMethods(DevicePixelRatio.prototype);
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 27 2015 00:44:34 GMT-0700 (PDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 13 2015 02:44:24 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../../prettify.js"></script>

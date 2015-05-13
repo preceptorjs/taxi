@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -255,13 +255,15 @@ Stitching.prototype.getDriver = function () {
  * This information will then be cached for each driver instance, determining this only once per instance.
  *
  * @method doesNeedStitching
+ * @param {object} [options]
+ * @param {int} [options.horizontalPadding=0] Padding of the document
  * @return {number}
  */
-Stitching.prototype.doesNeedStitching = function () {
+Stitching.prototype.doesNeedStitching = function (options) {
     var needsStitching = this.getDriver().getValue(&#x27;needsStitching&#x27;);
 
     if (needsStitching === null) {
-        return when(this._determineNeedsStitching(), function (value) {
+        return when(this._determineNeedsStitching(options), function (value) {
             this.getDriver().setValue(&#x27;needsStitching&#x27;, value); // Cache value
             return value;
         }.bind(this));
@@ -274,11 +276,17 @@ Stitching.prototype.doesNeedStitching = function () {
  * Determines if the browser needs stitching due to the fact of taking only view-port screenshots instead of
  * whole document ones.
  *
+ * Note:
+ * &#x60;&#x60;&#x60;horizontalPadding&#x60;&#x60;&#x60; is any element that extents horizontally
+ * outside of the document, i.e. negative absolute position.
+ *
  * @method _determineNeedsStitching
+ * @param {object} [options]
+ * @param {int} [options.horizontalPadding=0] Padding of the document
  * @return {boolean}
  * @private
  */
-Stitching.prototype._determineNeedsStitching = function () {
+Stitching.prototype._determineNeedsStitching = function (options) {
 
 	var Screenshot = require(&#x27;./screenshot&#x27;),
 		screenshot = new Screenshot(this.getDriver()),
@@ -286,11 +294,13 @@ Stitching.prototype._determineNeedsStitching = function () {
 		DevicePixelRatio = require(&#x27;./devicePixelRatio&#x27;),
 		devicePixelRatio = new DevicePixelRatio(this.getDriver());
 
+	options = options || {};
+
 	// Determine device-pixel-ratio
-    return when(devicePixelRatio.getDevicePixelRatio(), function (devicePixelRatio) {
+    return when(devicePixelRatio.getDevicePixelRatio(options), function (devicePixelRatio) {
 
         // Reduce size of document to get a small screenshot for stitching determination
-        return when(this._execute(stitchingScripts.init), function (initData) {
+        return when(this._execute(stitchingScripts.init, [options.horizontalPadding || 0]), function (initData) {
             initData = JSON.parse(initData);
 
             // Take screenshot (hopefully very small, but big enough to get the stitching info)

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -396,6 +396,13 @@ Taxi instance is created:</p>
                         
                             <li class="index-item method">
                                 <a href="#method_activeElement">activeElement</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_adjust">adjust</a>
 
                                 
                                 
@@ -1621,7 +1628,7 @@ The result is parsed for errors.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2682"><code>lib&#x2F;chain.js:2682</code></a>
+        <a href="../files/lib_chain.js.html#l2724"><code>lib&#x2F;chain.js:2724</code></a>
         
         </p>
 
@@ -1762,7 +1769,7 @@ The result is parsed for errors.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2715"><code>lib&#x2F;chain.js:2715</code></a>
+        <a href="../files/lib_chain.js.html#l2757"><code>lib&#x2F;chain.js:2757</code></a>
         
         </p>
 
@@ -1893,7 +1900,7 @@ The result is parsed for errors.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2749"><code>lib&#x2F;chain.js:2749</code></a>
+        <a href="../files/lib_chain.js.html#l2791"><code>lib&#x2F;chain.js:2791</code></a>
         
         </p>
 
@@ -2037,7 +2044,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2021"><code>lib&#x2F;chain.js:2021</code></a>
+        <a href="../files/lib_chain.js.html#l2063"><code>lib&#x2F;chain.js:2063</code></a>
         
         </p>
 
@@ -2115,6 +2122,190 @@ That is where this function call comes in handy.</p>
 </div>
 
                 
+                    <div id="method_adjust" class="method item">
+    <h3 class="name"><code>adjust</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[callBack]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Chain.html" class="crosslink">Chain</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_chain.js.html#l187"><code>lib&#x2F;chain.js:187</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Available since 0.2.6</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Adjusts the configurations according to the browsers behavior.</p>
+<p>Note:
+This is needed especially when screenshots should be taken since
+browsers behave here very different from each other.</p>
+<p>Needs to be called only once per taxi instance.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Preparation options for chaining</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[url=&#x27;http://www.example.org&#x27;]</code>
+                                    <span class="type">Int</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Default website for adjustment for browser</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[horizontalPadding=0]</code>
+                                    <span class="type">Int</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Padding of the document</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[callBack]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Callback function that will be triggered with each selected element in turn</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Chain.html" class="crosslink">Chain</a></span>:
+                    
+                    <p>The chain object</p>
+<hr>
+<h2 id="callback-function">Callback function</h2>
+<blockquote>
+<p>function ()</p>
+</blockquote>
+<h3 id="scope">Scope</h3>
+<blockquote>
+<p>{<code>Chain</code>}</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<p>none</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_backward" class="method item">
     <h3 class="name"><code>backward</code></h3>
 
@@ -2163,7 +2354,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2468"><code>lib&#x2F;chain.js:2468</code></a>
+        <a href="../files/lib_chain.js.html#l2510"><code>lib&#x2F;chain.js:2510</code></a>
         
         </p>
 
@@ -2318,7 +2509,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l1829"><code>lib&#x2F;chain.js:1829</code></a>
+        <a href="../files/lib_chain.js.html#l1871"><code>lib&#x2F;chain.js:1871</code></a>
         
         </p>
 
@@ -2615,7 +2806,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l1749"><code>lib&#x2F;chain.js:1749</code></a>
+        <a href="../files/lib_chain.js.html#l1791"><code>lib&#x2F;chain.js:1791</code></a>
         
         </p>
 
@@ -2844,7 +3035,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l1789"><code>lib&#x2F;chain.js:1789</code></a>
+        <a href="../files/lib_chain.js.html#l1831"><code>lib&#x2F;chain.js:1831</code></a>
         
         </p>
 
@@ -3085,7 +3276,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2252"><code>lib&#x2F;chain.js:2252</code></a>
+        <a href="../files/lib_chain.js.html#l2294"><code>lib&#x2F;chain.js:2294</code></a>
         
         </p>
 
@@ -3266,7 +3457,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2053"><code>lib&#x2F;chain.js:2053</code></a>
+        <a href="../files/lib_chain.js.html#l2095"><code>lib&#x2F;chain.js:2095</code></a>
         
         </p>
 
@@ -3427,7 +3618,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l1969"><code>lib&#x2F;chain.js:1969</code></a>
+        <a href="../files/lib_chain.js.html#l2011"><code>lib&#x2F;chain.js:2011</code></a>
         
         </p>
 
@@ -3779,7 +3970,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l1873"><code>lib&#x2F;chain.js:1873</code></a>
+        <a href="../files/lib_chain.js.html#l1915"><code>lib&#x2F;chain.js:1915</code></a>
         
         </p>
 
@@ -4063,7 +4254,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l1921"><code>lib&#x2F;chain.js:1921</code></a>
+        <a href="../files/lib_chain.js.html#l1963"><code>lib&#x2F;chain.js:1963</code></a>
         
         </p>
 
@@ -4353,7 +4544,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2294"><code>lib&#x2F;chain.js:2294</code></a>
+        <a href="../files/lib_chain.js.html#l2336"><code>lib&#x2F;chain.js:2336</code></a>
         
         </p>
 
@@ -4534,7 +4725,7 @@ That is where this function call comes in handy.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2606"><code>lib&#x2F;chain.js:2606</code></a>
+        <a href="../files/lib_chain.js.html#l2648"><code>lib&#x2F;chain.js:2648</code></a>
         
         </p>
 
@@ -4662,7 +4853,7 @@ This dialog could be an alert, a prompt, or any other browser dialog that the br
             
         
         
-        <a href="../files/lib_chain.js.html#l2642"><code>lib&#x2F;chain.js:2642</code></a>
+        <a href="../files/lib_chain.js.html#l2684"><code>lib&#x2F;chain.js:2684</code></a>
         
         </p>
 
@@ -4796,7 +4987,7 @@ This dialog could be an alert, a prompt, or any other browser dialog that the br
             
         
         
-        <a href="../files/lib_chain.js.html#l2569"><code>lib&#x2F;chain.js:2569</code></a>
+        <a href="../files/lib_chain.js.html#l2611"><code>lib&#x2F;chain.js:2611</code></a>
         
         </p>
 
@@ -4940,7 +5131,7 @@ This dialog could be an alert, a prompt, or any other browser dialog that the br
             
         
         
-        <a href="../files/lib_chain.js.html#l2534"><code>lib&#x2F;chain.js:2534</code></a>
+        <a href="../files/lib_chain.js.html#l2576"><code>lib&#x2F;chain.js:2576</code></a>
         
         </p>
 
@@ -5156,7 +5347,7 @@ This dialog could be an alert, a prompt, or any other browser dialog that the br
             
         
         
-        <a href="../files/lib_chain.js.html#l935"><code>lib&#x2F;chain.js:935</code></a>
+        <a href="../files/lib_chain.js.html#l975"><code>lib&#x2F;chain.js:975</code></a>
         
         </p>
 
@@ -5315,7 +5506,7 @@ This dialog could be an alert, a prompt, or any other browser dialog that the br
             
         
         
-        <a href="../files/lib_chain.js.html#l228"><code>lib&#x2F;chain.js:228</code></a>
+        <a href="../files/lib_chain.js.html#l268"><code>lib&#x2F;chain.js:268</code></a>
         
         </p>
 
@@ -5499,7 +5690,7 @@ driver.elementAttribute(&#39;input&#39;, &#39;value&#39;, function (value) {
             
         
         
-        <a href="../files/lib_chain.js.html#l1009"><code>lib&#x2F;chain.js:1009</code></a>
+        <a href="../files/lib_chain.js.html#l1049"><code>lib&#x2F;chain.js:1049</code></a>
         
         </p>
 
@@ -5932,7 +6123,7 @@ Extend this time if the screenshot needs special behavior.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l319"><code>lib&#x2F;chain.js:319</code></a>
+        <a href="../files/lib_chain.js.html#l359"><code>lib&#x2F;chain.js:359</code></a>
         
         </p>
 
@@ -6094,7 +6285,7 @@ driver.elementClasses(&#39;#search&#39;, function (classes) {
             
         
         
-        <a href="../files/lib_chain.js.html#l710"><code>lib&#x2F;chain.js:710</code></a>
+        <a href="../files/lib_chain.js.html#l750"><code>lib&#x2F;chain.js:750</code></a>
         
         </p>
 
@@ -6250,7 +6441,7 @@ This will only work on elements that can be cleared like input boxes and text ar
             
         
         
-        <a href="../files/lib_chain.js.html#l1252"><code>lib&#x2F;chain.js:1252</code></a>
+        <a href="../files/lib_chain.js.html#l1294"><code>lib&#x2F;chain.js:1294</code></a>
         
         </p>
 
@@ -6440,7 +6631,7 @@ This will only work on elements that can be cleared like input boxes and text ar
             
         
         
-        <a href="../files/lib_chain.js.html#l1295"><code>lib&#x2F;chain.js:1295</code></a>
+        <a href="../files/lib_chain.js.html#l1337"><code>lib&#x2F;chain.js:1337</code></a>
         
         </p>
 
@@ -6656,7 +6847,7 @@ This will only work on elements that can be cleared like input boxes and text ar
             
         
         
-        <a href="../files/lib_chain.js.html#l1152"><code>lib&#x2F;chain.js:1152</code></a>
+        <a href="../files/lib_chain.js.html#l1192"><code>lib&#x2F;chain.js:1192</code></a>
         
         </p>
 
@@ -7012,17 +7203,19 @@ The options for the comparison, however, need to be supplied for every compariso
 <pre><code>driver.setValue(&#39;blinkDiff.outputOnSuccess&#39;, true);</code></pre>
 <h3 id="options">Options</h3>
 <ul>
-<li><strong><code>blinkDiff.outputOnSuccess</code></strong> {<code>boolean</code>} - Should an output be created when comparison is successful?
+<li><strong><code>blinkDiff.outputOnSuccess</code></strong> {<code>boolean</code>} [default=true] - Should an output be created when comparison is successful?
 There will always be an output if the comparison fails.</li>
-<li><strong><code>blinkDiff.failOnDifference</code></strong> {<code>boolean</code>} - Should Taxi trigger an error when a difference is recognized?</li>
-<li><strong><code>blinkDiff.autoApprove</code></strong> {<code>boolean</code>} - Should Taxi auto-approve screenshots when no previous comparison
+<li><strong><code>blinkDiff.failOnDifference</code></strong> {<code>boolean</code>} [default=true] - Should Taxi trigger an error when a difference is recognized?</li>
+<li><strong><code>blinkDiff.autoApprove</code></strong> {<code>boolean</code>} [default=false] - Should Taxi auto-approve screenshots when no previous comparison
 exist? Otherwise, the test will ignore this comparison, saving the current build screenshot.</li>
-<li><strong><code>blinkDiff.approvedPath</code></strong> {<code>string</code>} - Path to the approved folder. Defaults to the current working directory.</li>
-<li><strong><code>blinkDiff.buildPath</code></strong> {<code>string</code>} - Path to the build folder, holding all the screenshots taken in the recent build.
+<li><strong><code>blinkDiff.approvedPath</code></strong> {<code>string</code>} [default=cwd] - Path to the approved folder. Defaults to the current working directory.</li>
+<li><strong><code>blinkDiff.buildPath</code></strong> {<code>string</code>} [default=approvedPath] - Path to the build folder, holding all the screenshots taken in the recent build.
 Defaults to the approved folder.</li>
-<li><strong><code>blinkDiff.diffPath</code></strong> {<code>string</code>} - Path to the difference folder, keeping the highlighted differences between
+<li><strong><code>blinkDiff.diffPath</code></strong> {<code>string</code>} [default=buildPath] - Path to the difference folder, keeping the highlighted differences between
 the approved image and the build image. Default to the build folder.</li>
 <li><strong><code>blinkDiff.options</code></strong> {<code>object</code>} - Default values for Blink-Diff options. See the <a href="https://github.com/yahoo/blink-diff#object-usage">Blink-Diff documentation</a></li>
+<li><strong><code>blinkDiff.batchFailures</code></strong> {<code>boolean</code>} [default=false] - Failures are batched to the end of the tests when this flag is set.</li>
+<li><strong><code>blinkDiff.failOnAdditions</code></strong> {<code>boolean</code>} [default=false] - Fail when no approved screenshot is found.</li>
 </ul>
 
                 
@@ -7094,7 +7287,7 @@ the approved image and the build image. Default to the build folder.</li>
             
         
         
-        <a href="../files/lib_chain.js.html#l528"><code>lib&#x2F;chain.js:528</code></a>
+        <a href="../files/lib_chain.js.html#l568"><code>lib&#x2F;chain.js:568</code></a>
         
         </p>
 
@@ -7267,7 +7460,7 @@ Use the original CSS property name according to the CSS standard, <strong>not</s
             
         
         
-        <a href="../files/lib_chain.js.html#l1340"><code>lib&#x2F;chain.js:1340</code></a>
+        <a href="../files/lib_chain.js.html#l1382"><code>lib&#x2F;chain.js:1382</code></a>
         
         </p>
 
@@ -7457,7 +7650,7 @@ Use the original CSS property name according to the CSS standard, <strong>not</s
             
         
         
-        <a href="../files/lib_chain.js.html#l1383"><code>lib&#x2F;chain.js:1383</code></a>
+        <a href="../files/lib_chain.js.html#l1425"><code>lib&#x2F;chain.js:1425</code></a>
         
         </p>
 
@@ -7661,7 +7854,7 @@ Use the original CSS property name according to the CSS standard, <strong>not</s
             
         
         
-        <a href="../files/lib_chain.js.html#l1606"><code>lib&#x2F;chain.js:1606</code></a>
+        <a href="../files/lib_chain.js.html#l1648"><code>lib&#x2F;chain.js:1648</code></a>
         
         </p>
 
@@ -7809,7 +8002,7 @@ Use the original CSS property name according to the CSS standard, <strong>not</s
             
         
         
-        <a href="../files/lib_chain.js.html#l896"><code>lib&#x2F;chain.js:896</code></a>
+        <a href="../files/lib_chain.js.html#l936"><code>lib&#x2F;chain.js:936</code></a>
         
         </p>
 
@@ -7970,7 +8163,7 @@ Use the original CSS property name according to the CSS standard, <strong>not</s
             
         
         
-        <a href="../files/lib_chain.js.html#l272"><code>lib&#x2F;chain.js:272</code></a>
+        <a href="../files/lib_chain.js.html#l312"><code>lib&#x2F;chain.js:312</code></a>
         
         </p>
 
@@ -8157,7 +8350,7 @@ driver.elementHasClass(&#39;input&#39;, &#39;name&#39;, function (hasClass, elem
             
         
         
-        <a href="../files/lib_chain.js.html#l405"><code>lib&#x2F;chain.js:405</code></a>
+        <a href="../files/lib_chain.js.html#l445"><code>lib&#x2F;chain.js:445</code></a>
         
         </p>
 
@@ -8340,7 +8533,7 @@ The text search is case sensitive. If you want case insensitivity, then please u
             
         
         
-        <a href="../files/lib_chain.js.html#l1428"><code>lib&#x2F;chain.js:1428</code></a>
+        <a href="../files/lib_chain.js.html#l1470"><code>lib&#x2F;chain.js:1470</code></a>
         
         </p>
 
@@ -8500,7 +8693,7 @@ The text search is case sensitive. If you want case insensitivity, then please u
             
         
         
-        <a href="../files/lib_chain.js.html#l1462"><code>lib&#x2F;chain.js:1462</code></a>
+        <a href="../files/lib_chain.js.html#l1504"><code>lib&#x2F;chain.js:1504</code></a>
         
         </p>
 
@@ -8680,7 +8873,7 @@ The text search is case sensitive. If you want case insensitivity, then please u
             
         
         
-        <a href="../files/lib_chain.js.html#l567"><code>lib&#x2F;chain.js:567</code></a>
+        <a href="../files/lib_chain.js.html#l607"><code>lib&#x2F;chain.js:607</code></a>
         
         </p>
 
@@ -8829,7 +9022,7 @@ The text search is case sensitive. If you want case insensitivity, then please u
             
         
         
-        <a href="../files/lib_chain.js.html#l640"><code>lib&#x2F;chain.js:640</code></a>
+        <a href="../files/lib_chain.js.html#l680"><code>lib&#x2F;chain.js:680</code></a>
         
         </p>
 
@@ -8978,7 +9171,7 @@ The text search is case sensitive. If you want case insensitivity, then please u
             
         
         
-        <a href="../files/lib_chain.js.html#l602"><code>lib&#x2F;chain.js:602</code></a>
+        <a href="../files/lib_chain.js.html#l642"><code>lib&#x2F;chain.js:642</code></a>
         
         </p>
 
@@ -9129,7 +9322,7 @@ This function will only work on elements which have a &quot;checked&quot;-value 
             
         
         
-        <a href="../files/lib_chain.js.html#l822"><code>lib&#x2F;chain.js:822</code></a>
+        <a href="../files/lib_chain.js.html#l862"><code>lib&#x2F;chain.js:862</code></a>
         
         </p>
 
@@ -9282,7 +9475,7 @@ This function will only work on elements which have a &quot;checked&quot;-value 
             
         
         
-        <a href="../files/lib_chain.js.html#l859"><code>lib&#x2F;chain.js:859</code></a>
+        <a href="../files/lib_chain.js.html#l899"><code>lib&#x2F;chain.js:899</code></a>
         
         </p>
 
@@ -9435,7 +9628,7 @@ This function will only work on elements which have a &quot;checked&quot;-value 
             
         
         
-        <a href="../files/lib_chain.js.html#l1640"><code>lib&#x2F;chain.js:1640</code></a>
+        <a href="../files/lib_chain.js.html#l1682"><code>lib&#x2F;chain.js:1682</code></a>
         
         </p>
 
@@ -9583,7 +9776,7 @@ This function will only work on elements which have a &quot;checked&quot;-value 
             
         
         
-        <a href="../files/lib_chain.js.html#l972"><code>lib&#x2F;chain.js:972</code></a>
+        <a href="../files/lib_chain.js.html#l1012"><code>lib&#x2F;chain.js:1012</code></a>
         
         </p>
 
@@ -9736,7 +9929,7 @@ This function will only work on elements which have a &quot;checked&quot;-value 
             
         
         
-        <a href="../files/lib_chain.js.html#l187"><code>lib&#x2F;chain.js:187</code></a>
+        <a href="../files/lib_chain.js.html#l227"><code>lib&#x2F;chain.js:227</code></a>
         
         </p>
 
@@ -9904,7 +10097,7 @@ driver.elements(&#39;.title&#39;, function (element) {
             
         
         
-        <a href="../files/lib_chain.js.html#l675"><code>lib&#x2F;chain.js:675</code></a>
+        <a href="../files/lib_chain.js.html#l715"><code>lib&#x2F;chain.js:715</code></a>
         
         </p>
 
@@ -10068,7 +10261,7 @@ driver.elements(&#39;.title&#39;, function (element) {
             
         
         
-        <a href="../files/lib_chain.js.html#l785"><code>lib&#x2F;chain.js:785</code></a>
+        <a href="../files/lib_chain.js.html#l825"><code>lib&#x2F;chain.js:825</code></a>
         
         </p>
 
@@ -10221,7 +10414,7 @@ driver.elements(&#39;.title&#39;, function (element) {
             
         
         
-        <a href="../files/lib_chain.js.html#l747"><code>lib&#x2F;chain.js:747</code></a>
+        <a href="../files/lib_chain.js.html#l787"><code>lib&#x2F;chain.js:787</code></a>
         
         </p>
 
@@ -10371,7 +10564,7 @@ This should be usually only one form element. It doesn&#39;t make sense to apply
             
         
         
-        <a href="../files/lib_chain.js.html#l493"><code>lib&#x2F;chain.js:493</code></a>
+        <a href="../files/lib_chain.js.html#l533"><code>lib&#x2F;chain.js:533</code></a>
         
         </p>
 
@@ -10520,7 +10713,7 @@ This should be usually only one form element. It doesn&#39;t make sense to apply
             
         
         
-        <a href="../files/lib_chain.js.html#l1572"><code>lib&#x2F;chain.js:1572</code></a>
+        <a href="../files/lib_chain.js.html#l1614"><code>lib&#x2F;chain.js:1614</code></a>
         
         </p>
 
@@ -10668,7 +10861,7 @@ This should be usually only one form element. It doesn&#39;t make sense to apply
             
         
         
-        <a href="../files/lib_chain.js.html#l362"><code>lib&#x2F;chain.js:362</code></a>
+        <a href="../files/lib_chain.js.html#l402"><code>lib&#x2F;chain.js:402</code></a>
         
         </p>
 
@@ -10830,7 +11023,7 @@ driver.elementText(&#39;.synopsis&#39;, function (text) {
             
         
         
-        <a href="../files/lib_chain.js.html#l1502"><code>lib&#x2F;chain.js:1502</code></a>
+        <a href="../files/lib_chain.js.html#l1544"><code>lib&#x2F;chain.js:1544</code></a>
         
         </p>
 
@@ -10990,7 +11183,7 @@ driver.elementText(&#39;.synopsis&#39;, function (text) {
             
         
         
-        <a href="../files/lib_chain.js.html#l1536"><code>lib&#x2F;chain.js:1536</code></a>
+        <a href="../files/lib_chain.js.html#l1578"><code>lib&#x2F;chain.js:1578</code></a>
         
         </p>
 
@@ -11170,7 +11363,7 @@ driver.elementText(&#39;.synopsis&#39;, function (text) {
             
         
         
-        <a href="../files/lib_chain.js.html#l455"><code>lib&#x2F;chain.js:455</code></a>
+        <a href="../files/lib_chain.js.html#l495"><code>lib&#x2F;chain.js:495</code></a>
         
         </p>
 
@@ -11303,7 +11496,7 @@ This will only work on elements that have a <code>value</code> attribute.</p>
             
         
         
-        <a href="../files/lib_chain.js.html#l2849"><code>lib&#x2F;chain.js:2849</code></a>
+        <a href="../files/lib_chain.js.html#l2891"><code>lib&#x2F;chain.js:2891</code></a>
         
         </p>
 
@@ -11398,7 +11591,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2437"><code>lib&#x2F;chain.js:2437</code></a>
+        <a href="../files/lib_chain.js.html#l2479"><code>lib&#x2F;chain.js:2479</code></a>
         
         </p>
 
@@ -11609,7 +11802,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2336"><code>lib&#x2F;chain.js:2336</code></a>
+        <a href="../files/lib_chain.js.html#l2378"><code>lib&#x2F;chain.js:2378</code></a>
         
         </p>
 
@@ -11766,7 +11959,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l3111"><code>lib&#x2F;chain.js:3111</code></a>
+        <a href="../files/lib_chain.js.html#l3153"><code>lib&#x2F;chain.js:3153</code></a>
         
         </p>
 
@@ -11896,7 +12089,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l3178"><code>lib&#x2F;chain.js:3178</code></a>
+        <a href="../files/lib_chain.js.html#l3220"><code>lib&#x2F;chain.js:3220</code></a>
         
         </p>
 
@@ -12027,7 +12220,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2373"><code>lib&#x2F;chain.js:2373</code></a>
+        <a href="../files/lib_chain.js.html#l2415"><code>lib&#x2F;chain.js:2415</code></a>
         
         </p>
 
@@ -12168,7 +12361,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2499"><code>lib&#x2F;chain.js:2499</code></a>
+        <a href="../files/lib_chain.js.html#l2541"><code>lib&#x2F;chain.js:2541</code></a>
         
         </p>
 
@@ -12305,7 +12498,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l3145"><code>lib&#x2F;chain.js:3145</code></a>
+        <a href="../files/lib_chain.js.html#l3187"><code>lib&#x2F;chain.js:3187</code></a>
         
         </p>
 
@@ -12474,7 +12667,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l3078"><code>lib&#x2F;chain.js:3078</code></a>
+        <a href="../files/lib_chain.js.html#l3120"><code>lib&#x2F;chain.js:3120</code></a>
         
         </p>
 
@@ -12643,7 +12836,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2215"><code>lib&#x2F;chain.js:2215</code></a>
+        <a href="../files/lib_chain.js.html#l2257"><code>lib&#x2F;chain.js:2257</code></a>
         
         </p>
 
@@ -12800,7 +12993,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2148"><code>lib&#x2F;chain.js:2148</code></a>
+        <a href="../files/lib_chain.js.html#l2190"><code>lib&#x2F;chain.js:2190</code></a>
         
         </p>
 
@@ -12942,7 +13135,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2182"><code>lib&#x2F;chain.js:2182</code></a>
+        <a href="../files/lib_chain.js.html#l2224"><code>lib&#x2F;chain.js:2224</code></a>
         
         </p>
 
@@ -13105,7 +13298,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l1717"><code>lib&#x2F;chain.js:1717</code></a>
+        <a href="../files/lib_chain.js.html#l1759"><code>lib&#x2F;chain.js:1759</code></a>
         
         </p>
 
@@ -13246,7 +13439,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l3044"><code>lib&#x2F;chain.js:3044</code></a>
+        <a href="../files/lib_chain.js.html#l3086"><code>lib&#x2F;chain.js:3086</code></a>
         
         </p>
 
@@ -13382,7 +13575,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2820"><code>lib&#x2F;chain.js:2820</code></a>
+        <a href="../files/lib_chain.js.html#l2862"><code>lib&#x2F;chain.js:2862</code></a>
         
         </p>
 
@@ -13523,7 +13716,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2116"><code>lib&#x2F;chain.js:2116</code></a>
+        <a href="../files/lib_chain.js.html#l2158"><code>lib&#x2F;chain.js:2158</code></a>
         
         </p>
 
@@ -13649,7 +13842,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2084"><code>lib&#x2F;chain.js:2084</code></a>
+        <a href="../files/lib_chain.js.html#l2126"><code>lib&#x2F;chain.js:2126</code></a>
         
         </p>
 
@@ -13775,7 +13968,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2405"><code>lib&#x2F;chain.js:2405</code></a>
+        <a href="../files/lib_chain.js.html#l2447"><code>lib&#x2F;chain.js:2447</code></a>
         
         </p>
 
@@ -13919,7 +14112,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l3000"><code>lib&#x2F;chain.js:3000</code></a>
+        <a href="../files/lib_chain.js.html#l3042"><code>lib&#x2F;chain.js:3042</code></a>
         
         </p>
 
@@ -14112,7 +14305,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2916"><code>lib&#x2F;chain.js:2916</code></a>
+        <a href="../files/lib_chain.js.html#l2958"><code>lib&#x2F;chain.js:2958</code></a>
         
         </p>
 
@@ -14305,7 +14498,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2875"><code>lib&#x2F;chain.js:2875</code></a>
+        <a href="../files/lib_chain.js.html#l2917"><code>lib&#x2F;chain.js:2917</code></a>
         
         </p>
 
@@ -14498,7 +14691,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2959"><code>lib&#x2F;chain.js:2959</code></a>
+        <a href="../files/lib_chain.js.html#l3001"><code>lib&#x2F;chain.js:3001</code></a>
         
         </p>
 
@@ -14673,7 +14866,7 @@ To get access again to the browser, you need to create a whole new Taxi instance
             
         
         
-        <a href="../files/lib_chain.js.html#l2785"><code>lib&#x2F;chain.js:2785</code></a>
+        <a href="../files/lib_chain.js.html#l2827"><code>lib&#x2F;chain.js:2827</code></a>
         
         </p>
 

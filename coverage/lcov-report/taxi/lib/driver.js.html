@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">taxi/lib/driver.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">68.66% <small>(138 / 201)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">67.15% <small>(139 / 207)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">40.63% <small>(26 / 64)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">38.24% <small>(26 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">47.17% <small>(25 / 53)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">45.45% <small>(25 / 55)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">68.5% <small>(137 / 200)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">66.99% <small>(138 / 206)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -960,7 +960,41 @@
 742
 743
 744
-745</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -1437,6 +1471,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2184,6 +2252,40 @@ Driver.prototype.session = Driver.prototype._session;
 &nbsp;
 &nbsp;
 /**
+ * Adjusts the configurations according to the browsers behavior.
+ *
+ * Note:
+ * This is needed especially when screenshots should be taken since
+ * browsers behave here very different from each other.
+ *
+ * Needs to be called only once per taxi instance.
+ *
+ * @method adjust
+ * @param {object} [options] Preparation options
+ * @param {int} [options.url='http://www.example.org'] Default website for adjustment for browser
+ * @param {int} [options.horizontalPadding=0] Padding of the document
+ * @since 0.2.6
+ */
+Driver.prototype.adjust = <span class="fstat-no" title="function not covered" >function (options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	options = options || {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var url = options.url || 'http://www.example.org';</span>
+&nbsp;
+	// Navigate to adjustment website
+<span class="cstat-no" title="statement not covered" >	return when(this.browser().activeWindow().navigator().navigateTo(url), <span class="fstat-no" title="function not covered" >function () {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		var Stitching = require('./helpers/stitching'),</span>
+			stitching = new Stitching(this);
+&nbsp;
+		// Will do needsStitching and devicePixelRatio if not done yet
+<span class="cstat-no" title="statement not covered" >		return stitching.doesNeedStitching(options);</span>
+&nbsp;
+	}.bind(this));
+};
+&nbsp;
+&nbsp;
+/**
  * Gets the browser object.
  * Direct-access. No need to wait.
  *
@@ -2453,7 +2555,7 @@ function setupDebug (driver, options) {
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 27 2015 00:44:34 GMT-0700 (PDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 13 2015 02:44:24 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>

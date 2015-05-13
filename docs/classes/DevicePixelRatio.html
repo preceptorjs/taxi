@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -368,7 +368,17 @@
     <h3 class="name"><code>_determineDevicePixelRatio</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -402,7 +412,7 @@
             
         
         
-        <a href="../files/lib_helpers_devicePixelRatio.js.html#l97"><code>lib&#x2F;helpers&#x2F;devicePixelRatio.js:97</code></a>
+        <a href="../files/lib_helpers_devicePixelRatio.js.html#l103"><code>lib&#x2F;helpers&#x2F;devicePixelRatio.js:103</code></a>
         
         </p>
 
@@ -417,6 +427,49 @@
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[horizontalPadding=0]</code>
+                                    <span class="type">Int</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Padding of the document</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -491,7 +544,7 @@
             
         
         
-        <a href="../files/lib_helpers_devicePixelRatio.js.html#l138"><code>lib&#x2F;helpers&#x2F;devicePixelRatio.js:138</code></a>
+        <a href="../files/lib_helpers_devicePixelRatio.js.html#l148"><code>lib&#x2F;helpers&#x2F;devicePixelRatio.js:148</code></a>
         
         </p>
 
@@ -810,7 +863,17 @@ The result is parsed for errors.</p>
     <h3 class="name"><code>getDevicePixelRatio</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -857,9 +920,55 @@ The result is parsed for errors.</p>
 If this info is not available yet, then it will determine it.
 It will then be cached for each driver instance, determining this
 only once per instance.</p>
+<p>Note:
+<code>horizontalPadding</code> is any element that extents horizontally
+outside of the document, i.e. negative absolute position.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[horizontalPadding=0]</code>
+                                    <span class="type">Int</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Padding of the document</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     

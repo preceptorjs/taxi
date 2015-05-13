@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -651,6 +651,40 @@ Driver.prototype._session = function () {
  * @return {Session}
  */
 Driver.prototype.session = Driver.prototype._session;
+
+
+/**
+ * Adjusts the configurations according to the browsers behavior.
+ *
+ * Note:
+ * This is needed especially when screenshots should be taken since
+ * browsers behave here very different from each other.
+ *
+ * Needs to be called only once per taxi instance.
+ *
+ * @method adjust
+ * @param {object} [options] Preparation options
+ * @param {int} [options.url=&#x27;http://www.example.org&#x27;] Default website for adjustment for browser
+ * @param {int} [options.horizontalPadding=0] Padding of the document
+ * @since 0.2.6
+ */
+Driver.prototype.adjust = function (options) {
+
+	options = options || {};
+
+	var url = options.url || &#x27;http://www.example.org&#x27;;
+
+	// Navigate to adjustment website
+	return when(this.browser().activeWindow().navigator().navigateTo(url), function () {
+
+		var Stitching = require(&#x27;./helpers/stitching&#x27;),
+			stitching = new Stitching(this);
+
+		// Will do needsStitching and devicePixelRatio if not done yet
+		return stitching.doesNeedStitching(options);
+
+	}.bind(this));
+};
 
 
 /**

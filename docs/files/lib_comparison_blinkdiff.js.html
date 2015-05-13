@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2.3</em>
+            <em>API Docs for: 0.2.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -186,10 +186,12 @@ var utils = require(&#x27;preceptor-core&#x27;).utils;
 var path = require(&#x27;path&#x27;);
 var mkdirp = require(&#x27;mkdirp&#x27;);
 
+var BlinkDiff = require(&#x27;blink-diff&#x27;);
+
 module.exports = BlinkDiffComparison;
 
 /**
- * Device-Pixel-Ratio object
+ * Blink-Diff comparison object
  *
  * @constructor
  * @class BlinkDiffComparison
@@ -199,6 +201,7 @@ module.exports = BlinkDiffComparison;
  */
 function BlinkDiffComparison (driver) {
 	this._driver = driver;
+	this._failed = false;
 }
 
 
@@ -307,6 +310,27 @@ BlinkDiffComparison.prototype.shouldAutoApprove = function () {
 
 
 /**
+ * Batch failures until the end?
+ *
+ * @method shouldBatchFailures
+ * @return {boolean}
+ */
+BlinkDiffComparison.prototype.shouldBatchFailures = function () {
+	return !!this.getDriver().getValue(&#x27;blinkDiff.batchFailures&#x27;);
+};
+
+/**
+ * Should comparison fail on additions?
+ *
+ * @method shouldFailOnAdditions
+ * @return {boolean}
+ */
+BlinkDiffComparison.prototype.shouldFailOnAdditions = function () {
+	return !!this.getDriver().getValue(&#x27;blinkDiff.failOnAdditions&#x27;);
+};
+
+
+/**
  * Gets the path where approved screenshots are found
  *
  * @method getApprovedPath
@@ -336,28 +360,6 @@ BlinkDiffComparison.prototype.getDiffPath = function () {
 	return this.getDriver().getValue(&#x27;blinkDiff.diffPath&#x27;) || this.getBuildPath();
 };
 
-
-/**
- * Loads the Blink-Diff library, creating output instructing user to install the module
- *
- * @method _loadBlinkDiff
- * @return {BlinkDiff}
- * @private
- */
-BlinkDiffComparison.prototype._loadBlinkDiff = function () {
-
-	var BlinkDiff;
-
-	try {
-		BlinkDiff = require(&#x27;blink-diff&#x27;);
-	} catch (err) {
-		console.error(&#x27;Cannot find package &quot;blink-diff&quot;. Please install it with &quot;npm install --save blink-diff&quot; to use image comparison.&#x27;);
-	}
-
-	return BlinkDiff;
-};
-
-
 /**
  * Gets the name of the browser folder, categorizing screenshots from the same browser + platform
  *
@@ -368,7 +370,7 @@ BlinkDiffComparison.prototype._loadBlinkDiff = function () {
 BlinkDiffComparison.prototype._getFolderName = function () {
 	var browserId;
 
-	browserId = this.getDriver().browserId();
+	browserId = this.getDriver().browserId().trim().replace(/\s\s+/g, &#x27; &#x27;);
 	browserId = utils.fileNameSafe(browserId);
 
 	return browserId;
@@ -384,7 +386,7 @@ BlinkDiffComparison.prototype._getFolderName = function () {
  * @private
  */
 BlinkDiffComparison.prototype._getBaseName = function (title, id) {
-	return utils.fileNameSafe(title) + &#x27;_&#x27; + id;
+	return utils.fileNameSafe(title.trim().replace(/\s\s+/g, &#x27; &#x27;)) + &#x27;_&#x27; + id;
 };
 
 
@@ -538,9 +540,8 @@ BlinkDiffComparison.prototype._prepareFolders = function () {
  */
 BlinkDiffComparison.prototype.compare = function (title, imageBlob, options) {
 
-	var BlinkDiff,
+	var instance,
 		diffPath, buildPath, approvedPath,
-		instance,
 		result, passed, localOptions;
 
 	this._prepareFolders();
@@ -563,6 +564,14 @@ BlinkDiffComparison.prototype.compare = function (title, imageBlob, options) {
 			this._saveBlob(approvedPath, imageBlob);
 		}
 
+		if (this.shouldFailOnAdditions()) {
+			this._failed = true;
+
+			if (!this.shouldBatchFailures()) {
+				throw new Error(&quot;Screenshot is an addition: &quot; + title);
+			}
+		}
+
 		return this.getDriver().utils().resolve(null);
 
 	} else {
@@ -570,7 +579,6 @@ BlinkDiffComparison.prototype.compare = function (title, imageBlob, options) {
 		localOptions.imageA = PNGImage.readImageSync(approvedPath);
 		localOptions.imageB = PNGImage.loadImageSync(imageBlob);
 
-		BlinkDiff = this._loadBlinkDiff();
 		instance = new BlinkDiff(localOptions);
 		result = instance.runSync();
 
@@ -578,8 +586,13 @@ BlinkDiffComparison.prototype.compare = function (title, imageBlob, options) {
 		if (!passed || (passed &amp;&amp; this.shouldOutputOnSuccess())) {
 			this._saveBlob(diffPath, instance._imageOutput.toBlobSync());
 		}
+
 		if (!passed &amp;&amp; this.shouldFailOnDifference()) {
-			throw new Error(&quot;Screenshots are different for &quot; + title);
+			this._failed = true;
+
+			if (!this.shouldBatchFailures()) {
+				throw new Error(&quot;Screenshots are different for &quot; + title);
+			}
 		}
 
 		return this.getDriver().utils().resolve(passed);
@@ -602,7 +615,9 @@ BlinkDiffComparison.prototype.setup = function () {
  * @method tearDown
  */
 BlinkDiffComparison.prototype.tearDown = function () {
-	// Do nothing
+	if (this._failed &amp;&amp; this.shouldBatchFailures()) {
+		throw new Error(&#x27;Differences encountered in one or more comparisons.&#x27;);
+	}
 };
 
 logMethods(BlinkDiffComparison.prototype);
