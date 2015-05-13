@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+v0.2.7 - 05/13/15
+* Add failOnAddition and batchFailure options to the BlinkDiff comparator
+
 v0.2.6 - 05/10/15
 * Bugfix for devicePixelRatio rounding error
 * Avoid taking multiple screenshots for stitching if stitching is not required

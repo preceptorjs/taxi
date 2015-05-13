@@ -1,6 +1,6 @@
 {
   "name": "taxi",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Object-oriented Selenium WebDriver Client",
   "license": "MIT",
   "main": "index.js",
