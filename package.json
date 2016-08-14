@@ -1,6 +1,6 @@
 {
   "name": "taxi",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Object-oriented Selenium WebDriver Client",
   "license": "MIT",
   "main": "index.js",
@@ -8,7 +8,7 @@
   "bugs": "https://github.com/preceptorjs/taxi/issues",
   "author": {
     "name": "Marcel Erz",
-    "email": "me@ymarcelerz.com",
+    "email": "me@marcelerz.com",
     "url": "http://www.marcelerz.com"
   },
   "contributors": [
@@ -35,23 +35,23 @@
     "docs": "yuidoc ."
   },
   "dependencies": {
-    "blink-diff": "~1.0.10",
-    "mkdirp": "0.5.0",
-    "ms": "~0.6.2",
-    "pngjs-image": "~0.11.2",
+    "blink-diff": "~1.0.13",
+    "mkdirp": "~0.5.1",
+    "ms": "~0.7.1",
+    "pngjs-image": "~0.11.6",
     "preceptor-core": "~0.10.0",
-    "promise": "~3.2.0",
-    "sleep.js": "0.1.0",
-    "sync-req": "^0.1.2",
-    "then-request": "~2.1.1"
+    "promise": "~7.1.1",
+    "sleep.js": "~0.1.0",
+    "sync-req": "~0.1.3",
+    "then-request": "~2.2.0"
   },
   "devDependencies": {
-    "chromedriver": "~2.8.0",
-    "codeclimate-test-reporter": "0.0.4",
-    "coveralls": "2.11.2",
-    "istanbul": "~0.2.4",
-    "st": "~0.3.1",
-    "testit": "~1.2.0",
-    "yuidocjs": "0.3.50"
+    "chromedriver": "~2.23.0",
+    "codeclimate-test-reporter": "0.3.3",
+    "coveralls": "2.11.12",
+    "istanbul": "~0.4.4",
+    "st": "~1.2.0",
+    "testit": "~2.1.2",
+    "yuidocjs": "0.10.2"
   }
 }
